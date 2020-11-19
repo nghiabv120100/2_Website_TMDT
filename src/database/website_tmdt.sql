@@ -1,0 +1,68 @@
+create database Website_TMDT;
+
+use Website_TMDT ;
+
+Create table Account
+(
+	id int auto_increment,
+    username varchar(255) unique not null,
+    password varchar(255) not null,
+    email varchar(255),
+    phonenumber char(15),
+    address nvarchar(255),
+    avatar varchar(255),
+    role_id int, 			-- 1: admin 0:client
+    Primary	Key(id)
+);
+
+
+Create table Category
+(
+	id int auto_increment,
+	cate_name nvarchar(255) not null,
+    image varchar(255),
+    Primary	Key(id)
+);
+
+Create table DetailCategory
+(
+	id int auto_increment,
+	detail_cate_name nvarchar(255) not null,
+    image varchar(255),
+    cate_id int ,
+    Foreign Key(cate_id) references Category(id),
+    Primary	Key(id)
+);
+
+Create table product
+(
+	id int auto_increment,
+	product_name nvarchar(255) not null,
+    image varchar(255),
+    price real,
+    describe_pro nvarchar(255),
+    detail_cate_id int ,
+    Foreign Key(detail_cate_id) references DetailCategory(id),
+    Primary	Key(id)
+);
+
+Create table cart
+(
+	id varchar(255), -- id sẽ được tạo bằng cách lấy HD+MMddyyyy+hhmmss
+    user_id int,
+    total_price real,
+    buydate date,
+    Foreign Key(user_id) references Account(id),
+    Primary Key(id)
+);
+
+create table cartitem
+(
+	cart_id varchar(255) not null,
+    product_id int,
+    quantity int,
+    unit_price real,
+    Foreign Key(cart_id) references Cart(id),
+    Foreign Key(product_id) references Product(id),
+    Primary Key(cart_id,product_id)
+)

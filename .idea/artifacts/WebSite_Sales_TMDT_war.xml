@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WebSite_Sales_TMDT:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>WebSite_Sales_TMDT</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="WebSite_Sales_TMDT-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="WebSite_Sales_TMDT:war exploded" />
+    </root>
+  </artifact>
+</component>
