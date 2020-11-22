@@ -8,6 +8,18 @@ public class ProductModel {
     private String describePro;
     private int detailCateId;
 
+
+
+    private int ids[]; //Chứ danh sách id để xoá
+
+    public int[] getIds() {
+        return ids;
+    }
+
+    public void setIds(int[] ids) {
+        this.ids = ids;
+    }
+
     public int getId() {
         return id;
     }

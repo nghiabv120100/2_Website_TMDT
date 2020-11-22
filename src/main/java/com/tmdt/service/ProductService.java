@@ -11,7 +11,16 @@ public class ProductService {
 
     public ProductModel save(ProductModel productModel){
         int id = productDAO.save(productModel);
-        System.out.println(id);
-        return null;
+        return productDAO.findOne(id);
     }
+    public ProductModel update(ProductModel productModel){
+        productDAO.update(productModel);
+        return productDAO.findOne(productModel.getId());
+    }
+    public void delete(int[] ids){
+        for(int id:ids){
+            productDAO.delete(id);
+        }
+    }
+
 }
