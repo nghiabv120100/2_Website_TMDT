@@ -4,6 +4,7 @@ import com.tmdt.dao.ProductDAO;
 import com.tmdt.model.ProductModel;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class ProductService {
     @Inject
@@ -22,5 +23,7 @@ public class ProductService {
             productDAO.delete(id);
         }
     }
-
+    public List<ProductModel> findAll(){
+        return productDAO.findAll();
+    }
 }

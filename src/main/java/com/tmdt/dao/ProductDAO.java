@@ -70,6 +70,11 @@ public class ProductDAO extends GenericDAO<ProductModel>{
         List<ProductModel> products = query(sql,new ProductMapper(),id);
         return products.isEmpty() ? null : products.get(0);
     }
+    public List<ProductModel> findAll(){
+        String sql="Select * from Product";
+        List<ProductModel> products = query(sql,new ProductMapper());
+        return products.isEmpty() ? null : products;
+    }
     public void update(ProductModel productModel){
         String sql="update Product set product_name=?,image=?,price=?,describe_pro=?,detail_cate_id=? where id=?";
         update(sql,productModel.getProductName(),productModel.getImage(),productModel.getPrice()
