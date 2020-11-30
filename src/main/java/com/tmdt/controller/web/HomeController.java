@@ -47,7 +47,7 @@ public class HomeController extends HttpServlet {
 
         //ProductModel model= productService.save(productModel);
         System.out.println("Hello");
-        RequestDispatcher rd = req.getRequestDispatcher("views/web/home.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("views/web/index.jsp");
         rd.forward(req,resp);
     }
 
