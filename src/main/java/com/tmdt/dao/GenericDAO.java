@@ -16,7 +16,7 @@ public class GenericDAO<T> {
 
             String url="jdbc:mysql://localhost:3306/website_tmdt";
             String user="root";
-            String password="123456";
+            String password="HuynhPhuc1201";
             System.out.println("Connect success");
             System.out.println(a);
             a +=1;
