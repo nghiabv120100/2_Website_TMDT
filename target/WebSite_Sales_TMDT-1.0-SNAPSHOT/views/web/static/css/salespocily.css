@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+    color: red;
+}
+
+h2 {
+    color: blue;
+}
+
+h4 {
+    color: green;
+}
+
+h5 {
+    color: brown;
+}
+
+.node {
+    color: red;
+    font-size: 18px;
+    font-weight: 600;
+}

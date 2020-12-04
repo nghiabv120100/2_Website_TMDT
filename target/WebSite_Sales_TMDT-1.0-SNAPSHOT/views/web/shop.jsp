@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url value="/views/web/static" var="url"> </c:url>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +10,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Sản phẩm</title>
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/font-awesome.min.css" rel="stylesheet">
-	<link href="static/css/main.css" rel="stylesheet">
-	<link href="static/css/responsive.css" rel="stylesheet">
+    <link href="${url}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${url}/css/font-awesome.min.css" rel="stylesheet">
+	<link href="${url}/css/main.css" rel="stylesheet">
+	<link href="${url}/css/responsive.css" rel="stylesheet">
 </head>
 
 <body>
@@ -26,7 +28,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -38,7 +40,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -50,7 +52,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -62,7 +64,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -74,7 +76,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -86,20 +88,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
-										<h2>28.790.000 ₫</h2>
-										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -112,7 +101,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -125,7 +114,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -138,7 +127,20 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
+										<h2>28.790.000 ₫</h2>
+										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -152,7 +154,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -165,7 +167,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./static/images/nitro51.png" alt="" />
+										<img src="${url}/images/nitro51.png" alt="" />
 										<h2>28.790.000 ₫</h2>
 										<p>Laptop Acer Nitro 5 AN515 54 779S i7</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -185,13 +187,13 @@
 			</div>
 		</div>
 	</section>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 
-    <script src=".static/js/jquery.js"></script>
-	<script src=".static/js/price-range.js"></script>
-    <script src=".static/js/jquery.scrollUp.min.js"></script>
-	<script src=".static/js/bootstrap.min.js"></script>
-    <script src=".static/js/jquery.prettyPhoto.js"></script>
-    <script src=".static/js/main.js"></script>
+    <script src="${url}/js/jquery.js"></script>
+	<script src="${url}/js/price-range.js"></script>
+    <script src="${url}/js/jquery.scrollUp.min.js"></script>
+	<script src="${url}/js/bootstrap.min.js"></script>
+    <script src="${url}/js/jquery.prettyPhoto.js"></script>
+    <script src="${url}/js/main.js"></script>
 </body>
 </html>

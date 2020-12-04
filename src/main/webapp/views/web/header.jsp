@@ -78,7 +78,7 @@
                 </ul>
             </li>
             <li><a href="salespocily.jsp">Chính sách bán hàng</a></li>
-            <li><a href="map.jsp">Map</a></li>
+            <li><a href="map.jsp">Liên hệ</a></li>
         </ul>
     </nav>
 </body>

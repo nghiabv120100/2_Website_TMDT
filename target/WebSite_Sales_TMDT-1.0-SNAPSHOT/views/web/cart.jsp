@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url value="/views/web/static" var="url"> </c:url>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +10,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Cart | E-Shopper</title>
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/font-awesome.min.css" rel="stylesheet">
-	<link href="static/css/main.css" rel="stylesheet">
-	<link href="static/css/responsive.css" rel="stylesheet">
+    <link href="${url}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${url}/css/font-awesome.min.css" rel="stylesheet">
+	<link href="${url}/css/main.css" rel="stylesheet">
+	<link href="${url}/css/responsive.css" rel="stylesheet">
 </head>
 
 <body>
@@ -33,7 +35,7 @@
 					<tbody>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="./static/images/nitro52.png" alt=""></a>
+								<a href=""><img src="${url}/images/nitro52.png" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">Laptop Acer Nitro 5</a></h4>
@@ -59,7 +61,7 @@
 
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="./static/images/nitro52.png" alt=""></a>
+								<a href=""><img src="${url}/images/nitro52.png" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">Laptop Acer Nitro 5</a></h4>
@@ -84,7 +86,7 @@
 						</tr>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="./static/images/nitro52.png" alt=""></a>
+								<a href=""><img src="${url}/images/nitro52.png" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">Laptop Acer Nitro 5</a></h4>
@@ -139,10 +141,10 @@
 
 	<br>
 	<jsp:include page="footer.jsp"></jsp:include>
-    <script src="./static/js/jquery.js"></script>
-	<script src="./static/js/bootstrap.min.js"></script>
-	<script src="./static/js/jquery.scrollUp.min.js"></script>
-    <script src="./static/js/jquery.prettyPhoto.js"></script>
-    <script src="./static/js/main.js"></script>
+    <script src="${url}/js/jquery.js"></script>
+	<script src="${url}/js/bootstrap.min.js"></script>
+	<script src="${url}/js/jquery.scrollUp.min.js"></script>
+    <script src="${url}/js/jquery.prettyPhoto.js"></script>
+    <script src="${url}/js/main.js"></script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url value="/views/web/static" var="url"> </c:url>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +10,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Sản phẩm chi tiết</title>
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/font-awesome.min.css" rel="stylesheet">
-	<link href="static/css/main.css" rel="stylesheet">
-	<link href="static/css/responsive.css" rel="stylesheet">
+    <link href="${url}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${url}/css/font-awesome.min.css" rel="stylesheet">
+	<link href="${url}/css/main.css" rel="stylesheet">
+	<link href="${url}/css/responsive.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,16 +25,16 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="./static/images/nitro5.png" alt="" />
+								<img src="${url}/images/nitro5.png" alt="" />
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
 								  <!-- Wrapper for slides -->
 								    <div class="carousel-inner">
 										<div class="item active">
-										  <a href=""><img src="static/images/nitro52.png" alt=""></a>
-										  <a href=""><img src="static/images/nitro52.png" alt=""></a>
-										  <a href=""><img src="static/images/nitro52.png" alt=""></a>
+										  <a href=""><img src="${url}/images/nitro52.png" alt=""></a>
+										  <a href=""><img src="${url}/images/nitro52.png" alt=""></a>
+										  <a href=""><img src="${url}/images/nitro52.png" alt=""></a>
 										</div>
 									</div>
 								  <!-- Controls -->
@@ -71,11 +73,11 @@
 		</div>
 	</section>
 	<jsp:include page="footer.jsp"></jsp:include>
-    <script src="static/js/jquery.js"></script>
-	<script src="static/js/price-range.js"></script>
-    <script src="static/js/jquery.scrollUp.min.js"></script>
-	<script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/jquery.prettyPhoto.js"></script>
-    <script src="static/js/main.js"></script>
+    <script src="${url}/js/jquery.js"></script>
+	<script src="${url}/js/price-range.js"></script>
+    <script src="${url}/js/jquery.scrollUp.min.js"></script>
+	<script src="${url}/js/bootstrap.min.js"></script>
+    <script src="${url}/js/jquery.prettyPhoto.js"></script>
+    <script src="${url}/js/main.js"></script>
 </body>
 </html>

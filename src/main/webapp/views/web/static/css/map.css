@@ -1,7 +1,6 @@
 .map {
-    text-align: center  ;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
+    padding: 0;
 }
 
 .map h1{
