@@ -23,7 +23,10 @@ public class ProductAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json"); //
         // Convert from type json to Model
+
         ProductModel productModel = HttpUtil.of(req.getReader()).toModel(ProductModel.class);
+        System.out.println(productModel.getPrice());
+        System.out.println(productModel.getId());
         productModel = productService.save(productModel);
         mapper.writeValue(resp.getOutputStream(),productModel);
         System.out.println(productModel);
@@ -46,11 +49,14 @@ public class ProductAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json"); //
+        int id = Integer.parseInt(req.getReader().readLine());
+        productService.delete(id);
+        System.out.println("Done delete");
         // Convert from type json to Model
-        ProductModel productModel = HttpUtil.of(req.getReader()).toModel(ProductModel.class);
+        //ProductModel productModel = HttpUtil.of(req.getReader()).toModel(ProductModel.class);
 
-        productService.delete(productModel.getIds());
-        mapper.writeValue(resp.getOutputStream(),"{}");
-        System.out.println(productModel);
+        //productService.delete(productModel.getIds());
+        //mapper.writeValue(resp.getOutputStream(),"{}");
+        //System.out.println(productModel);
     }
 }

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url var="APIurl" value="/api-admin-product"/>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <c:url value="/views/admin/static" var="url"></c:url>
@@ -45,6 +46,10 @@
 
 				<div class="row">
 					<div class="col-md-12">
+						<div>
+							<a href='<c:url value="/admin-product-list?type=add"/>'>Add</a>
+						</div>
+
 						<!-- Advanced Tables -->
 						<div class="panel panel-default">
 							<div class="panel-heading">Advanced Tables</div>
@@ -74,15 +79,19 @@
 												<td>${pro.price }</td>
 												<td>${pro.detailCateId}</td>
 												<td>${pro.describePro } </td>
-												<td><%--<a
+												<td><a
 														href="<c:url value='/product/detail?id=${pro.id }'/>"
-														class="center">Detail</a> | <a
-														href="<c:url value='/admin/product/edit?id=${pro.id }'/>"
-														class="center">Edit</a>
-														| <a
-														href="<c:url value='/admin/product/delete?id=${pro.id }'/>"
-														class="center">Delete</a>--%></td>
-												
+														class="center">Detail</a> |
+
+													<a href="<c:url value="/admin-product-list?type=edit&id=${pro.id }"/>"
+														class="center">Edit</a>	|
+
+<%--													<button name="btnDelete" value="${pro.id}" class="center">Delete</button>--%>
+														<a id="btnDelete" href="<c:url value='admin-product-list?id=${pro.id }'/>"
+															class="center">Delete</a>
+
+
+
 											</tr>
 											</c:forEach>
 											
@@ -122,6 +131,47 @@
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
 
+	<%--	Delete--%>
+	<script>
+		$('.btnDelete').click(function (e){
+			e.preventDefault();
+			var id= parseInt($('#id').val()) ;
+
+			// var productName= $('#productName').val();
+			// var price= parseFloat($('#price').val());
+			// var describePro= $('#describePro').val();
+			//
+			// var detailCateId=parseInt($('#detailCateId').val());
+			// var image= $('#image').val();
+			// console.log(describePro)
+			 var data={
+			// 	"productName":productName,
+			// 	"price":price,
+			// 	"describePro":describePro,
+			 	"id":id,
+			// 	"image":"linnnnkkkkk",
+			// 	"detailCateId":detailCateId
+			 }
+			deleteProduct(data)
+
+		});
+		function deleteProduct(data){
+			console.log(typeof (data.id))
+			$.ajax({
+				url: '${APIurl}',
+				type: 'DELETE',
+				contentType: 'application/json',
+				data:JSON.stringify(data),
+				dataType: 'json',
+				success: function (result){
+					console.log("Success");
+				},
+				errMode: function (error){
+					console.log("Error");
+				}
+			})
+		}
+	</script>
 
 
 </body>

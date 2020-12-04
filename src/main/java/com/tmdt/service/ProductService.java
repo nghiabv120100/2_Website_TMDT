@@ -18,12 +18,13 @@ public class ProductService {
         productDAO.update(productModel);
         return productDAO.findOne(productModel.getId());
     }
-    public void delete(int[] ids){
-        for(int id:ids){
+    public void delete(int id){
             productDAO.delete(id);
-        }
     }
     public List<ProductModel> findAll(){
         return productDAO.findAll();
+    }
+    public ProductModel findOne(int id){
+        return productDAO.findOne(id);
     }
 }

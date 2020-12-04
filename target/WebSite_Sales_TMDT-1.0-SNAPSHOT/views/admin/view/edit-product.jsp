@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<c:url value="/api-admin-product" var="APIurl"></c:url>
 <c:url value="/views/admin/static" var="url"></c:url>
 <!DOCTYPE html>
 <html>
@@ -44,38 +45,45 @@
 								<div class="row">
 									<div class="col-md-6">
 										<h3>User:</h3>
-										<c:url value="/admin/product/edit" var="edit"></c:url>
-										<form role="form" action="${edit }" method="post"
+										<%--<c:url value="/admin/product/edit" var="edit"></c:url>--%>
+										<form role="form" <%--action="${edit }" method="post"--%>
 											enctype="multipart/form-data">
-											<input name="id" value="${product.id }" hidden="">
+											<input id="id" name="id" value="${product.id }" hidden="">
 											<div class="form-group">
-												<label>Name:</label> <input class="form-control"
-													value="${product.name }" name="name" />
+												<label>Name:</label> <input id="productName" class="form-control"
+													value="${product.productName}" name="productName" />
 											</div>
 											<div class="form-group">
-												<label>Price ($)</label> <input class="form-control"
+												<label>Price ($)</label> <input id="price" class="form-control"
 													value="${product.price }" type="number" name="price" />
 											</div>
 											<div class="form-group">
 												<label>Description </label> <br>
-												<textarea rows="4" cols="50" name="des" id="editer" >${product.des }</textarea>
+												<textarea rows="4" cols="50" name="describePro" id="describePro" >${product.describePro}</textarea>
 											</div>
 
 											<div class="form-group">
-												<label>Category</label>
+												<label>Detail Category</label>
 												<div class="checkbox">
-													<select name="cate">
-														<c:forEach items="${categories}" var="c">
-															<option value="${c.name}">${c.name}</option>
+													<select id="detailCateId" name="detailCateId">
+
+														<c:forEach  var="c" items="${detailCategories}" >
+															<option value="${c.id}"
+																	<c:if test="${c.id==product.detailCateId}">
+																		<c:out value="selected"/>
+																	</c:if>
+															>
+																	${c.detailCateName}
+															</option>
 														</c:forEach>
 													</select>
 												</div>
 
 											</div>
-											<div class="form-group">
-												<label>image</label> <input type="file" name="image" value="${product.image }" />
-											</div>
-											<button type="submit" class="btn btn-default">Edit</button>
+<%--											<div class="form-group">--%>
+<%--												<label>image</label> <input type="file" name="image" value="${product.image }" />--%>
+<%--											</div>--%>
+											<button id="btnEdit"  class="btn btn-default">Edit</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
 
@@ -107,8 +115,55 @@
 	<script src="${url}/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
-<script type="text/javascript" language="javascript">
-   CKEDITOR.replace('editer', {width: '700px',height: '300px'});
-</script>
+	<script type="text/javascript" language="javascript">
+	   CKEDITOR.replace('describePro', {width: '700px',height: '300px'});
+	</script>
+
+
+
+	<script>
+		$('#btnEdit').click(function (e){
+			e.preventDefault();
+			var productName= $('#productName').val();
+			var price= parseFloat($('#price').val());
+			var describePro= $('#describePro').val();
+			var id= parseInt($('#id').val()) ;
+			var detailCateId=parseInt($('#detailCateId').val());
+			// var image= $('#image').val();
+			console.log(describePro)
+			var data={
+				"productName":productName,
+				"price":price,
+				"describePro":describePro,
+				"id":id,
+				"image":"linnnnkkkkk",
+				"detailCateId":detailCateId
+			}
+			updateProduct(data)
+
+		});
+		function updateProduct(data){
+			console.log(typeof (data.id))
+			$.ajax({
+				url: '${APIurl}',
+				type: 'PUT',
+				contentType: 'application/json',
+				data:JSON.stringify(data),
+				dataType: 'json',
+				success: function (result){
+					console.log("Success");
+				},
+				errMode: function (error){
+					console.log("Error");
+				}
+			})
+		}
+	</script>
+
+
+
+
+
+
 </body>
 </html>

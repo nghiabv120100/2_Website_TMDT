@@ -12,6 +12,10 @@ public class CategoryDAO extends GenericDAO<CategoryModel>{
         String sql="Select * from Category";
         return query(sql,new CategoryMapper());
     }
+//    public CategoryModel findOne(int id){
+//        String sql="Select * from Category where id=?";
+//        return query(sql,new Cate)
+//    }
     /*
     public Connection getConnection(){
         try {

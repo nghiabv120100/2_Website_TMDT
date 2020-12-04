@@ -12,4 +12,7 @@ public class DetailCategoryService {
     public List<DetailCategoryModel> findByCategoryId(int cateId){
         return detailCategoryDAO.findByDetailCategoryID(cateId);
     }
+    public List<DetailCategoryModel> findAll(){
+        return detailCategoryDAO.findAll();
+    }
 }

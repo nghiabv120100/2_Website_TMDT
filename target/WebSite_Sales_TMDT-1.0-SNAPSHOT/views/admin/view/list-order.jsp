@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <c:url value="/views/admin/static" var="url"></c:url>
@@ -89,9 +90,8 @@
 
 													<td><a
 														href="<c:url value='/admin/order/edit?id=${list.id }'/>"
-														class="center">Edit</a> | <a
-														href="<c:url value='/admin/order/delete?id=${list.id }'/>"
-														class="center">Delete</a></td>
+														class="center">Edit</a> |
+														<a id="btnDelete" class="center">Delete</a></td>
 
 												</tr>
 											</c:forEach>
@@ -130,6 +130,9 @@
 	</script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
+
+
+
 
 </body>
 </html>

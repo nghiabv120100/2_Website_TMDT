@@ -13,6 +13,10 @@ public class DetailCategoryDAO extends GenericDAO<DetailCategoryModel>{
         String sql = "Select * from DetailCategory where cate_id=?";
         return query(sql, new DetailCategoryMapper(),cate_id);
     }
+    public List<DetailCategoryModel> findAll(){
+        String sql="Select * from DetailCategory";
+        return query(sql,new DetailCategoryMapper());
+    }
 
 
     /*

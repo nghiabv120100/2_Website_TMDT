@@ -76,7 +76,7 @@
 											<div class="form-group">
 												<label>image</label> <input type="file" name="image" />
 											</div>
-											<button type="submit" class="btn btn-default">Add</button>
+											<button type="button" id="btnAdd" class="btn btn-default">Add</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
 
@@ -108,6 +108,32 @@
 	<script src="${url}/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
+
+	<%--	Addition--%>
+	<script>
+		$('#btnAdd').click(function(e) {
+			e.preventDefault();
+			var id = $('#btnA').val();
+			addProduct(id);
+		});
+
+		function addProduct(data) {
+			$.ajax({
+				url: '${APIurl}',
+				type: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				success: function (result) {
+					window.location.href = "${NewURL}";
+				},
+				error: function (error) {
+					window.location.href = "${NewURL}";
+				}
+			});
+		}
+	</script>
+
+
 <script type="text/javascript" language="javascript">
    CKEDITOR.replace('editer', {width: '700px',height: '300px'});
 </script>

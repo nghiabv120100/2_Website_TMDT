@@ -2,7 +2,7 @@ package com.tmdt.model;
 
 public class DetailCategoryModel {
     private int id;
-    private String DetailCateName;
+    private String detailCateName;
     private String image;
     private int cateId;
 
@@ -15,11 +15,11 @@ public class DetailCategoryModel {
     }
 
     public String getDetailCateName() {
-        return DetailCateName;
+        return detailCateName;
     }
 
     public void setDetailCateName(String detailCateName) {
-        DetailCateName = detailCateName;
+        this.detailCateName = detailCateName;
     }
 
     public String getImage() {

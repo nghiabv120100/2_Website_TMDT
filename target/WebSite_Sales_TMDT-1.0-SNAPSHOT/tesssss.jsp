@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="trang-chu">
+    <form action="admin-home">
         <input type="submit" value="Submit">
     </form>
 </body>

@@ -14,5 +14,7 @@ public class CategoryService {
     public List<CategoryModel> findAll() {
         return  categoryDAO.findAll();
     }
-
+//    public CategoryModel findOne(){
+//        return  categoryDAO.find
+//    }
 }
