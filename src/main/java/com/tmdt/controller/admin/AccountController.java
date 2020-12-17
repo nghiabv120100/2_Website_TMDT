@@ -2,6 +2,8 @@ package com.tmdt.controller.admin;
 
 
 import com.tmdt.model.AccountModel;
+import com.tmdt.model.DetailCategoryModel;
+import com.tmdt.model.ProductModel;
 import com.tmdt.service.AccountService;
 
 import javax.inject.Inject;
@@ -22,10 +24,24 @@ public class AccountController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<AccountModel> accountModelList = accountService.findAll();
-        req.setAttribute("userList",accountModelList);
-        RequestDispatcher rd = req.getRequestDispatcher("views/admin/view/list-user.jsp");
+        String type= req.getParameter("type");
+        String url ="";
+        //ProductService productService =new ProductService();
+        if ( type.equals("list")){
+            List<AccountModel> accountModelList = accountService.findAll();
+            req.setAttribute("userList",accountModelList);
+            url="views/admin/view/list-user.jsp";
+        }
+        else if(type.equals("add")){
+            url="views/admin/view/add-user.jsp";
+        }
+        else if(type.equals("edit")){
+                String id = req.getParameter("id");
+                AccountModel account = accountService.findOne(Integer.parseInt(id));
+                req.setAttribute("user", account);
+            url ="views/admin/view/edit-user.jsp";
+        }
+        RequestDispatcher rd = req.getRequestDispatcher(url);
         rd.forward(req,resp);
-
     }
 }

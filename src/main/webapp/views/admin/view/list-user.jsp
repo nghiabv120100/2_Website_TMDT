@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		 pageEncoding="ISO-8859-1"%>
 <c:url value="/views/admin/static" var="url"></c:url>
+<c:url value="/api-admin-user" var="APIurl"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +46,9 @@
 
 			<div class="row">
 				<div class="col-md-12">
+					<div>
+						<a href='<c:url value="/admin-user-list?type=add"/>'>Add</a>
+					</div>
 					<!-- Advanced Tables -->
 					<div class="panel panel-default">
 						<div class="panel-heading">Advanced Tables</div>
@@ -60,7 +64,7 @@
 										<th>Password</th>
 										<th>Status</th>
 										<th> Role </th>
-
+										<th>Action </th>
 
 
 									</tr>
@@ -80,6 +84,16 @@
 												</c:when>
 												<c:otherwise>Client</c:otherwise>
 											</c:choose></td>
+											<td>
+												<button style="width: 70px;">
+													<a href="<c:url value="/admin-user-list?type=edit&id=${list.id }"/>"
+													   class="center">Edit</a>
+												</button>
+												|
+												<button id="btnDelete" type ="button" onclick = "deleteProduct(${list.id})"
+														class="center">Delete
+												</button>
+											</td>
 
 										</tr>
 									</c:forEach>
@@ -115,6 +129,27 @@
 	$(document).ready(function() {
 		$('#dataTables-example').dataTable();
 	});
+</script>
+
+<%--DeleteUser--%>
+<script>
+
+	function deleteProduct(data){
+		console.log(typeof (data.id))
+		$.ajax({
+			url: '${APIurl}',
+			type: 'DELETE',
+			contentType: 'application/json',
+			data:JSON.stringify(data),
+			dataType: 'json',
+			success: function (result){
+				console.log("Success");
+			},
+			errMode: function (error){
+				console.log("Error");
+			}
+		})
+	}
 </script>
 <!-- CUSTOM SCRIPTS -->
 <script src="${url}/js/custom.js"></script>

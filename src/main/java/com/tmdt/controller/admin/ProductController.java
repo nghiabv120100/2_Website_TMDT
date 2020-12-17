@@ -36,11 +36,16 @@ public class ProductController extends HttpServlet {
         //ProductService productService =new ProductService();
         if ( type.equals("list")){
             List<ProductModel> productModelList= productService.findAll();
+            List<DetailCategoryModel> detailCategoryModelList = detailCategoryService.findAll();
+            req.setAttribute("detailCateList",detailCategoryModelList);
             req.setAttribute("proList",productModelList);
             url ="views/admin/view/list-product.jsp";
 
         }
         else if(type.equals("add")){
+            List<DetailCategoryModel> detailCategories = detailCategoryService.findAll();
+
+            req.setAttribute("detailCategories", detailCategories);
             url ="views/admin/view/add-product.jsp";
         }
         else if(type.equals("edit")){

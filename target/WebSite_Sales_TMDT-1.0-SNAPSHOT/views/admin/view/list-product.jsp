@@ -63,7 +63,7 @@
 												<th>Image</th>
 												<th>Name</th>
 												<th>Price($)</th>
-												<th>Detail Category ID</th>
+												<th>Detail Category</th>
 												<th>Description</th>
 												<th>Action </th>
 											</tr>
@@ -77,21 +77,26 @@
 
 												<td>${pro.productName }</td>
 												<td>${pro.price }</td>
-												<td>${pro.detailCateId}</td>
+												<td>
+													<c:forEach items="${detailCateList}" var="detailCate">
+														<c:if test="${detailCate.id==pro.detailCateId}">
+															<c:out value="${detailCate.detailCateName}"></c:out>
+														</c:if>
+													</c:forEach>
+												</td>
+
+												<%--<td>${pro.detailCateId}</td>--%>
 												<td>${pro.describePro } </td>
-												<td><a
-														href="<c:url value='/product/detail?id=${pro.id }'/>"
-														class="center">Detail</a> |
-
-													<a href="<c:url value="/admin-product-list?type=edit&id=${pro.id }"/>"
-														class="center">Edit</a>	|
-
-<%--													<button name="btnDelete" value="${pro.id}" class="center">Delete</button>--%>
-														<a id="btnDelete" href="<c:url value='admin-product-list?id=${pro.id }'/>"
-															class="center">Delete</a>
-
-
-
+												<td>
+													<button style="width: 70px;">
+														<a href="<c:url value="/admin-product-list?type=edit&id=${pro.id }"/>"
+														   class="center">Edit</a>
+													</button>
+														|
+													<button id="btnDelete" type ="button" onclick = "deleteProduct(${pro.id})"
+															class="center">Delete
+													</button>
+												</td>
 											</tr>
 											</c:forEach>
 											
@@ -133,28 +138,7 @@
 
 	<%--	Delete--%>
 	<script>
-		$('.btnDelete').click(function (e){
-			e.preventDefault();
-			var id= parseInt($('#id').val()) ;
 
-			// var productName= $('#productName').val();
-			// var price= parseFloat($('#price').val());
-			// var describePro= $('#describePro').val();
-			//
-			// var detailCateId=parseInt($('#detailCateId').val());
-			// var image= $('#image').val();
-			// console.log(describePro)
-			 var data={
-			// 	"productName":productName,
-			// 	"price":price,
-			// 	"describePro":describePro,
-			 	"id":id,
-			// 	"image":"linnnnkkkkk",
-			// 	"detailCateId":detailCateId
-			 }
-			deleteProduct(data)
-
-		});
 		function deleteProduct(data){
 			console.log(typeof (data.id))
 			$.ajax({

@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<c:url value="/view/admin/static" var="url"></c:url>
+<c:url value="/views/admin/static" var="url"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,9 +20,9 @@
 </head>
 <body>
 	<div id="wrapper">
-		<jsp:include page="/view/admin/view/nav-bar.jsp"></jsp:include>
+		<jsp:include page="/views/admin/view/nav-bar.jsp"></jsp:include>
 		<!-- /. NAV TOP  -->
-		<jsp:include page="/view/admin/view/slide-bar.jsp"></jsp:include>
+		<jsp:include page="/views/admin/view/slide-bar.jsp"></jsp:include>
 		<!-- /. NAV SIDE  -->
 		<div id="page-wrapper">
 			<div id="page-inner">
@@ -58,6 +58,14 @@
 											<div class="form-group">
 												<label>Email:</label> <input class="form-control"
 													value="${user.email }" name="email" />
+											</div>
+											<div class="form-group">
+												<label>Phone number:</label> <input class="form-control" value="${user.phonenumber}"
+																					placeholder="Please enter phone number" name="phonenumber" id="phonenumber" />
+											</div>
+											<div class="form-group">
+												<label>Address</label> <input class="form-control" value="${user.address}"
+																			  placeholder="Please enter address" name="address" id="address" />
 											</div>
 											<div class="form-group">
 												<label>Role</label>

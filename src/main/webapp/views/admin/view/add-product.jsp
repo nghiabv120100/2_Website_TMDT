@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<c:url value="/api-admin-product" var="APIurl"></c:url>
 <c:url value="/views/admin/static" var="url"></c:url>
 <!DOCTYPE html>
 <html>
@@ -45,36 +46,35 @@
 									<div class="col-md-6">
 										<h3>Info Product:</h3>
 
-										<form role="form" action="add" method="post"
-											enctype="multipart/form-data">
+										<form role="form" action="add" method="post" enctype="multipart/form-data">
 											<div class="form-group">
 												<label>Name:</label> <input class="form-control"
-													placeholder="please enter Product Name" name="name" />
+													placeholder="please enter Product Name" name="productName" id="productName" />
 											</div>
 											<div class="form-group">
 												<label>Price ($)</label> <input class="form-control"
-													placeholder="please enter Price" type="number" name="price" />
+													placeholder="please enter Price" type="number" name="price" id="price" />
 											</div>
 											<div class="form-group">
 												<label>Description </label>
 												<br>
-												<textarea rows="4" cols="50" name="des" id="editer"></textarea>
+												<textarea rows="4" cols="50" name="editer" id="editer" ></textarea>
 
 											</div>
 
 											<div class="form-group">
-												<label>Category</label>
+												<label>Detail Category</label>
 												<div class="checkbox">
-													<select name="category">
-														<c:forEach items="${categories}" var="c">
-															<option value="${c.id}">${c.name}</option>
+													<select name="detailCategory" id="detailCateId">
+														<c:forEach items="${detailCategories}" var="c">
+															<option value="${c.id}">${c.detailCateName}</option>
 														</c:forEach>
 													</select>
 												</div>
 
 											</div>
 											<div class="form-group">
-												<label>image</label> <input type="file" name="image" />
+												<label>image</label> <input type="file" name="image" id="image"/>
 											</div>
 											<button type="button" id="btnAdd" class="btn btn-default">Add</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
@@ -111,30 +111,49 @@
 
 	<%--	Addition--%>
 	<script>
-		$('#btnAdd').click(function(e) {
+		$('#btnAdd').click(function (e){
 			e.preventDefault();
-			var id = $('#btnA').val();
-			addProduct(id);
-		});
+			var productName= $('#productName').val();
+			var price= parseFloat($('#price').val());
+			var describePro= CKEDITOR.instances.editer.getData();
+			//var id= parseInt($('#id').val()) ;
+			var detailCateId=parseInt($('#detailCateId').val());
+			var image= $('#image').val();
+			var data={
+				"productName":productName,
+				"price":price,
+				"describePro":describePro,
+				//"id":id,
+				"image":image,
+				"detailCateId":detailCateId
+			}
+			console.log(editer);
+			updateProduct(data)
 
-		function addProduct(data) {
+		});
+		function updateProduct(data){
 			$.ajax({
 				url: '${APIurl}',
 				type: 'POST',
+				enctype: 'multipart/form-data',
+				processData:false,
 				contentType: 'application/json',
-				data: JSON.stringify(data),
-				success: function (result) {
-					window.location.href = "${NewURL}";
+				data:JSON.stringify(data),
+				dataType: 'json',
+				success: function (result){
+					console.log("Success");
+					console.log(data.describePro)
 				},
-				error: function (error) {
-					window.location.href = "${NewURL}";
+				errMode: function (error){
+					console.log("Error");
 				}
-			});
+			})
 		}
 	</script>
 
 
-<script type="text/javascript" language="javascript">
+
+	<script type="text/javascript" language="javascript">
    CKEDITOR.replace('editer', {width: '700px',height: '300px'});
 </script>
 </body>

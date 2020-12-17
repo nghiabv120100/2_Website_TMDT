@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenericDAO<T> {
-    static int a =0;
 
     public Connection getConnection(){
         try {
@@ -18,8 +17,6 @@ public class GenericDAO<T> {
             String user="root";
             String password="123456";
             System.out.println("Connect success");
-            System.out.println(a);
-            a +=1;
             return DriverManager.getConnection(url,user,password);
 
         } catch (SQLException | ClassNotFoundException e) {
@@ -41,7 +38,11 @@ public class GenericDAO<T> {
                     statement.setTimestamp(index, (Timestamp) parameter);
                 } else if (parameter instanceof Double){
                     statement.setDouble(index,(Double) parameter);
+                } else {
+                    statement.setString(index,"");  // Truong hop con lai or null
                 }
+
+
             }
         } catch (SQLException e) {
             e.printStackTrace();

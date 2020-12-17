@@ -73,21 +73,38 @@
 										<tbody>
 											</a>
 											<c:set var="index" value="${0}" />
-											<c:forEach items="${listCartItem }" var="list">
+											<c:forEach items="${cartItemList }" var="cartItem">
 												<tr class="odd gradeX">
 													<c:set var="index" value="${index + 1}" />
+<%--													xác ??nh gi? hàng --%>
+													<c:forEach items="${cartList}" var="i_cart">
+														<c:if test="${cartItem.cartId==i_cart.id}">
+															<c:set var="cart" value="${i_cart}" />
+														</c:if>
+													</c:forEach>
+<%--													Xác ??nh ng??i mua s?n ph?m--%>
+													<c:forEach items="${userList}" var="user">
+														<c:if test="${cart.userID==user.id}">
+															<c:set var="buyer" value="${user}" />
+														</c:if>
+													</c:forEach>
+<%--													Xác ??nh s?n ph?m--%>
+													<c:forEach items="${proList}" var="pro">
+														<c:if test="${cartItem.productId==pro.id}">
+															<c:set var="product" value="${pro}" />
+														</c:if>
+													</c:forEach>
+
 													<td>${index }</td>
-													<td>${list.id }</td>
-													<td>${list.cart.buyer.username }</td>
-													<td>${list.cart.buyer.email }</td>
-													<td>${list.cart.buyDate }</td>
-													<td>${list.product.name }</td>
-													<td>${list.quantity }</td>
-													<td>$ ${list.product.price }</td>
-													<td>$ ${ list.quantity * list.product.price }</td>
+													<td>${cart.id }</td>
+													<td>${buyer.username }</td>
+													<td>${buyer.email }</td>
+													<td>${cart.buyDate }</td>
+													<td>${product.productName}</td>
+													<td>${cartItem.quantity }</td>
+													<td>${product.price }</td>
+													<td>${cartItem.quantity* cartItem.unitPrice }</td>
 													<td class="center">Pending</td>
-
-
 													<td><a
 														href="<c:url value='/admin/order/edit?id=${list.id }'/>"
 														class="center">Edit</a> |
@@ -130,9 +147,6 @@
 	</script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
-
-
-
 
 </body>
 </html>

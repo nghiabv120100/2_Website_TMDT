@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<c:url value="/view/admin/static" var="url"></c:url>
+<c:url value="/views/admin/static" var="url"></c:url>
+<c:url value="/api-admin-user" var="APIurl"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,39 +45,47 @@
 									<div class="col-md-6">
 										<h3>User:</h3>
 										
-										<form role="form" action="add"  method="post" enctype="multipart/form-data">
+										<form role="form" <%--action="api-admin-user"--%>  method="post" enctype="multipart/form-data">
 											<div class="form-group">
 												<label>User Name:</label> <input class="form-control"
-													placeholder="please enter username" name="username" />
+													placeholder="please enter username" name="username" id="username" />
 											</div>
+
 											<div class="form-group">
 												<label>Password</label> <input class="form-control"
 													placeholder="please enter password" type="password"
-													name="password" />
+													name="password" id="password" />
 											</div>
 											<div class="form-group">
 												<label>Email:</label> <input class="form-control"
-													placeholder="Please enter email" name="email" />
+													placeholder="Please enter email" name="email" id="email" />
+											</div>
+											<div class="form-group">
+												<label>Phone number:</label> <input class="form-control"
+																			 placeholder="Please enter phone number" name="phonenumber" id="phonenumber" />
+											</div>
+											<div class="form-group">
+												<label>Address</label> <input class="form-control"
+																			 placeholder="Please enter address" name="address" id="address" />
 											</div>
 											<div class="form-group">
 												<label>Role</label>
 												<div class="checkbox">
-													<label> <input type="radio" value="1" name="role"/>Admin
+													<label> <input type="radio" value="1" name="role" class="roleid"/>Admin
 													</label>
 													<br>
-													<label> <input type="radio" value="2" name="role" />Client
+													<label> <input type="radio" value="0" name="role" class="roleid" checked/>Client
 													</label>
+
 												</div>
 												
 											</div>
 											<div class="form-group">
-												<label>Avatar</label> <input type="file" name="avatar" />
+												<label>Avatar</label> <input type="file" name="avatar" id="avatar" />
 											</div>
-											<button type="submit" class="btn btn-default">Add</button>
+											<button type="submit" class="btn btn-default" id="btnAdd">Add</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
-
-
 									</div>
 								</div>
 							</div>
@@ -104,6 +113,61 @@
 	<script src="${url}/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
+
+	<%--	Addition--%>
+	<script>
+		$('#btnAdd').click(function (e){
+			e.preventDefault();
+			var username= $('#username').val();
+			var password= $('#password').val();
+			var email= $('#email').val();
+			var phonenumber=$('#phonenumber').val();
+			var address=$('#address').val();
+			var avatar= $('#avatar').val();
+			if ($('.roleid').is(":checked"))
+			{
+				var roleId=parseInt($('.role').val());
+			}
+
+
+			//console.log(roleId);
+			console.log(username);
+			var data={
+				"username":username,
+				"password":password,
+				"email":email,
+				//"id":id,
+				"avatar":avatar,
+				"roleId":roleId,
+				"phonenumber":phonenumber,
+				"address":address
+
+			}
+			updateProduct(data)
+
+		});
+		function updateProduct(data){
+			$.ajax({
+				url: '${APIurl}',
+				type: 'POST',
+				enctype: 'multipart/form-data',
+				processData:false,
+				contentType: 'application/json',
+				data:JSON.stringify(data),
+				dataType: 'json',
+				success: function (result){
+					console.log("Success");
+					console.log(data.describePro)
+				},
+				errMode: function (error){
+					console.log("Error");
+				}
+			})
+		}
+	</script>
+
+
+
 
 </body>
 </html>

@@ -59,7 +59,7 @@
 											</div>
 											<div class="form-group">
 												<label>Description </label> <br>
-												<textarea rows="4" cols="50" name="describePro" id="describePro" >${product.describePro}</textarea>
+												<textarea rows="4" cols="50" name="editer" id="editer" >${product.describePro}</textarea>
 											</div>
 
 											<div class="form-group">
@@ -126,17 +126,17 @@
 			e.preventDefault();
 			var productName= $('#productName').val();
 			var price= parseFloat($('#price').val());
-			var describePro= $('#describePro').val();
+			var describePro= CKEDITOR.instances.editer.getData();
 			var id= parseInt($('#id').val()) ;
 			var detailCateId=parseInt($('#detailCateId').val());
-			// var image= $('#image').val();
+			var image= $('#image').val();
 			console.log(describePro)
 			var data={
 				"productName":productName,
 				"price":price,
 				"describePro":describePro,
 				"id":id,
-				"image":"linnnnkkkkk",
+				"image":image,
 				"detailCateId":detailCateId
 			}
 			updateProduct(data)
