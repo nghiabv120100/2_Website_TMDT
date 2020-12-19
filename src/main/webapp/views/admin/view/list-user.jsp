@@ -3,6 +3,7 @@
 		 pageEncoding="ISO-8859-1"%>
 <c:url value="/views/admin/static" var="url"></c:url>
 <c:url value="/api-admin-user" var="APIurl"></c:url>
+<c:url value="/admin-user-list" var="ACurl"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +91,7 @@
 													   class="center">Edit</a>
 												</button>
 												|
-												<button id="btnDelete" type ="button" onclick = "deleteProduct(${list.id})"
+												<button id="btnDelete" type ="button" onclick = "deleteUser(${list.id})"
 														class="center">Delete
 												</button>
 											</td>
@@ -134,7 +135,7 @@
 <%--DeleteUser--%>
 <script>
 
-	function deleteProduct(data){
+	function deleteUser(data){
 		console.log(typeof (data.id))
 		$.ajax({
 			url: '${APIurl}',
@@ -144,6 +145,7 @@
 			dataType: 'json',
 			success: function (result){
 				console.log("Success");
+				window.location.href = "${ACurl}?type=list";
 			},
 			errMode: function (error){
 				console.log("Error");

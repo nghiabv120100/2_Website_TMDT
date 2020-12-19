@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <c:url value="/views/admin/static" var="url"></c:url>
+<c:url value="/api-admin-user" var="APIurl"></c:url>
+<c:url value="/admin-user-list" var="ACurl"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,21 +45,21 @@
 								<div class="row">
 									<div class="col-md-6">
 										<h3>User:</h3>
-										<c:url value="/admin/user/edit" var="edit"></c:url>
-										<form role="form" action="${edit }" method="post"
+										<%--<c:url value="/admin/user/edit" var="edit"></c:url>--%>
+										<form role="form" <%--action="${edit }"--%>
 											enctype="multipart/form-data">
-											<input name="id" value="${user.id }" type="text" hidden="">
+											<input name="id" value="${user.id }" id="id" type="text" hidden="">
 											<div class="form-group">
 												<label>User Name:</label> <input class="form-control"
-													value="${user.username }" name="username" />
+													value="${user.username }" name="username" id="username"/>
 											</div>
 											<div class="form-group">
 												<label>Password</label> <input class="form-control"
-													value="${user.password }" type="password" name="password" />
+													value="${user.password }" type="password" name="password" id="password"/>
 											</div>
 											<div class="form-group">
 												<label>Email:</label> <input class="form-control"
-													value="${user.email }" name="email" />
+													value="${user.email }" name="email" id="email"/>
 											</div>
 											<div class="form-group">
 												<label>Phone number:</label> <input class="form-control" value="${user.phonenumber}"
@@ -70,9 +72,9 @@
 											<div class="form-group">
 												<label>Role</label>
 												<div class="checkbox">
-													<label> <input type="radio" value="1" name="role" />Admin
+													<label> <input type="radio" value="1" name="role" class="roleid"/>Admin
 													</label> <br> <label> <input type="radio" value="2"
-														name="role" checked="checked"/>Client
+														name="role" class="roleid" checked="checked"/>Client
 													</label>
 												</div>
 
@@ -82,7 +84,7 @@
 												<label>Choose Avatar</label> <input type="file"
 													name="avatar" />
 											</div>
-											<button type="submit" class="btn btn-default">Edit</button>
+											<button type="button" class="btn btn-default" id="btnEdit">Edit</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
 
@@ -115,6 +117,60 @@
 	<script src="${url}/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
+
+	<%--	Addition--%>
+	<script>
+		$('#btnEdit').click(function (e){
+			e.preventDefault();
+			var id =parseInt($('#id').val());
+			var username= $('#username').val();
+			var password= $('#password').val();
+			var email= $('#email').val();
+			var phonenumber=$('#phonenumber').val();
+			var address=$('#address').val();
+			var avatar= $('#avatar').val();
+			if ($('.roleid').is(":checked"))
+			{
+				var roleId=parseInt($('.roleid').val());
+			}
+
+
+			console.log(roleId);
+			console.log(username);
+			var data={
+				"id":id,
+				"username":username,
+				"password":password,
+				"email":email,
+				//"id":id,
+				"avatar":avatar,
+				"roleId":roleId,
+				"phonenumber":phonenumber,
+				"address":address
+
+			}
+			updateProduct(data)
+
+		});
+		function updateProduct(data){
+			$.ajax({
+				url: '${APIurl}',
+				type: 'PUT',
+				enctype: 'multipart/form-data',
+				processData:false,
+				contentType: 'application/json',
+				data:JSON.stringify(data),
+				dataType: 'json',
+				success: function (result){
+					console.log("Success");
+					window.location.href = "${ACurl}?type=list&id=${data.id}";
+				},
+				errMode: function (error){
+					console.log("Error");
+				}
+			})
+		}
+	</script>
 
 </body>
 </html>

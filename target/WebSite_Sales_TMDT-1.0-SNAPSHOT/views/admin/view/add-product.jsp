@@ -3,6 +3,7 @@
 	pageEncoding="ISO-8859-1"%>
 <c:url value="/api-admin-product" var="APIurl"></c:url>
 <c:url value="/views/admin/static" var="url"></c:url>
+<c:url value="/admin-product-list" var="PCurl"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,7 @@
 									<div class="col-md-6">
 										<h3>Info Product:</h3>
 
-										<form role="form" action="add" method="post" enctype="multipart/form-data">
+										<form role="form" action="api-admin-product" method="post" enctype="multipart/form-data">
 											<div class="form-group">
 												<label>Name:</label> <input class="form-control"
 													placeholder="please enter Product Name" name="productName" id="productName" />
@@ -65,9 +66,9 @@
 											<div class="form-group">
 												<label>Detail Category</label>
 												<div class="checkbox">
-													<select name="detailCategory" id="detailCateId">
+													<select name="detailCateId" id="detailCateId">
 														<c:forEach items="${detailCategories}" var="c">
-															<option value="${c.id}">${c.detailCateName}</option>
+															<option value='${c.getId()}'>${c.id}</option>
 														</c:forEach>
 													</select>
 												</div>
@@ -116,18 +117,17 @@
 			var productName= $('#productName').val();
 			var price= parseFloat($('#price').val());
 			var describePro= CKEDITOR.instances.editer.getData();
-			//var id= parseInt($('#id').val()) ;
 			var detailCateId=parseInt($('#detailCateId').val());
-			var image= $('#image').val();
+			//var image= $('#image').val();
+			var image = $('input[type=file]').val().split('\\').pop();
 			var data={
 				"productName":productName,
 				"price":price,
 				"describePro":describePro,
-				//"id":id,
 				"image":image,
 				"detailCateId":detailCateId
 			}
-			console.log(editer);
+			console.log("Hello"+detailCateId);
 			updateProduct(data)
 
 		});
@@ -142,7 +142,7 @@
 				dataType: 'json',
 				success: function (result){
 					console.log("Success");
-					console.log(data.describePro)
+					window.location.href = "${PCurl}?type=list&message=insert_success";
 				},
 				errMode: function (error){
 					console.log("Error");

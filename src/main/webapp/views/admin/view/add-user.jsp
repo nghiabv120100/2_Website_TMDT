@@ -3,6 +3,7 @@
 	pageEncoding="ISO-8859-1"%>
 <c:url value="/views/admin/static" var="url"></c:url>
 <c:url value="/api-admin-user" var="APIurl"></c:url>
+<c:url value="/admin-user-list" var="ACurl"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -157,7 +158,7 @@
 				dataType: 'json',
 				success: function (result){
 					console.log("Success");
-					console.log(data.describePro)
+					window.location.href = "${ACurl}?type=list";
 				},
 				errMode: function (error){
 					console.log("Error");

@@ -46,10 +46,11 @@ public class AccountAPI extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json"); //
         int id = Integer.parseInt(req.getReader().readLine());
         accountService.delete(id);
-
+        mapper.writeValue(resp.getOutputStream(),null);
     }
 }

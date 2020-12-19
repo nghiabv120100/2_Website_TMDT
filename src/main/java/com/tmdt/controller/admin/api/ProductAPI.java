@@ -8,6 +8,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
@@ -30,44 +31,12 @@ public class ProductAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json"); //
-
-/*
-        DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
-        ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
-
-        boolean isMultipart = ServletFileUpload.isMultipartContent(req);
-
-        ServletContext context = req.getServletContext();
-        final String dir = context.getRealPath("image");
-*/
-
-
         // Convert from type json to Model
+
         ProductModel productModel = HttpUtil.of(req.getReader()).toModel(ProductModel.class);
-
-/*        try {
-
-            List<FileItem> items = servletFileUpload.parseRequest(req);
-            System.out.println("f");
-            for (FileItem item : items) {
-               if (item.getFieldName().equals("image")) {
-                   File file = new File(dir + File.separator + productModel.getImage());
-                   System.out.println(dir);
-                   item.write(file);
-                }
-            }
-        } catch (FileUploadException e) {
-            e.printStackTrace();
-            System.out.println(e);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-            System.out.println("Two");
-        }*/
 
         productModel = productService.save(productModel);
         mapper.writeValue(resp.getOutputStream(),productModel);
-
     }
 
     @Override
@@ -80,6 +49,7 @@ public class ProductAPI extends HttpServlet {
         productModel = productService.update(productModel);
         mapper.writeValue(resp.getOutputStream(),productModel);
         System.out.println(productModel);
+
     }
 
     @Override
@@ -90,6 +60,8 @@ public class ProductAPI extends HttpServlet {
         int id = Integer.parseInt(req.getReader().readLine());
         productService.delete(id);
         System.out.println("Done delete");
+        mapper.writeValue(resp.getOutputStream(),null);
+
         // Convert from type json to Model
         //ProductModel productModel = HttpUtil.of(req.getReader()).toModel(ProductModel.class);
 

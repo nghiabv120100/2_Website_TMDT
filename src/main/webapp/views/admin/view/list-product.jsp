@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <c:url value="/views/admin/static" var="url"></c:url>
+<c:url value="/admin-product-list" var="PCurl"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,8 +73,8 @@
 										<c:forEach items="${proList }" var="pro" >
 											<tr class="odd gradeX">
 												<td>${pro.id }</td>
-<%--													<c:url value="/image?fname=${pro.image }" var="imgUrl"></c:url>--%>
-													<td><%--<img height="150" width="200" src="${imgUrl}" />--%></td>
+												<c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
+												<td><img height="150" width="200" src="${imgUrl}" /></td>
 
 												<td>${pro.productName }</td>
 												<td>${pro.price }</td>
@@ -140,15 +141,17 @@
 	<script>
 
 		function deleteProduct(data){
-			console.log(typeof (data.id))
 			$.ajax({
 				url: '${APIurl}',
 				type: 'DELETE',
+				enctype: 'multipart/form-data',
+				processData:false,
 				contentType: 'application/json',
 				data:JSON.stringify(data),
 				dataType: 'json',
 				success: function (result){
 					console.log("Success");
+					window.location.href = "${PCurl}?type=list&message=insert_success";
 				},
 				errMode: function (error){
 					console.log("Error");

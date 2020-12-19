@@ -185,7 +185,7 @@
 			</div>
 		</div>
 	</section>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 
     <script src=".static/js/jquery.js"></script>
 	<script src=".static/js/price-range.js"></script>

@@ -3,6 +3,7 @@
 	pageEncoding="ISO-8859-1"%>
 <c:url value="/api-admin-product" var="APIurl"></c:url>
 <c:url value="/views/admin/static" var="url"></c:url>
+<c:url value="/admin-product-list" var="PCurl"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,9 +81,9 @@
 												</div>
 
 											</div>
-<%--											<div class="form-group">--%>
-<%--												<label>image</label> <input type="file" name="image" value="${product.image }" />--%>
-<%--											</div>--%>
+											<div class="form-group">
+												<label>image</label> <input type="file" name="image" value="${product.image }" />
+											</div>
 											<button id="btnEdit"  class="btn btn-default">Edit</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
@@ -116,7 +117,7 @@
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
 	<script type="text/javascript" language="javascript">
-	   CKEDITOR.replace('describePro', {width: '700px',height: '300px'});
+	   CKEDITOR.replace('editer', {width: '700px',height: '300px'});
 	</script>
 
 
@@ -129,7 +130,8 @@
 			var describePro= CKEDITOR.instances.editer.getData();
 			var id= parseInt($('#id').val()) ;
 			var detailCateId=parseInt($('#detailCateId').val());
-			var image= $('#image').val();
+			// var image= $('#image').val();
+			var image = $('input[type=file]').val().split('\\').pop();
 			console.log(describePro)
 			var data={
 				"productName":productName,
@@ -152,6 +154,7 @@
 				dataType: 'json',
 				success: function (result){
 					console.log("Success");
+					window.location.href = "${PCurl}?type=list&message=insert_success";
 				},
 				errMode: function (error){
 					console.log("Error");
