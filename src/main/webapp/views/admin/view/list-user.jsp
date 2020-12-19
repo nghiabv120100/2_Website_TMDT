@@ -2,8 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		 pageEncoding="ISO-8859-1"%>
 <c:url value="/views/admin/static" var="url"></c:url>
+<<<<<<< HEAD
 <c:url value="/api-admin-user" var="APIurl"></c:url>
 <c:url value="/admin-user-list" var="ACurl"></c:url>
+=======
+>>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +18,11 @@
 	<!-- FONTAWESOME STYLES-->
 	<link href="${url}/css/font-awesome.css" rel="stylesheet" />
 	<!-- MORRIS CHART STYLES-->
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 	<!-- CUSTOM STYLES-->
 	<link href="${url}/css/custom.css" rel="stylesheet" />
 	<!-- GOOGLE FONTS-->
@@ -27,9 +34,15 @@
 </head>
 <body>
 <div id="wrapper">
+<<<<<<< HEAD
 
 	<jsp:include page="/views/admin/view/nav-bar.jsp"></jsp:include>
 
+=======
+	
+	<jsp:include page="/views/admin/view/nav-bar.jsp"></jsp:include>
+	
+>>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 	<!-- /. NAV TOP  -->
 	<jsp:include page="/views/admin/view/slide-bar.jsp"></jsp:include>
 	<!-- /. NAV SIDE  -->
@@ -39,17 +52,27 @@
 				<div class="col-md-12">
 					<h2>List User</h2>
 					<h5>You can edit , add, delete User</h5>
+<<<<<<< HEAD
 
+=======
+				
+>>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 				</div>
 			</div>
 			<!-- /. ROW  -->
 			<hr />
+<<<<<<< HEAD
 
 			<div class="row">
 				<div class="col-md-12">
 					<div>
 						<a href='<c:url value="/admin-user-list?type=add"/>'>Add</a>
 					</div>
+=======
+			
+			<div class="row">
+				<div class="col-md-12">
+>>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 					<!-- Advanced Tables -->
 					<div class="panel panel-default">
 						<div class="panel-heading">Advanced Tables</div>
@@ -65,9 +88,15 @@
 										<th>Password</th>
 										<th>Status</th>
 										<th> Role </th>
+<<<<<<< HEAD
 										<th>Action </th>
 
 
+=======
+									
+									
+									
+>>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 									</tr>
 									</thead>
 									<tbody>
@@ -78,13 +107,18 @@
 											<td>${list.username }</td>
 											<td>${list.password }</td>
 											<td class="center">Active</td>
+<<<<<<< HEAD
 
+=======
+											
+>>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 											<td class="center"><c:choose>
 												<c:when test="${list.roleId ==1 }">
 													Admin
 												</c:when>
 												<c:otherwise>Client</c:otherwise>
 											</c:choose></td>
+<<<<<<< HEAD
 											<td>
 												<button style="width: 70px;">
 													<a href="<c:url value="/admin-user-list?type=edit&id=${list.id }"/>"
@@ -103,14 +137,28 @@
 								</table>
 							</div>
 
+=======
+										
+										</tr>
+									</c:forEach>
+									
+									</tbody>
+								</table>
+							</div>
+						
+>>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 						</div>
 					</div>
 					<!--End Advanced Tables -->
 				</div>
 			</div>
-
+		
 		</div>
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 	</div>
 	<!-- /. PAGE INNER  -->
 </div>
@@ -131,6 +179,7 @@
 		$('#dataTables-example').dataTable();
 	});
 </script>
+<<<<<<< HEAD
 
 <%--DeleteUser--%>
 <script>
@@ -153,6 +202,8 @@
 		})
 	}
 </script>
+=======
+>>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 <!-- CUSTOM SCRIPTS -->
 <script src="${url}/js/custom.js"></script>
 
