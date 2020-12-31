@@ -34,4 +34,17 @@ public class ProductDAO extends GenericDAO<ProductModel>{
         update(sql,id);
     }
 
+    public List<ProductModel> findByCategory(int cate_id){
+        String sql="Select * from Product,DetailCategory,Category " +
+                "where Product.detail_cate_id=DetailCategory.id and DetailCategory.cate_id=Category.id and Category.id =?";
+        List<ProductModel> products = query(sql,new ProductMapper(),cate_id);
+        return products.isEmpty() ? null : products;
+    }
+    public List<ProductModel> findByDetailCategory(int detail_cate_id){
+        String sql="Select * from Product " +
+                "where Product.detail_cate_id=?";
+        List<ProductModel> products = query(sql,new ProductMapper(),detail_cate_id);
+        return products.isEmpty() ? null : products;
+    }
+
 }

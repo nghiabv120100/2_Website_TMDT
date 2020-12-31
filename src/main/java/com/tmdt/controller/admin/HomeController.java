@@ -23,7 +23,7 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         if (action!=null && action.equals("login")){
-            RequestDispatcher rd = req.getRequestDispatcher("views/login.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("views/web/login.jsp");
             rd.forward(req,resp);
         }
         else{

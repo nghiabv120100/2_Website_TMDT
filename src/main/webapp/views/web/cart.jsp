@@ -2,6 +2,8 @@
 		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/views/web/static" var="url"> </c:url>
+<c:url value="/api-user-cart" var="APIurl"> </c:url>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +23,7 @@
 <section id="cart_items">
 	<div class="container">
 		<div class="table-responsive cart_info">
+
 			<table class="table table-condensed">
 				<thead>
 				<tr class="cart_menu">
@@ -33,82 +36,34 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
+				<c:forEach var="i" items="${cartItemModelList}">
+					<tr>
 					<td class="cart_product">
 						<a href=""><img src="${url}/images/nitro52.png" alt=""></a>
 					</td>
 					<td class="cart_description">
-						<h4><a href="">Laptop Acer Nitro 5</a></h4>
+						<h4><a href="">${i.getProduct().getProductName()}</a></h4>
 						<p>Web ID: 1089772</p>
 					</td>
 					<td class="cart_price">
-						<p>28.790.000 ₫</p>
+						<p>${i.getProduct().getPrice()}</p>
 					</td>
 					<td class="cart_quantity">
 						<div class="cart_quantity_button">
-							<a class="cart_quantity_up" href=""> + </a>
-							<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-							<a class="cart_quantity_down" href=""> - </a>
+							<a class="cart_quantity_up" onclick="updateCart(${i.getProduct().getId()},'add')"  href=""> + </a>
+							<input class="cart_quantity_input" type="text" name="quantity" value="${i.getQuantity()}" autocomplete="off" size="2">
+							<a class="cart_quantity_down" onclick="updateCart(${i.getProduct().getId()},'sub')" href=""> - </a>
 						</div>
 					</td>
 					<td class="cart_total">
-						<p class="cart_total_price">28.790.000 ₫</p>
+						<p class="cart_total_price">${i.getProduct().getPrice()*i.getQuantity()} ₫</p>
 					</td>
 					<td class="cart_delete">
-						<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+						<a class="cart_quantity_delete" onclick="updateCart(${i.getProduct().getId()},'del')" href=""><i class="fa fa-times"></i></a>
 					</td>
 				</tr>
+				</c:forEach>
 
-				<tr>
-					<td class="cart_product">
-						<a href=""><img src="${url}/images/nitro52.png" alt=""></a>
-					</td>
-					<td class="cart_description">
-						<h4><a href="">Laptop Acer Nitro 5</a></h4>
-						<p>Web ID: 1089772</p>
-					</td>
-					<td class="cart_price">
-						<p>28.790.000 ₫</p>
-					</td>
-					<td class="cart_quantity">
-						<div class="cart_quantity_button">
-							<a class="cart_quantity_up" href=""> + </a>
-							<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-							<a class="cart_quantity_down" href=""> - </a>
-						</div>
-					</td>
-					<td class="cart_total">
-						<p class="cart_total_price">28.790.000 ₫</p>
-					</td>
-					<td class="cart_delete">
-						<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-					</td>
-				</tr>
-				<tr>
-					<td class="cart_product">
-						<a href=""><img src="${url}/images/nitro52.png" alt=""></a>
-					</td>
-					<td class="cart_description">
-						<h4><a href="">Laptop Acer Nitro 5</a></h4>
-						<p>Web ID: 1089772</p>
-					</td>
-					<td class="cart_price">
-						<p>28.790.000 ₫</p>
-					</td>
-					<td class="cart_quantity">
-						<div class="cart_quantity_button">
-							<a class="cart_quantity_up" href=""> + </a>
-							<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-							<a class="cart_quantity_down" href=""> - </a>
-						</div>
-					</td>
-					<td class="cart_total">
-						<p class="cart_total_price">28.790.000 ₫</p>
-					</td>
-					<td class="cart_delete">
-						<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-					</td>
-				</tr>
 				</tbody>
 			</table>
 		</div>
@@ -146,5 +101,39 @@
 <script src="${url}/js/jquery.scrollUp.min.js"></script>
 <script src="${url}/js/jquery.prettyPhoto.js"></script>
 <script src="${url}/js/main.js"></script>
+<script>
+	/*$('.cart_quantity_down').click(function (e){
+		e.preventDefault();
+		e.valueOf()
+		console.log("Hello");
+		updateCart("sub")
+	});
+	$('.cart_quantity_up').click(function (e){
+		e.preventDefault();
+		console.log("Hello");
+		updateCart("add")
+	});*/
+	function updateCart(productId,type){
+		$.ajax({
+
+			url: '${APIurl}?type='+type,
+			type: 'PUT',
+			enctype: 'multipart/form-data',
+			processData:false,
+			contentType: 'application/json',
+			data:JSON.stringify(productId),
+			dataType: 'json',
+			success: function (result){
+				console.log("Success");
+				console.log(data);
+				<%--window.location.href = "${PCurl}?type=list&message=insert_success";--%>
+			},
+			errMode: function (error){
+				console.log("Error");
+			}
+		})
+	}
+</script>
+
 </body>
 </html>

@@ -30,30 +30,24 @@ public class ProductController extends HttpServlet{
         String type= req.getParameter("type");
         String url ="";
         if ( type.equals("list")){
-            List<ProductModel> productModelList= productService.findAll();
+            // Chưa làm gì cả
+
+        }
+        else if(type.equals("category")){
+            int cate_id =Integer.parseInt(req.getParameter("cate_id"));
+            List<ProductModel> productModelList= productService.findByCategory(cate_id);
             List<DetailCategoryModel> detailCategoryModelList = detailCategoryService.findAll();
+
             req.setAttribute("detailCateList",detailCategoryModelList);
             req.setAttribute("proList",productModelList);
-            url ="views/web/index.jsp";
-
+            url ="views/web/shop.jsp";
         }
-        /*else if(type.equals("add")){
-            List<DetailCategoryModel> detailCategories = detailCategoryService.findAll();
-
-            req.setAttribute("detailCategories", detailCategories);
-            url ="views/admin/view/add-product.jsp";
+        else if(type.equals("detail_category")) {
+            int detail_cate_id =Integer.parseInt(req.getParameter("detail_cate_id"));
+            List<ProductModel> productModelList= productService.findByDetailCategory(detail_cate_id);
+            req.setAttribute("proList",productModelList);
+            url ="views/web/shop.jsp";
         }
-        else if(type.equals("edit")){
-            String id = req.getParameter("id");
-            ProductModel product = productService.findOne(Integer.parseInt(id));
-            List<DetailCategoryModel> detailCategories = detailCategoryService.findAll();
-
-            req.setAttribute("detailCategories", detailCategories);
-            System.out.println("Size of list"+ detailCategories.size());
-            req.setAttribute("product", product);
-
-            url ="views/admin/view/edit-product.jsp";
-        }*/
         RequestDispatcher rd = req.getRequestDispatcher(url);
         rd.forward(req,resp);
     }

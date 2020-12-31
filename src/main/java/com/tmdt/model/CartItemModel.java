@@ -6,6 +6,16 @@ public class CartItemModel {
     private int quantity;
     private double unitPrice;
 
+    private ProductModel product;
+
+    public ProductModel getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductModel product) {
+        this.product = product;
+    }
+
     public String getCartId() {
         return cartId;
     }

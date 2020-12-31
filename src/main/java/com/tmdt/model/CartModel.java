@@ -1,12 +1,22 @@
 package com.tmdt.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class CartModel {
     private int id;
     private int userID;
     private double totalPrice;
     private Date buyDate;
+    private List<CartItemModel> itemModelList;
+
+    public List<CartItemModel> getItemModelList() {
+        return itemModelList;
+    }
+
+    public void setItemModelList(List<CartItemModel> itemModelList) {
+        this.itemModelList = itemModelList;
+    }
 
     public int getId() {
         return id;

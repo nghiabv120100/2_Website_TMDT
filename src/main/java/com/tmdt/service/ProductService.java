@@ -27,4 +27,11 @@ public class ProductService {
     public ProductModel findOne(int id){
         return productDAO.findOne(id);
     }
+
+    public List<ProductModel> findByCategory(int cate_id){
+        return productDAO.findByCategory(cate_id);
+    }
+    public List<ProductModel> findByDetailCategory(int detail_cate_id) {
+        return productDAO.findByDetailCategory(detail_cate_id);
+    }
 }

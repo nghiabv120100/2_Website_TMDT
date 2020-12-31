@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:url value="/views/web" var="login"></c:url>
 <html>
 <head>
     <title>Title</title>
@@ -102,7 +103,7 @@
 <div class="main">
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
-            <form action="dang-nhap" method="post">
+            <form action="${pageContext.request.contextPath }/dang-nhap" method="post">
                 <div class="form-group">
                     <label>User Name</label>
                     <input name="username" type="text" class="form-control" placeholder="User Name">
