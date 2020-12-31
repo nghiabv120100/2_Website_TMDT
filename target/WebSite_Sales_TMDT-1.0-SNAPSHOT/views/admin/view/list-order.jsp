@@ -37,13 +37,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h2>Order Management</h2>
-
-
 					</div>
 				</div>
 				<!-- /. ROW  -->
 				<hr />
-
 				<div class="row">
 					<div class="col-md-12">
 						<!-- Advanced Tables -->
@@ -60,14 +57,9 @@
 												<th>Buyer</th>
 												<th>Email</th>
 												<th>Date</th>
-												<th>Product</th>
-												<th>Quantity</th>
-												<th>Price</th>
 												<th>Sum</th>
 												<th>Status</th>
 												<th>Action</th>
-
-
 											</tr>
 										</thead>
 										<tbody>
@@ -100,39 +92,79 @@
 													<td>${buyer.username }</td>
 													<td>${buyer.email }</td>
 													<td>${cart.buyDate }</td>
-													<td>${product.productName}</td>
-													<td>${cartItem.quantity }</td>
-													<td>${product.price }</td>
 													<td>${cartItem.quantity* cartItem.unitPrice }</td>
 													<td class="center">Pending</td>
 													<td><a
 														href="<c:url value='/admin/order/edit?id=${list.id }'/>"
-														class="center">Edit</a> |
+														class="center" data-toggle="modal" data-target="#oderlist">Edit</a> |
 														<a id="btnDelete" class="center">Delete</a></td>
-
 												</tr>
 											</c:forEach>
-
 										</tbody>
 									</table>
 								</div>
-
 							</div>
 						</div>
 						<!--End Advanced Tables -->
 					</div>
 				</div>
-
-			</div>
+				<div class="modal fade" id="oderlist">
+					<div class="modal-dialog modal-dialog-centered modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">Chi  ti?t ??n hàng</h4>
+							</div>
+							<div class="modal-body">
+								<table class="table table-condensed">
+									<thead>
+									<tr class="cart_menu">
+										<td class="image">Image</td>
+										<td class="description">Tên s?n ph?m</td>
+										<td class="price">Giá</td>
+										<td class="quantity">S? l??ng</td>
+										<td class="total">T?ng c?ng</td>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td class="cart_product">
+											<img src="" alt="#">
+										</td>
+										<td class="cart_description">
+											dell
+										</td>
+										<td class="cart_price">
+											<p>300<span>VN?</span></p>
+										</td>
+										<td class="cart_quantity">
+											2
+										</td>
+										<td class="cart_total">
+											<p class="cart_total_price">6000<span>VN?</span></p>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+								<button type="button" class="btn btn-success">OK</button>
+							</div>
+						</div>
+					</div>
+				</div> <!-- end modal -->
+				</div>
 
 		</div>
 		<!-- /. PAGE INNER  -->
 	</div>
+
 	<!-- /. PAGE WRAPPER  -->
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script src="${url}/js/jquery-1.10.2.js"></script>
+	<script src="${url}/js/jquery-3.3.1.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script src="${url}/js/bootstrap.min.js"></script>
 	<!-- METISMENU SCRIPTS -->
@@ -147,6 +179,5 @@
 	</script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
-
 </body>
 </html>

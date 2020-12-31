@@ -24,33 +24,34 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 padding-right">
-					<div class="features_items"><!--features_items-->
+					<div class="features_items" style="min-height: 300px"><!--features_items-->
 						<h2 class="title text-center">Shop</h2>
-
-						<c:forEach var = "i" items="${proList}">
-							<c:url value="/image/6.jpg" var="imgUrl"></c:url>
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<div class="productinfo text-center">
-											<img src="${imgUrl}" alt="Fail" />
-											<h2>${i.getPrice()} ₫</h2>
-											<p>${i.getProductName()}</p>
+						<div class="row">
+							<c:forEach var = "i" items="${proList}">
+								<c:url value="/image/6.jpg" var="imgUrl"></c:url>
+								<div class="col-sm-4">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="${imgUrl}" alt="Fail" />
+												<h2>${i.getPrice()} ₫</h2>
+												<p>${i.getProductName()}</p>
 												<a  <%--href="${APIurl}?id=${i.getId()}"--%> onclick="addToCart(${i.getId()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
-<%--												<button onclick="addToCart(1)" class="btn btn-default add-to-cart"><i  class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>--%>
-
+													<%--												<button onclick="addToCart(1)" class="btn btn-default add-to-cart"><i  class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>--%>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</c:forEach>
-
-						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">&raquo;</a></li>
-						</ul>
+							</c:forEach>
+						</div>
+						<div class="row">
+							<ul class="pagination" style="margin-left: 38vw">
+								<li class="active"><a href="">1</a></li>
+								<li><a href="">2</a></li>
+								<li><a href="">3</a></li>
+								<li><a href="">&raquo;</a></li>
+							</ul>
+						</div>
 					</div><!--features_items-->
 				</div>
 			</div>

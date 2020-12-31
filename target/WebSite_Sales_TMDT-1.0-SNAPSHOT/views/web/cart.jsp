@@ -23,7 +23,6 @@
 <section id="cart_items">
 	<div class="container">
 		<div class="table-responsive cart_info">
-
 			<table class="table table-condensed">
 				<thead>
 				<tr class="cart_menu">
@@ -77,7 +76,7 @@
 		</div>
 		<div class="shopper-informations">
 			<div class="row">
-				<div class="col-sm-6">
+				<div class="col-sm-7">
 					<div class="shopper-info">
 						<p>Thông tin cá nhân</p>
 						<form>
@@ -87,6 +86,24 @@
 							<input type="password" placeholder="Số điện thoại">
 						</form>
 					</div>
+				</div>
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-4">
+					<div class="shopper-info">
+						<h2 style="color: #696763">Tổng thanh toán</h2>
+						<label style="font-size: 19px; font-weight: 500; color: #696763">300000</label>
+						<span style="font-size: 19px; color: #696763">VNĐ</span>
+						<hr>
+						<p>Hình thức thanh toán</p>
+						<div>
+							<input type="radio" id="online" name="online" value="online">
+							<label for="online" style="color: #696763">Trực tuyến</label>
+						</div>
+						<div>
+							<input type="radio" id="offline" name="offline" value="offline">
+							<label for="offline" style="color: #696763">Trả khi nhận hàng</label>
+						</div>
 				</div>
 			</div>
 		</div>

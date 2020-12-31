@@ -13,11 +13,7 @@
 							class="fa fa-dashboard fa-3x"></i> Dashboard</a></li>
 					<li><a href='<c:url value="/admin-product-list?type=list"/>'><i class="fa fa-desktop fa-3x"></i>
 							Product Management</a></li>
-<<<<<<< HEAD
-					<li><a href='<c:url value="/admin-user-list?type=list"/>'><i class="fa fa-qrcode fa-3x"></i>
-=======
 					<li><a href="${pageContext.request.contextPath }/admin-user-list"><i class="fa fa-qrcode fa-3x"></i>
->>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 							USER Management</a></li>
 					<li><a href='<c:url value="/admin-order-list?type=list"/>'><i
 							class="fa fa-bar-chart-o fa-3x"></i> Order Management</a></li>
