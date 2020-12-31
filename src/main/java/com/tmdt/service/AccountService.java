@@ -17,7 +17,6 @@ public class AccountService {
     public List<AccountModel> findAll(){
         return accountDAO.finAll();
     }
-<<<<<<< HEAD
     public AccountModel findOne(int id){
         return accountDAO.findOne(id);
     }
@@ -34,7 +33,5 @@ public class AccountService {
         accountDAO.delete(id);
     }
 
-=======
->>>>>>> 47ad7b79384ab300c94883fb9d527806c0adb05c
 
 }
