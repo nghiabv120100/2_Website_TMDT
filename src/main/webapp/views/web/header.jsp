@@ -31,7 +31,7 @@
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="checkout.jsp"><i class="fa fa-user"></i> Account</a></li>
-                            <li><a href="${pageContext.request.contextPath }/client-cart-list"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="${pageContext.request.contextPath}/client-cart-list"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <li><a href="${Pathurl}/login.jsp"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
