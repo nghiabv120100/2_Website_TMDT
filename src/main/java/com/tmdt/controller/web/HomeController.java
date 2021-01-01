@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/trang-chu"})
+@WebServlet(urlPatterns = {"/trang-chu","/dang-ky"})
 public class HomeController extends HttpServlet {
     @Inject
     private CategoryService categoryService;
@@ -32,7 +32,7 @@ public class HomeController extends HttpServlet {
 
         //req.setAttribute("detaiCategoriesById",detailCategoryService.findByCategoryId(1));
 
-        String pro_name ="DellXPS 2020";
+        /*String pro_name ="DellXPS 2020";
         String image ="path";
         double price =100;
         String describe ="Nothing";
@@ -48,7 +48,21 @@ public class HomeController extends HttpServlet {
         //ProductModel model= productService.save(productModel);
         System.out.println("Hello");
         RequestDispatcher rd = req.getRequestDispatcher("views/web/index.jsp");
-        rd.forward(req,resp);
+        rd.forward(req,resp);*/
+        String type= req.getParameter("action");
+        if (type.equals("register")) {
+            RequestDispatcher rd = req.getRequestDispatcher("views/web/register.jsp");
+            rd.forward(req,resp);
+        }
+        else if (type.equals("dangnhap")) {
+            RequestDispatcher rd = req.getRequestDispatcher("views/web/login.jsp");
+            rd.forward(req,resp);
+        }
+        else if (type.equals("home")) {
+            RequestDispatcher rd = req.getRequestDispatcher("views/web/index.jsp");
+            rd.forward(req,resp);
+        }
+
     }
 
     @Override

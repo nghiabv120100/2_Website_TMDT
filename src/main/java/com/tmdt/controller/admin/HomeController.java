@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,13 +23,23 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if (action!=null && action.equals("login")){
+        HttpSession session = req.getSession();
+
+        if (action!=null && action.equals("logout")){
+            session.removeAttribute("loginName");
             RequestDispatcher rd = req.getRequestDispatcher("views/web/login.jsp");
             rd.forward(req,resp);
         }
         else{
-            RequestDispatcher rd = req.getRequestDispatcher("views/admin/view/index.jsp");
-            rd.forward(req,resp);
+            if (session.getAttribute("loginName")==null){
+                RequestDispatcher rd = req.getRequestDispatcher("views/web/login.jsp");
+                rd.forward(req,resp);
+            }
+            else  {
+                RequestDispatcher rd = req.getRequestDispatcher("views/admin/view/index.jsp");
+                rd.forward(req,resp);
+            }
+
         }
 
     }
@@ -45,6 +56,8 @@ public class HomeController extends HttpServlet {
             user.setPassword(password);
             AccountModel accountModel = accountService.findByUsernameAndPassword(user);
             if (accountModel != null){
+                HttpSession session = req.getSession();
+                session.setAttribute("loginName",username);
                 if (accountModel.getRoleId()==1){
                     rd = req.getRequestDispatcher("views/admin/view/index.jsp");
                     rd.forward(req,resp);
@@ -55,13 +68,13 @@ public class HomeController extends HttpServlet {
                 }
             }
             else {
-                rd = req.getRequestDispatcher("views/login.jsp");
+                rd = req.getRequestDispatcher("views/web/login.jsp");
                 rd.forward(req,resp);
             }
 
         }
         else{
-            rd = req.getRequestDispatcher("views/login.jsp");
+            rd = req.getRequestDispatcher("views/web/login.jsp");
             rd.forward(req,resp);
         }
 

@@ -129,7 +129,6 @@
 			}
 			console.log("Hello"+detailCateId);
 			updateProduct(data)
-
 		});
 		function updateProduct(data){
 			$.ajax({

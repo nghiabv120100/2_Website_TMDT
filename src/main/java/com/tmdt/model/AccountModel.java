@@ -8,6 +8,17 @@ public class AccountModel {
     private String phonenumber;
     private String address;
     private String avatar;
+    private String confirmation_pwd;
+
+    public String getConfirmation_pwd() {
+        return confirmation_pwd;
+    }
+
+    public void setConfirmation_pwd(String confirmation_pwd) {
+        this.confirmation_pwd = confirmation_pwd;
+    }
+
+
     private int roleId;
 
     public int getId() {

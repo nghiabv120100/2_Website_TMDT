@@ -22,7 +22,6 @@ public class AccountService {
     }
     public AccountModel save(AccountModel accountModel){
         int id = accountDAO.save(accountModel);
-        System.out.println(id);
         return accountDAO.findOne(id);
     }
     public AccountModel update(AccountModel accountModel){

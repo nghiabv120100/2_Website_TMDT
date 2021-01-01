@@ -11,7 +11,7 @@
 	</div>
 	<div
 		style="color: #ffffff; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
-		Welcome ${username } &nbsp; <a href="${pageContext.request.contextPath }/dang-nhap?action=login"
+		Welcome ${loginName} &nbsp; <a href="${pageContext.request.contextPath }/dang-nhap?action=logout"
 			class="btn btn-danger square-btn-adjust">Logout</a>
 	</div>
 </nav>

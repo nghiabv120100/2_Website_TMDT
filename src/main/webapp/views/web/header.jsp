@@ -32,7 +32,14 @@
                         <ul class="nav navbar-nav">
                             <li><a href="checkout.jsp"><i class="fa fa-user"></i> Account</a></li>
                             <li><a href="${pageContext.request.contextPath}/client-cart-list"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="${Pathurl}/login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                            <c:if test="${not empty loginName}">
+                                <c:out value="Xin Chào ${loginName}"></c:out>
+                                <li><a href="${Pathurl}/login.jsp"><i class="fa fa-lock"></i> Logout</a></li>
+                            </c:if>
+                            <c:if test="${empty loginName}">
+                                <li><a href="${Pathurl}/login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                            </c:if>
+
                         </ul>
                     </div>
                 </div>
