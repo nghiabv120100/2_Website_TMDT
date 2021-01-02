@@ -13,4 +13,8 @@ public class CartItemDAO extends GenericDAO<CartItemModel>{
         List<CartItemModel> cartItems = query(sql,new CartItemMapper());
         return cartItems.isEmpty() ? null : cartItems;
     }
+    public int save(CartItemModel cartItemModel){
+        String sql="insert into cartitem values (?,?,?,?)";
+        return insert(sql,cartItemModel.getCartId(),cartItemModel.getProductId(),cartItemModel.getQuantity(),cartItemModel.getUnitPrice());
+    }
 }

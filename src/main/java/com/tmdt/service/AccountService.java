@@ -14,6 +14,10 @@ public class AccountService {
         return accountDAO.findByUsernameAndPassword(accountModel.getUsername(),accountModel.getPassword());
     }
 
+    public AccountModel findByUsername(String username){
+        return accountDAO.findByUsername(username);
+    }
+
     public List<AccountModel> findAll(){
         return accountDAO.finAll();
     }

@@ -25,6 +25,11 @@ public class AccountDAO extends GenericDAO {
         List<AccountModel> accounts = query(sql,new AccountMapper(),username,password);
         return accounts.isEmpty() ? null:accounts.get(0);
     }
+    public AccountModel findByUsername(String username){
+        String sql="Select * from Account where username=? ";
+        List<AccountModel> accounts = query(sql,new AccountMapper(),username);
+        return accounts.isEmpty() ? null:accounts.get(0);
+    }
     public int save(AccountModel accountModel){
         String sql="insert into Account(username,password,email,phonenumber,address,avatar,role_id) values(?,?,?,?,?,?,?)";
         return insert(sql,accountModel.getUsername(),accountModel.getPassword()

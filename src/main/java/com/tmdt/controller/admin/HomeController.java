@@ -27,6 +27,7 @@ public class HomeController extends HttpServlet {
 
         if (action!=null && action.equals("logout")){
             session.removeAttribute("loginName");
+            session.removeAttribute("order");
             RequestDispatcher rd = req.getRequestDispatcher("views/web/login.jsp");
             rd.forward(req,resp);
         }
@@ -56,7 +57,9 @@ public class HomeController extends HttpServlet {
             user.setPassword(password);
             AccountModel accountModel = accountService.findByUsernameAndPassword(user);
             if (accountModel != null){
+
                 HttpSession session = req.getSession();
+                session.removeAttribute("order");
                 session.setAttribute("loginName",username);
                 if (accountModel.getRoleId()==1){
                     rd = req.getRequestDispatcher("views/admin/view/index.jsp");

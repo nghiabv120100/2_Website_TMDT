@@ -84,7 +84,6 @@ public class CartAPI extends HttpServlet {
         resp.setContentType("application/json");
 
         int quantity=1;
-//        int id = Integer.parseInt(req.getParameter("id"));
         int id = Integer.parseInt(req.getReader().readLine());
         ProductModel productModel = productService.findOne(id);
         if (productModel != null){

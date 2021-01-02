@@ -6,9 +6,19 @@ import java.util.List;
 public class CartModel {
     private int id;
     private int userID;
+    private int customerID;
     private double totalPrice;
+
     private Date buyDate;
     private List<CartItemModel> itemModelList;
+
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
 
     public List<CartItemModel> getItemModelList() {
         return itemModelList;

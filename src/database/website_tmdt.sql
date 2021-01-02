@@ -48,21 +48,34 @@ Create table product
 
 Create table cart
 (
-	id varchar(255), -- id sẽ được tạo bằng cách lấy HD+MMddyyyy+hhmmss
+	id int auto_increment,
     user_id int,
     total_price real,
     buydate date,
     Foreign Key(user_id) references Account(id),
+
     Primary Key(id)
 );
+alter table cart
+add column customer_id int references customer(id);
 
 create table cartitem
 (
-	cart_id varchar(255) not null,
+	cart_id int auto_increment not null,
     product_id int,
     quantity int,
     unit_price real,
     Foreign Key(cart_id) references Cart(id),
     Foreign Key(product_id) references Product(id),
     Primary Key(cart_id,product_id)
+);
+create table customer
+(
+	id int auto_increment,
+    fullname varchar(255),
+    email varchar(255),
+    phonenumber char(15),
+    address nvarchar(255),
+    Primary	Key(id)
 )
+

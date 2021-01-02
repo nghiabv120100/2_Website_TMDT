@@ -26,24 +26,8 @@ public class CartAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json"); //
 
-
-
-
         // Convert from type json to Model
         ProductModel productModel = HttpUtil.of(req.getReader()).toModel(ProductModel.class);
-        //Write Image
-/*        if (productModel.getImage() != null && productModel.getImage()!=""){
-            FileItem item = servletFileUpload.parseRequest(request);
-            final String dir = "/image";
-            String originalFileName = productModel.getImage();
-            System.out.println("FileName: "+originalFileName);
-            File file = new File(dir + "/" + originalFileName);
-            item.write(file);
-           // product.setImage(originalFileName);
-        }*/
-
-
-
         System.out.println(productModel.getPrice());
         System.out.println(productModel.getId());
         productModel = productService.save(productModel);

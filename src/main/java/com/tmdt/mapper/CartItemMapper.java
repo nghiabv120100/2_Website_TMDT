@@ -11,7 +11,7 @@ public class CartItemMapper implements IRowMapper<CartItemModel> {
     public CartItemModel mapRow(ResultSet resultSet) {
         CartItemModel cartItemModel = new CartItemModel();
         try{
-            cartItemModel.setCartId(resultSet.getString("cart_id"));
+            cartItemModel.setCartId(resultSet.getInt("cart_id"));
             cartItemModel.setProductId(resultSet.getInt("product_id"));
             cartItemModel.setQuantity(resultSet.getInt("quantity"));
             cartItemModel.setUnitPrice(resultSet.getDouble("unit_price"));

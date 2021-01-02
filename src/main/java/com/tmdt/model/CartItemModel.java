@@ -1,7 +1,7 @@
 package com.tmdt.model;
 
 public class CartItemModel {
-    private String cartId;
+    private int cartId;
     private int productId;
     private int quantity;
     private double unitPrice;
@@ -16,11 +16,11 @@ public class CartItemModel {
         this.product = product;
     }
 
-    public String getCartId() {
+    public int getCartId() {
         return cartId;
     }
 
-    public void setCartId(String cartId) {
+    public void setCartId(int cartId) {
         this.cartId = cartId;
     }
 

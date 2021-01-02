@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/views/web/static" var="url"> </c:url>
 <c:url value="/api-user-cart" var="APIurl"> </c:url>
+<c:url value="/api-user-order" var="APIOrderUrl"> </c:url>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +52,7 @@
 					<td class="cart_quantity">
 						<div class="cart_quantity_button">
 							<a class="cart_quantity_up" onclick="updateCart(${i.getProduct().getId()},'add')"  href=""> + </a>
-							<input class="cart_quantity_input" type="text" name="quantity" value="${i.getQuantity()}" autocomplete="off" size="2">
+							<input class="cart_quantity_input" ty	pe="text" name="quantity" value="${i.getQuantity()}" autocomplete="off" size="2">
 							<a class="cart_quantity_down" onclick="updateCart(${i.getProduct().getId()},'sub')" href=""> - </a>
 						</div>
 					</td>
@@ -80,10 +82,10 @@
 					<div class="shopper-info">
 						<p>Thông tin cá nhân</p>
 						<form>
-							<input type="text" placeholder="Tên">
-							<input type="text" placeholder="Emal">
-							<input type="text" placeholder="Địa chỉ">
-							<input type="password" placeholder="Số điện thoại">
+							<input type="text" placeholder="Tên" value="${accountModel.getUsername()}">
+							<input type="text" placeholder="Emal" value="${accountModel.getEmail()}">
+							<input type="text" placeholder="Địa chỉ" value="${accountModel.getAddress()}">
+							<input type="text" placeholder="Số điện thoại" value="${accountModel.getPhonenumber()}">
 						</form>
 					</div>
 				</div>
@@ -107,7 +109,8 @@
 				</div>
 			</div>
 		</div>
-		<a class="btn btn-primary" href="">Đặt hàng</a>
+		<a class="btn btn-primary" onclick="addOrder()" href="">Đặt hàng</a>
+	</div>
 	</div>
 </section>
 
@@ -130,6 +133,7 @@
 		console.log("Hello");
 		updateCart("add")
 	});*/
+
 	function updateCart(productId,type){
 		$.ajax({
 
@@ -143,6 +147,24 @@
 			success: function (result){
 				console.log("Success");
 				console.log(data);
+				<%--window.location.href = "${PCurl}?type=list&message=insert_success";--%>
+			},
+			errMode: function (error){
+				console.log("Error");
+			}
+		})
+	}
+
+
+	function addOrder(){
+		$.ajax({
+
+			url: '${APIOrderUrl}',
+			type: 'POST',
+			enctype: 'multipart/form-data',
+			processData:false,
+			success: function (result){
+				console.log("Success");
 				<%--window.location.href = "${PCurl}?type=list&message=insert_success";--%>
 			},
 			errMode: function (error){
