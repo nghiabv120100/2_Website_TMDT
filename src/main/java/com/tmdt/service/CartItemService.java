@@ -17,4 +17,8 @@ public class CartItemService {
     public int save(CartItemModel cartItemModel) {
         return cartItemDAO.save(cartItemModel);
     }
+
+    public List<CartItemModel> findByCartId(int cart_id) {
+        return cartItemDAO.findByCartId(cart_id);
+    }
 }

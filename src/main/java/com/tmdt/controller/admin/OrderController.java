@@ -45,7 +45,7 @@ public class OrderController extends HttpServlet {
         }
         else {
             String type= req.getParameter("type");
-            String url ="";
+            String url ="views/admin/view/list-order.jsp";
             //ProductService productService =new ProductService();
             if ( type.equals("list")){
                 List<ProductModel> productModelList= productService.findAll();

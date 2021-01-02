@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <c:url value="/views/admin/static" var="url"></c:url>
+<c:url value="/api-admin-cart" var="APIurl"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,11 +88,9 @@
 													<td>${cart.buyDate }</td>
 													<td></td>
 													<td class="center">Pending</td>
-													<td><a
-															href="<c:url value='/admin/order/edit?id=${list.id }'/>"
-															class="center" data-toggle="modal"  data-target="#oderlist">Edit</a> |
+													<td><a class="center" data-toggle="modal" onclick="seeDetails('11')" >Edit</a> |
 														<a id="btnDelete" class="center">Delete</a>
-
+<%--														href="<c:url value='/admin/order/edit?id=${list.id }'/>"--%>
 													</td>
 
 												</tr>
@@ -99,47 +98,7 @@
 											</c:forEach>
 										</tbody>
 									</table>
-											<%--<c:forEach items="${cartItemList }" var="cartItem">
-												<tr class="odd gradeX">
-													<c:set var="index" value="${index + 1}" />
-&lt;%&ndash;													xác ??nh gi? hàng &ndash;%&gt;
-													<c:forEach items="${cartList}" var="i_cart">
-														<c:if test="${cartItem.cartId==i_cart.id}">
-															<c:set var="cart" value="${i_cart}" />
-														</c:if>
-													</c:forEach>
-&lt;%&ndash;													Xác ??nh user mua s?n ph?m&ndash;%&gt;
-													<c:forEach items="${userList}" var="user">
-														<c:if test="${cart.userID==user.id}">
-															<c:set var="buyer" value="${user}" />
-														</c:if>
-													</c:forEach>
-														&lt;%&ndash;Xác dinh customer mua s?n ph?m&ndash;%&gt;
-													<c:forEach items="${customerList}" var="customer">
-														<c:if test="${cart.customerID==customer.id}">
-															<c:set var="buyer" value="${customer}" />
-														</c:if>
-													</c:forEach>
-&lt;%&ndash;													Xác ??nh s?n ph?m&ndash;%&gt;
-													<c:forEach items="${proList}" var="pro">
-														<c:if test="${cartItem.productId==pro.id}">
-															<c:set var="product" value="${pro}" />
-														</c:if>
-													</c:forEach>
 
-													<td>${index }</td>
-													<td>${cart.id }</td>
-													<td>${buyer.username }</td>
-													<td>${buyer.email }</td>
-													<td>${cart.buyDate }</td>
-													<td>${cartItem.quantity* cartItem.unitPrice }</td>
-													<td class="center">Pending</td>
-													<td><a
-														href="<c:url value='/admin/order/edit?id=${list.id }'/>"
-														class="center" data-toggle="modal" data-target="#oderlist">Edit</a> |
-														<a id="btnDelete" class="center">Delete</a></td>
-												</tr>
-											</c:forEach>--%>
 
 								</div>
 							</div>
@@ -165,23 +124,25 @@
 									</tr>
 									</thead>
 									<tbody>
-									<tr>
-										<td class="cart_product">
-											<img src="" alt="#">
-										</td>
-										<td class="cart_description">
-											dell
-										</td>
-										<td class="cart_price">
-											<p>300<span>VNĐ</span></p>
-										</td>
-										<td class="cart_quantity">
-											2
-										</td>
-										<td class="cart_total">
-											<p class="cart_total_price">6000<span>VNĐ</span></p>
-										</td>
-									</tr>
+									<c:forEach items="${cartItemListByCartId}" var="item">
+										<tr>
+											<td class="cart_product">
+												<img src="" alt="#">
+											</td>
+											<td class="cart_description">
+												${item.getProduct().getProductName()}
+											</td>
+											<td class="cart_price">
+													${item.getProduct().getUnitPrice()}VNĐ</p>
+											</td>
+											<td class="cart_quantity">
+													${item.getQuantity()}
+											</td>
+											<td class="cart_total">
+												<p class="cart_total_price">6000<span>VNĐ</span></p>
+											</td>
+										</tr>
+									</c:forEach>
 									</tbody>
 								</table>
 							</div>
@@ -218,5 +179,28 @@
 	</script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
+
+	<script>
+		function seeDetails(data){
+			$.ajax({
+				url: '${APIurl}',
+				type: 'GET',
+				enctype: 'multipart/form-data',
+				processData:false,
+				contentType: 'application/json',
+				data:JSON.stringify(data),
+				dataType: 'json',
+
+				success: function (result){
+
+					$('#oderlist').modal('show');
+					console.log("Success");
+				},
+				errMode: function (error){
+					console.log("Error");
+				}
+			})
+		}
+	</script>
 </body>
 </html>
