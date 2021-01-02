@@ -26,7 +26,6 @@ public class CartAPI extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
-
         int quantity=1;
 //        int id = Integer.parseInt(req.getParameter("id"));
         System.out.println(req.getReader().readLine());
@@ -74,6 +73,7 @@ public class CartAPI extends HttpServlet {
             }
 
         }
+
         String url ="/client-cart-list";
         resp.sendRedirect(req.getContextPath()+url);
     }

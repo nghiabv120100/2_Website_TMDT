@@ -34,6 +34,8 @@ public class OrderController extends HttpServlet {
     @Inject
     CartService cartService;
 
+    @Inject
+    CustomerService customerService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session=req.getSession();
@@ -51,8 +53,9 @@ public class OrderController extends HttpServlet {
                 List<AccountModel> accountModelList= accountService.findAll();
                 List<CartItemModel> cartItemModelList =  cartItemService.findAll();
                 List<CartModel> cartModelList =cartService.findAll();
-
+                List<CustomerModel> customerList = customerService.findAll();
                 req.setAttribute("userList",accountModelList);
+                req.setAttribute("customerList",customerList);
                 req.setAttribute("detailCateList",detailCategoryModelList);
                 req.setAttribute("proList",productModelList);
                 req.setAttribute("cartItemList",cartItemModelList);

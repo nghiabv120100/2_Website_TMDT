@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <c:url value="/views/admin/static" var="url"></c:url>
 <!DOCTYPE html>
 <html>
@@ -64,23 +64,63 @@
 										</thead>
 										<tbody>
 											</a>
-											<c:set var="index" value="${0}" />
-											<c:forEach items="${cartItemList }" var="cartItem">
+											<%--xác ??nh gi? hàng --%>
+											<c:forEach items="${cartList}" var="cart">
+												<c:set var="index" value="${0}" />
+
+												<c:forEach items="${userList}" var="user">
+													<c:if test="${cart.userID==user.id}">
+														<c:set var="buyer" value="${user}" />
+													</c:if>
+												</c:forEach>
+
+												<c:forEach items="${customerList}" var="customer">
+													<c:if test="${cart.customerID==customer.id}">
+														<c:set var="buyer" value="${customer}" />
+													</c:if>
+												</c:forEach>
+												<tr>
+													<td>${index }</td>
+													<td>${cart.id }</td>
+													<td>${buyer.username }</td>
+													<td>${buyer.email }</td>
+													<td>${cart.buyDate }</td>
+													<td></td>
+													<td class="center">Pending</td>
+													<td><a
+															href="<c:url value='/admin/order/edit?id=${list.id }'/>"
+															class="center" data-toggle="modal"  data-target="#oderlist">Edit</a> |
+														<a id="btnDelete" class="center">Delete</a>
+
+													</td>
+
+												</tr>
+
+											</c:forEach>
+										</tbody>
+									</table>
+											<%--<c:forEach items="${cartItemList }" var="cartItem">
 												<tr class="odd gradeX">
 													<c:set var="index" value="${index + 1}" />
-<%--													x�c ??nh gi? h�ng --%>
+&lt;%&ndash;													xác ??nh gi? hàng &ndash;%&gt;
 													<c:forEach items="${cartList}" var="i_cart">
 														<c:if test="${cartItem.cartId==i_cart.id}">
 															<c:set var="cart" value="${i_cart}" />
 														</c:if>
 													</c:forEach>
-<%--													X�c ??nh ng??i mua s?n ph?m--%>
+&lt;%&ndash;													Xác ??nh user mua s?n ph?m&ndash;%&gt;
 													<c:forEach items="${userList}" var="user">
 														<c:if test="${cart.userID==user.id}">
 															<c:set var="buyer" value="${user}" />
 														</c:if>
 													</c:forEach>
-<%--													X�c ??nh s?n ph?m--%>
+														&lt;%&ndash;Xác dinh customer mua s?n ph?m&ndash;%&gt;
+													<c:forEach items="${customerList}" var="customer">
+														<c:if test="${cart.customerID==customer.id}">
+															<c:set var="buyer" value="${customer}" />
+														</c:if>
+													</c:forEach>
+&lt;%&ndash;													Xác ??nh s?n ph?m&ndash;%&gt;
 													<c:forEach items="${proList}" var="pro">
 														<c:if test="${cartItem.productId==pro.id}">
 															<c:set var="product" value="${pro}" />
@@ -99,9 +139,8 @@
 														class="center" data-toggle="modal" data-target="#oderlist">Edit</a> |
 														<a id="btnDelete" class="center">Delete</a></td>
 												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
+											</c:forEach>--%>
+
 								</div>
 							</div>
 						</div>
@@ -112,17 +151,17 @@
 					<div class="modal-dialog modal-dialog-centered modal-lg">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title">Chi  ti?t ??n h�ng</h4>
+								<h4 class="modal-title">Chi  tiết đơn hàng</h4>
 							</div>
 							<div class="modal-body">
 								<table class="table table-condensed">
 									<thead>
 									<tr class="cart_menu">
-										<td class="image">Image</td>
-										<td class="description">T�n s?n ph?m</td>
-										<td class="price">Gi�</td>
-										<td class="quantity">S? l??ng</td>
-										<td class="total">T?ng c?ng</td>
+										<td class="image">Ảnh</td>
+										<td class="description">Tên Sản Phẩm</td>
+										<td class="price">Giá</td>
+										<td class="quantity">Số lượng</td>
+										<td class="total">Tổng cộng</td>
 									</tr>
 									</thead>
 									<tbody>
@@ -134,13 +173,13 @@
 											dell
 										</td>
 										<td class="cart_price">
-											<p>300<span>VN?</span></p>
+											<p>300<span>VNĐ</span></p>
 										</td>
 										<td class="cart_quantity">
 											2
 										</td>
 										<td class="cart_total">
-											<p class="cart_total_price">6000<span>VN?</span></p>
+											<p class="cart_total_price">6000<span>VNĐ</span></p>
 										</td>
 									</tr>
 									</tbody>

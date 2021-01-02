@@ -82,10 +82,10 @@
 					<div class="shopper-info">
 						<p>Thông tin cá nhân</p>
 						<form>
-							<input type="text" placeholder="Tên" value="${accountModel.getUsername()}">
-							<input type="text" placeholder="Emal" value="${accountModel.getEmail()}">
-							<input type="text" placeholder="Địa chỉ" value="${accountModel.getAddress()}">
-							<input type="text" placeholder="Số điện thoại" value="${accountModel.getPhonenumber()}">
+							<input id="fullname" type="text" placeholder="Tên" value="${accountModel.getUsername()}">
+							<input id="email" type="text" placeholder="Emal" value="${accountModel.getEmail()}">
+							<input id="address" type="text" placeholder="Địa chỉ" value="${accountModel.getAddress()}">
+							<input id="phonenumber" type="text" placeholder="Số điện thoại" value="${accountModel.getPhonenumber()}">
 						</form>
 					</div>
 				</div>
@@ -94,7 +94,7 @@
 				<div class="col-sm-4">
 					<div class="shopper-info">
 						<h2 style="color: #696763">Tổng thanh toán</h2>
-						<label style="font-size: 19px; font-weight: 500; color: #696763">300000</label>
+						<label style="font-size: 19px; font-weight: 500; color: #696763">${totalPrice}</label>
 						<span style="font-size: 19px; color: #696763">VNĐ</span>
 						<hr>
 						<p>Hình thức thanh toán</p>
@@ -157,12 +157,25 @@
 
 
 	function addOrder(){
-		$.ajax({
+		var fullname= $('#fullname').val();
+		var email= $('#email').val();
+		var phonenumber= $('#phonenumber').val();
+		var address= $('#address').val();
 
+		var data={
+			"fullname":fullname,
+			"email":email,
+			"phonenumber":phonenumber,
+			"address":address
+		}
+		$.ajax({
 			url: '${APIOrderUrl}',
 			type: 'POST',
 			enctype: 'multipart/form-data',
 			processData:false,
+			contentType: 'application/json',
+			data:JSON.stringify(data),
+			dataType: 'json',
 			success: function (result){
 				console.log("Success");
 				<%--window.location.href = "${PCurl}?type=list&message=insert_success";--%>

@@ -7,6 +7,8 @@ import com.tmdt.model.CartModel;
 import com.tmdt.service.AccountService;
 import com.tmdt.service.CartItemService;
 import com.tmdt.service.CartService;
+import com.tmdt.service.CustomerService;
+import com.tmdt.utils.HttpUtil;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -25,6 +27,8 @@ public class OrderAPI extends HttpServlet {
     private CartService cartService;
     @Inject
     private CartItemService cartItemService;
+    @Inject
+    private CustomerService customerService;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -33,10 +37,15 @@ public class OrderAPI extends HttpServlet {
         String userName = (String) session.getAttribute("loginName");
         if (cartModel != null) {
             if (userName == null) {
-                /*CustomerModel customerModel = HttpUtil.of(req.getReader()).toModel(CustomerModel.class);
-                customerModel = customerService.save(customerModel);
-                cartModel.setCustomerID(customerModel.getId());
-                mapper.writeValue(resp.getOutputStream(),customerModel);*/
+                CustomerModel customerModel = HttpUtil.of(req.getReader()).toModel(CustomerModel.class);
+                int cus_id = customerService.save(customerModel);
+                cartModel.setCustomerID(cus_id);
+                int cart_id = cartService.save(cartModel);
+                for(CartItemModel item: cartModel.getItemModelList()) {
+                    item.setCartId(cart_id);
+                    cartItemService.save(item);
+                }
+                mapper.writeValue(resp.getOutputStream(),customerModel);
             }
             else {
                 AccountModel accountModel = accountService.findByUsername(userName);

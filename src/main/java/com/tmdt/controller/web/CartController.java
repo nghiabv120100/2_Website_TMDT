@@ -26,6 +26,7 @@ public class CartController  extends HttpServlet {
         HttpSession session = req.getSession();
         CartModel cartModel =  (CartModel) session.getAttribute("order");
         String userName =(String) session.getAttribute("loginName");
+        double totalPrice =0;
         if (userName != null) {
             AccountModel accountModel = accountService.findByUsername(userName);
             req.setAttribute("accountModel",accountModel);
@@ -33,7 +34,13 @@ public class CartController  extends HttpServlet {
         if (cartModel != null) {
             List<CartItemModel> cartItemModelList = cartModel.getItemModelList();
             req.setAttribute("cartItemModelList",cartItemModelList);
+
+            for(CartItemModel item: cartItemModelList) {
+                totalPrice += item.getUnitPrice() * item.getQuantity();
+            }
         }
+        req.setAttribute("totalPrice",totalPrice);
+
         String url ="views/web/cart.jsp";
         RequestDispatcher rd = req.getRequestDispatcher(url);
         rd.forward(req,resp);
