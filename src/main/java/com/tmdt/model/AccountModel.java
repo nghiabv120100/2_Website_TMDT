@@ -4,11 +4,20 @@ public class AccountModel {
     private int id;
     private String username;
     private String password;
+    private String oldPassword;
     private String email;
     private String phonenumber;
     private String address;
     private String avatar;
     private String confirmation_pwd;
+
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
 
     public String getConfirmation_pwd() {
         return confirmation_pwd;

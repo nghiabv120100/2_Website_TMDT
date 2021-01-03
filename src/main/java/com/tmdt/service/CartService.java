@@ -16,7 +16,4 @@ public class CartService {
     public int save(CartModel cartModel){
         return cartDAO.save(cartModel);
     }
-    public CartModel findOne(int id) {
-        return cartDAO.findOne(id);
-    }
 }

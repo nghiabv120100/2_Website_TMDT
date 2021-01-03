@@ -30,7 +30,7 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="${pageContext.request.contextPath}/client-account-manager"><i class="fa fa-user"></i> Account</a></li>
+                            <li><a href="${pageContext.request.contextPath}/account-manager"><i class="fa fa-user"></i> Account</a></li>
                             <li><a href="${pageContext.request.contextPath}/client-cart-list"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <c:if test="${not empty loginName}">
                                 <c:out value="Xin Chào ${loginName}"></c:out>

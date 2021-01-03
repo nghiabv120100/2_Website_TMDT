@@ -37,7 +37,7 @@ public class AccountDAO extends GenericDAO {
                 accountModel.getAvatar(),accountModel.getRoleId());
     }
     public void update(AccountModel accountModel){
-        String sql="update Account set username=?,password=?,email=?,phonenumber=?,address=?,avatar=?,role_id where id=?";
+        String sql="update Account set username=?,password=?,email=?,phonenumber=?,address=?,avatar=?,role_id=? where id=?";
         update(sql,accountModel.getUsername(),accountModel.getPassword(),accountModel.getEmail(),accountModel.getPhonenumber()
         ,accountModel.getAddress(),accountModel.getAvatar(),accountModel.getRoleId(),accountModel.getId());
     }
