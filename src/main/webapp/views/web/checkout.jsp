@@ -2,6 +2,8 @@
 		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/views/web/static" var="url"> </c:url>
+<c:url value="/api-user-change-password" var="APIurl"> </c:url>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +31,10 @@
 					<div class="shopper-info">
 						<p>Thông tin tài khoản</p>
 						<form>
-							<input type="text" placeholder="Tên">
-							<input type="text" placeholder="Emal">
-							<input type="text" placeholder="Địa chỉ">
-							<input type="password" placeholder="Số điện thoại">
+							<input id="name" type="text" placeholder="Tên" value="${accountModel.getUsername()}">
+							<input id="email" type="text" placeholder="Email" value="${accountModel.getEmail()}">
+							<input id="address" type="text" placeholder="Địa chỉ" value="${accountModel.getAddress()}">
+							<input id="phonenumber" type="text" placeholder="Số điện thoại" value="${accountModel.getPhonenumber()}">
 						</form>
 					</div>
 				</div>
@@ -40,11 +42,11 @@
 					<div class="shopper-info">
 						<p>Thay đổi mật khẩu</p>
 						<form>
-							<input type="password" placeholder="Mật khẩu ">
-							<input type="password" placeholder="Mật khẩu mới">
-							<input type="password" placeholder="Xác nhận mật khẩu">
+							<input id="oldPassword" type="password" placeholder="Mật khẩu ">
+							<input id="newPassword" type="password" placeholder="Mật khẩu mới">
+							<input id="confirmPassword" type="password" placeholder="Xác nhận mật khẩu">
 						</form>
-						<a class="btn btn-primary" href="">Cập nhật thông tin</a>
+						<a class="btn btn-primary" onclick="changePassword()" href="">Cập nhật thông tin</a>
 					</div>
 				</div>
 			</div>
@@ -122,5 +124,36 @@
 <script src="${url}/js/jquery.scrollUp.min.js"></script>
 <script src="${url}/js/jquery.prettyPhoto.js"></script>
 <script src="${url}/js/main.js"></script>
+<script>
+	function changePassword() {
+		var oldPassword =$('#oldPassword').val();
+		var newPassword =$('#newPassword').val();
+		var confirmPassword =$('#confirmPassword').val();
+		var data ={
+			oldPassword:oldPassword,
+			password:newPassword,
+			confirmation_pwd:confirmPassword
+		}
+		console.log(data)
+		$.ajax({
+			url: '${APIurl}',
+			type: 'PUT',
+			enctype: 'multipart/form-data',
+			processData:false,
+			contentType: 'application/json',
+			data:JSON.stringify(data),
+			dataType: 'json',
+			success: function (result){
+				console.log("Success");
+			},
+			errMode: function (error){
+				console.log("Error");
+			}
+
+		})
+
+	}
+</script>
+
 </body>
 </html>
