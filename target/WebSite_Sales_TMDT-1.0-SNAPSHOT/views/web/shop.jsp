@@ -33,7 +33,7 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="${imgUrl}" alt="Fail" />
+												<img class="hoverimg" src="${imgUrl}" alt="Fail" />
 												<h2>${i.getPrice()} ₫</h2>
 												<p>${i.getProductName()}</p>
 												<a  <%--href="${APIurl}?id=${i.getId()}"--%> onclick="addToCart(${i.getId()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
@@ -45,12 +45,13 @@
 							</c:forEach>
 						</div>
 						<div class="row">
-							<ul class="pagination" style="margin-left: 38vw">
-								<li class="active"><a href="">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
-								<li><a href="">&raquo;</a></li>
-							</ul>
+								<ul class="pagination" style="margin-left: 68vh">
+									<li class="page-item"><a class="page-link" href="#">Trước</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#">Sau</a></li>
+								</ul>
 						</div>
 					</div><!--features_items-->
 				</div>

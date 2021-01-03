@@ -15,7 +15,6 @@
     <link href="${url}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${url}/css/font-awesome.min.css" rel="stylesheet">
     <link href="${url}/css/main.css" rel="stylesheet">
-
 </head>
 <body>
 <header id="header"><!--header-->
@@ -30,14 +29,14 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="${pageContext.request.contextPath}/account-manager"><i class="fa fa-user"></i> Account</a></li>
-                            <li><a href="${pageContext.request.contextPath}/client-cart-list"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="${pageContext.request.contextPath}/account-manager"><i class="fa fa-book" aria-hidden="true"></i>Tài khoản</a></li>
+                            <li><a href="${pageContext.request.contextPath}/client-cart-list"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                             <c:if test="${not empty loginName}">
-                                <c:out value="Xin Chào ${loginName}"></c:out>
-                                <li><a href="${pageContext.request.contextPath }/dang-nhap?action=logout"><i class="fa fa-lock"></i> Logout</a></li>
+                                <li><a href="#"><i class="fa fa-user"></i>Chào <c:out value="${loginName}"></c:out></a></li>
+                                <li><a href="${pageContext.request.contextPath }/dang-nhap?action=logout">Đăng xuất</a></li>
                             </c:if>
                             <c:if test="${empty loginName}">
-                                <li><a href="${Pathurl}/login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="${Pathurl}/login.jsp"><i class="fa fa-lock"></i>Đăng nhập / Đăng kí </a></li>
                             </c:if>
 
                         </ul>
@@ -108,7 +107,14 @@
         </li>
         <li><a href="${Pathurl}/salespolicy.jsp">Chính sách bán hàng</a></li>
         <li><a href="${Pathurl}/map.jsp">Liên hệ</a></li>
+        <div class="search-container">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Tìm kiếm.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
     </ul>
+
 </nav>
 </body>
 </html>

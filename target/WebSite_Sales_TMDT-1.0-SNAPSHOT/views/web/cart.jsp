@@ -40,7 +40,7 @@
 				<c:forEach var="i" items="${cartItemModelList}">
 					<tr>
 					<td class="cart_product">
-						<a href=""><img src="${url}/images/nitro52.png" alt=""></a>
+						<a href=""><img class="hoverimg" src="${url}/images/nitro52.png" alt=""></a>
 					</td>
 					<td class="cart_description">
 						<h4><a href="">${i.getProduct().getProductName()}</a></h4>
@@ -99,11 +99,11 @@
 						<hr>
 						<p>Hình thức thanh toán</p>
 						<div>
-							<input type="radio" id="online" name="online" value="online">
+							<input type="radio" id="online" name="check" value="online">
 							<label for="online" style="color: #696763">Trực tuyến</label>
 						</div>
 						<div>
-							<input type="radio" id="offline" name="offline" value="offline">
+							<input type="radio" id="offline" name="check" value="offline">
 							<label for="offline" style="color: #696763">Trả khi nhận hàng</label>
 						</div>
 				</div>

@@ -170,6 +170,7 @@ a#scrollUp i{
   background: none repeat scroll 0 0 red;
   box-shadow: inherit;
   outline: 0 none;
+
 }
 
 .btn-group.open .dropdown-toggle {
@@ -2505,4 +2506,13 @@ h2.title {
   color: red;
 }
 
+.hoverimg{
+  object-fit: cover;
+  display: block;
+  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  margin-top: -10px;
+}
 
+.hoverimg:hover{
+  margin-top: 0;
+}

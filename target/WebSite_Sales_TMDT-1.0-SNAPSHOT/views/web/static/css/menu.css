@@ -70,3 +70,30 @@ nav > ul li > ul li >ul{
     margin-left: 352px;
     margin-top: -50px;
 }
+
+ul .search-container {
+    float: right;
+    margin-left: 250px;
+}
+
+nav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+nav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+nav .search-container button:hover {
+    background: #ccc;
+}
