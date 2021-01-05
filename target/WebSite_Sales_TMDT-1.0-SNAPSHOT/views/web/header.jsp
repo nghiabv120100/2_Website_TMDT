@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/views/web/static" var="url"> </c:url>
 <c:url value="/views/web" var="Pathurl"> </c:url>
+<c:url value="/trang-chu" var="HomeUrl"> </c:url>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,8 +51,8 @@
 
 <nav>
     <ul>
-        <li><a href="index.jsp">Trang chủ</a></li>
-        <li><a href="shop.jsp">Danh mục sản phẩm</a>
+        <li><a href="${HomeUrl}?action=home">Trang chủ</a></li>
+        <li><a href="${pageContext.request.contextPath }/client-product-list?type=list">Danh mục sản phẩm</a>
             <ul>
                 <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=1">Laptop</a>
                     <ul>
