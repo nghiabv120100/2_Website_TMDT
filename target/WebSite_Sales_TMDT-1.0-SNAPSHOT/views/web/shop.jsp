@@ -33,7 +33,9 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img class="hoverimg" src="${imgUrl}" alt="Fail" />
+												<a href="${pageContext.request.contextPath }/client-product-list?type=detail_product&id=${i.getId()}">
+													<img  class="hoverimg" src="${imgUrl}" alt="Fail" />
+												</a>
 												<h2>${i.getPrice()} ₫</h2>
 												<p>${i.getProductName()}</p>
 												<a  <%--href="${APIurl}?id=${i.getId()}"--%> onclick="addToCart(${i.getId()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>

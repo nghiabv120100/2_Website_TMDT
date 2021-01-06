@@ -49,6 +49,11 @@ public class ProductController extends HttpServlet{
             req.setAttribute("proList",productModelList);
             url ="views/web/shop.jsp";
         }
+        else if (type.equals("detail_product")) {
+            int id=Integer.parseInt(req.getParameter("id"));
+            ProductModel productModel = productService.findOne(id);
+            url ="views/web/product-details.jsp";
+        }
         RequestDispatcher rd = req.getRequestDispatcher(url);
         rd.forward(req,resp);
     }
