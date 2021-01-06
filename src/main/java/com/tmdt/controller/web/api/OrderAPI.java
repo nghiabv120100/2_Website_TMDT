@@ -11,6 +11,7 @@ import com.tmdt.service.CustomerService;
 import com.tmdt.utils.HttpUtil;
 
 import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +46,8 @@ public class OrderAPI extends HttpServlet {
                     item.setCartId(cart_id);
                     cartItemService.save(item);
                 }
+/*                RequestDispatcher rd =req.getRequestDispatcher(req.getContextPath()+"/views/web/done-order.jsp");
+                rd.forward(req,resp);*/
                 mapper.writeValue(resp.getOutputStream(),customerModel);
             }
             else {
@@ -55,9 +58,13 @@ public class OrderAPI extends HttpServlet {
                     item.setCartId(cart_id);
                     cartItemService.save(item);
                 }
+                RequestDispatcher rd =req.getRequestDispatcher("/views/web/done-order.jsp");
+                rd.forward(req,resp);
+                mapper.writeValue(resp.getOutputStream(),accountModel);
                 System.out.println("Mua hang thanh cong");
             }
 
         }
+
     }
 }

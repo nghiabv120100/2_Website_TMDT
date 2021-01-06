@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tmdt.utils.JavaMailUtil;
 
 @WebServlet(urlPatterns = {"/api-user-dangky","/api-user-change-password"})
 public class AccountAPI extends HttpServlet {
@@ -23,6 +24,7 @@ public class AccountAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
+        req.setCharacterEncoding("UTF-8");
         AccountModel accountModel = HttpUtil.of(req.getReader()).toModel(AccountModel.class);
         if (accountModel.getUsername()=="" || accountModel.getPassword()=="" ||accountModel.getEmail()==""
                 ||accountModel.getPhonenumber()=="" || !accountModel.getConfirmation_pwd().equals(accountModel.getPassword())){
@@ -30,6 +32,12 @@ public class AccountAPI extends HttpServlet {
         }
         accountModel= accountService.save(accountModel);
         if (accountModel!=null){
+            String content="<h3>Đăng ký tài khoản thành công!</h3><br><p>Cảm ơn bạn đã sử dụng dịch vụ của shop</p>";
+            try {
+                JavaMailUtil.sendMail(accountModel.getEmail(),"Đăng ký thành công!",content);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             mapper.writeValue(resp.getOutputStream(),accountModel);
         }
     }

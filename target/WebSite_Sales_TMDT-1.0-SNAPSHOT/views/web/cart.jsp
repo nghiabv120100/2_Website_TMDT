@@ -4,6 +4,7 @@
 <c:url value="/views/web/static" var="url"> </c:url>
 <c:url value="/api-user-cart" var="APIurl"> </c:url>
 <c:url value="/api-user-order" var="APIOrderUrl"> </c:url>
+<c:url value="/client-order" var="APIOrderDoneUrl"></c:url>
 
 
 <!DOCTYPE html>
@@ -178,7 +179,7 @@
 			dataType: 'json',
 			success: function (result){
 				console.log("Success");
-				<%--window.location.href = "${PCurl}?type=list&message=insert_success";--%>
+				<%--window.location.href = "${APIOrderDoneUrl}";--%>
 			},
 			errMode: function (error){
 				console.log("Error");
