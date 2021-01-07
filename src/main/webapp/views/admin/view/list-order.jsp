@@ -89,11 +89,10 @@
 													<td class="center">Pending</td>
 													<td><a
 															href="<c:url value='/admin/order/edit?id=${list.id }'/>"
-															class="center" data-toggle="modal"  data-target="#oderlist">Edit</a> |
+															class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Edit</a> |
 														<a id="btnDelete" class="center">Delete</a>
 
 													</td>
-
 												</tr>
 
 											</c:forEach>
@@ -147,7 +146,49 @@
 						<!--End Advanced Tables -->
 					</div>
 				</div>
-				<div class="modal fade" id="oderlist">
+				<c:forEach items="${cartList}" var="cart">
+					<div class="modal fade" id="oderlist${cart.id}">
+						<div class="modal-dialog modal-dialog-centered modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title">Chi  tiết đơn hàng</h4>
+								</div>
+								<div class="modal-body">
+									<table class="table table-condensed">
+										<thead>
+
+										<tr class="cart_menu">
+											<td class="image">Ảnh</td>
+											<td class="description">Tên Sản Phẩm</td>
+											<td class="price">Giá</td>
+											<td class="quantity">Số Lượng</td>
+											<td class="total">Tổng Tiền</td>
+										</tr>
+										</thead>
+										<tbody>
+										<c:forEach items="${cart.getItemModelList()}" var="item">
+											<tr>
+												<td class="cart_product">
+													<img src="" alt="#">
+												</td>
+												<td class="description">${item.getProduct().getProductName()}</td>
+												<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>
+												<td class="quantity">${item.getQuantity()}</td>
+												<td class="total">${item.getUnitPrice()*item.getQuantity()}<span>VNĐ</span></td>
+											</tr>
+										</c:forEach>
+										</tbody>
+									</table>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+									<button type="button" class="btn btn-success">OK</button>
+								</div>
+							</div>
+						</div>
+					</div> <!-- end modal -->
+				</c:forEach>
+				<%--<div class="modal fade" id="oderlist">
 					<div class="modal-dialog modal-dialog-centered modal-lg">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -191,7 +232,7 @@
 							</div>
 						</div>
 					</div>
-				</div> <!-- end modal -->
+				</div>--%> <!-- end modal -->
 				</div>
 
 		</div>
