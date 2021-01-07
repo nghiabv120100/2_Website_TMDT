@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/admin-order-list"})
@@ -52,8 +53,26 @@ public class OrderController extends HttpServlet {
                 List<DetailCategoryModel> detailCategoryModelList = detailCategoryService.findAll();
                 List<AccountModel> accountModelList= accountService.findAll();
                 List<CartItemModel> cartItemModelList =  cartItemService.findAll();
+                for (CartItemModel item : cartItemModelList) {
+                    for (ProductModel pro : productModelList) {
+                        if (item.getProductId() == pro.getId()) {
+                            item.setProduct(pro);
+                        }
+                    }
+                }
+
                 List<CartModel> cartModelList =cartService.findAll();
                 List<CustomerModel> customerList = customerService.findAll();
+                for (CartModel cart : cartModelList) {
+                    List<CartItemModel> lstItem = new ArrayList<CartItemModel>();
+                    for (CartItemModel item : cartItemModelList) {
+                        if (cart.getId() == item.getCartId()) {
+                            lstItem.add(item);
+                        }
+                        cart.setItemModelList(lstItem);
+                    }
+                }
+
                 req.setAttribute("userList",accountModelList);
                 req.setAttribute("customerList",customerList);
                 req.setAttribute("detailCateList",detailCategoryModelList);
