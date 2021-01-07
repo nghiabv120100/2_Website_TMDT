@@ -27,13 +27,14 @@
 					<div class="features_items" style="min-height: 300px"><!--features_items-->
 						<h2 class="title text-center">Shop</h2>
 						<div class="row">
+							<h1 style="background-color: #ea0202; color: white; padding-left: 20px" >Acer</h1>
 							<c:forEach var = "i" items="${proList}">
 								<c:url value="/image/6.jpg" var="imgUrl"></c:url>
 								<div class="col-sm-4">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<a href="${pageContext.request.contextPath }/client-product-list?type=detail_product&id=${i.getId()}">
+												<a href="${pageContext.request.contextPath }/client-product-list?type=detail_product&id=${i.getId()}&quantity=1">
 													<img  class="hoverimg" src="${imgUrl}" alt="Fail" />
 												</a>
 												<h2>${i.getPrice()} ₫</h2>
@@ -48,10 +49,11 @@
 						</div>
 						<div class="row">
 								<ul class="pagination" style="margin-left: 68vh">
+
 									<li class="page-item"><a class="page-link" href="#">Trước</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<c:forEach var="i" begin="1" end="${numOfPages}">
+									<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/client-product-list?type=${type}&cate_id=${cate_id}&detail_cate_id=${detail_cate_id}&keyword=${keyword}&page=${i}">${i}</a></li>
+									</c:forEach>
 									<li class="page-item"><a class="page-link" href="#">Sau</a></li>
 								</ul>
 						</div>

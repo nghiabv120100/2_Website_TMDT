@@ -51,18 +51,18 @@
 <nav>
     <ul>
         <li><a href="${HomeUrl}?action=home">Trang chủ</a></li>
-        <li><a href="${pageContext.request.contextPath }/client-product-list?type=list">Danh mục sản phẩm</a>
+        <li><a href="${pageContext.request.contextPath }/client-product-list?type=list&page=1">Danh mục sản phẩm</a>
             <ul>
-                <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=1">Laptop</a>
+                <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=1&page=1">Laptop</a>
                     <ul>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=1">Laptop Acer</a></li>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=2">Laptop Asus</a></li>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=3">Laptop Dell</a></li>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=4">Laptop Lenovo</a></li>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=5">Laptop HP</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=1&page=1">Laptop Acer</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=2&page=1">Laptop Asus</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=3&page=1">Laptop Dell</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=4&page=1">Laptop Lenovo</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=5&page=1">Laptop HP</a></li>
                     </ul>
                 </li>
-                <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=2">Màn Hình</a>
+                <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=2&page=1">Màn Hình</a>
                     <ul>
                         <li><a href="#">Màn Hình Samsung </a></li>
                         <li><a href="#">Màn Hình ASUS</a></li>
@@ -71,7 +71,7 @@
                         <li><a href="#">Màn Hình MSI</a></li>
                     </ul>
                 </li>
-                <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=3">Chuột chơi game</a>
+                <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=3&page=1">Chuột chơi game</a>
                     <ul>
                         <li><a href="#">Logitech</a></li>
                         <li><a href="#">Kingston HyperX</a></li>
@@ -83,7 +83,7 @@
 
                     </ul>
                 </li>
-                <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=4">Bàn phím</a>
+                <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=4&page=1">Bàn phím</a>
                     <ul>
                         <li><a href="#">Logitech</a></li>
                         <li><a href="#">Kingston HyperX</a></li>
@@ -93,7 +93,7 @@
                         <li><a href="#">Hãng Khác</a></li>
                     </ul>
                 </li>
-                <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=5">Tai nghe</a>
+                <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=5&page=1">Tai nghe</a>
                     <ul>
                         <li><a href="#">Logitech</a></li>
                         <li><a href="#">Kingston HyperX</a></li>
@@ -109,8 +109,10 @@
         <li><a href="${Pathurl}/salespolicy.jsp">Chính sách bán hàng</a></li>
         <li><a href="${Pathurl}/map.jsp">Liên hệ</a></li>
         <div class="search-container">
-            <form action="/action_page.php">
-                <input type="text" placeholder="Tìm kiếm.." name="search">
+            <form action="${pageContext.request.contextPath }/client-product-list">
+                <input name="keyword" type="text" placeholder="Tìm kiếm.." >
+                <input name="type" type="hidden" value="searchByName">
+                <input name="page" type="hidden" value="1">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>

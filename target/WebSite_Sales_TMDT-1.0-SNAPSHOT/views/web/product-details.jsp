@@ -2,6 +2,9 @@
 		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/views/web/static" var="url"> </c:url>
+<c:url value="/api-user-cart" var="APIaurl"></c:url>
+<c:url value="/api-user-product" var="ProductUrl"></c:url>
+<c:url value="/client-product-list" var ="PCUrl" ></c:url>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,19 +52,21 @@
 					</div>
 					<div class="col-sm-7">
 						<div class="product-information"><!--/product-information-->
-							<h2>Máy tính Aser Nitro 5</h2>
+							<h2>${productModel.getProductName()}</h2>
 							<span>
-									<span>28.790.000 ₫</span>
+
+									<span>${productModel.getPrice()} ₫</span>
 									<br>
 									<label>Quantity:</label>
 									<div class="cart_quantity_button">
-										<a class="cart_quantity_up" href=""> + </a>
-										<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-										<a class="cart_quantity_down" href=""> - </a>
+										<a class="cart_quantity_up" onclick="changeQuantity('add')"> + </a>
+										<input id="txtQuantity" class="cart_quantity_input" type="text" name="quantity" value="${quantity}" autocomplete="off" size="2">
+										<a class="cart_quantity_down" onclick="changeQuantity('sub')"> - </a>
 									</div>
+
 									<br>
 									<br>
-									<button type="button" class="btn btn-fefault cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>
+									<button type="button"  class="btn btn-fefault cart" onclick="addToCart(${productModel.getId()})"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>
 								</span>
 							<p><b>Mô tả sản phẩm:</b></p>
 							<p>Ngày nay, khi người dùng lựa chọn cho mình một chiếc laptop để sử dụng luôn quan tâm đến nhu cầu sử dụng vừa để làm việc vừa để giải trí chơi game. Vì vậy lựa chọn cho mình một chiếc laptop gaming là một giải pháp phù hợp cho mọi nhu cầu sử dụng của bạn. Acer Nitro 5 là chiếc laptop đến từ thương hiệu Acer sẽ mang đến một cách nhìn hoàn toàn mới về các nhu cầu sử dụng trên dòng laptop gaming có thể mang lại cho người dùng.</p>
@@ -73,6 +78,59 @@
 	</div>
 </section>
 <jsp:include page="footer.jsp"></jsp:include>
+<script>
+	function addToCart(data){
+		$.ajax({
+			url: '${APIaurl}',
+			type: 'POST',
+			enctype: 'multipart/form-data',
+			processData:false,
+			contentType: 'application/json',
+			data:JSON.stringify(data),
+			dataType: 'json',
+
+			success: function (result){
+				console.log("Success");
+				console.log(data);
+				<%--window.location.href = "${PCurl}?type=list&message=insert_success";--%>
+			},
+			errMode: function (error){
+				console.log("Error");
+			}
+		})
+	};
+</script>
+
+<script>
+	function changeQuantity(action){
+		var id = parseInt($('#id').val());
+		var quantity =parseInt($('#txtQuantity').val());
+		var data ={
+			"productId":id,
+			"quantity":quantity
+		};
+		console.log(data);
+		$.ajax({
+			url: '${PCUrl}?type='+action,
+			type: 'PUT',
+			enctype: 'multipart/form-data',
+			processData:false,
+			contentType: 'application/json',
+			data:JSON.stringify(data),
+			dataType: 'json',
+
+			success: function (result){
+				console.log("Success");
+				window.location.href="/client-product-list?type=detail_product";
+			},
+			errMode: function (error){
+				console.log("Error");
+			}
+		})
+	};
+</script>
+
+
 <script src="${url}/js/jquery.js"></script>
 <script src="${url}/js/price-range.js"></script>
 <script src="${url}/js/jquery.scrollUp.min.js"></script>

@@ -46,5 +46,41 @@ public class ProductDAO extends GenericDAO<ProductModel>{
         List<ProductModel> products = query(sql,new ProductMapper(),detail_cate_id);
         return products.isEmpty() ? null : products;
     }
+    public List<ProductModel> findAllByPage(int offset,int limit) {
+        String sql = "Select * from Product "+
+                      "limit "+offset+","+limit ;
+        List<ProductModel> products = query(sql, new ProductMapper());
+        return products.isEmpty() ? null : products;
+    }
+
+    public List<ProductModel> findByCategoryAndPage(int cate_id,int offset,int limit){
+        String sql="Select * from Product,DetailCategory,Category " +
+                "where Product.detail_cate_id=DetailCategory.id and DetailCategory.cate_id=Category.id and Category.id =? " +
+                "limit "+offset+","+limit ;
+        List<ProductModel> products = query(sql,new ProductMapper(),cate_id);
+        return products.isEmpty() ? null : products;
+    }
+    public List<ProductModel> findByDetailCategoryAndPage(int detail_cate_id,int offset,int limit){
+        String sql="Select * from Product " +
+                "where Product.detail_cate_id=? " +
+                "limit "+offset+","+limit ;
+        List<ProductModel> products = query(sql,new ProductMapper(),detail_cate_id);
+        return products.isEmpty() ? null : products;
+    }
+    public List<ProductModel> searchByKeywordAndPage(String keyword,int offset,int limit){
+        String sql="Select * from Product " +
+                "where product_name like '%"+keyword+"%' "+
+                "limit "+offset+","+limit ;
+        List<ProductModel> products = query(sql,new ProductMapper(),keyword);
+        return products.isEmpty() ? null : products;
+    }
+
+    public List<ProductModel> searchByKeyword(String keyword){
+        String sql="Select * from Product " +
+                "where product_name like '%"+keyword+"%' ";
+        List<ProductModel> products = query(sql,new ProductMapper());
+        return products.isEmpty() ? null : products;
+    }
+
 
 }
