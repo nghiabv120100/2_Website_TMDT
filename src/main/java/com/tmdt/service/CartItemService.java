@@ -1,6 +1,7 @@
 package com.tmdt.service;
 
 import com.tmdt.dao.CartItemDAO;
+import com.tmdt.mapper.CartItemMapper;
 import com.tmdt.model.CartItemModel;
 import com.tmdt.model.ProductModel;
 
@@ -12,6 +13,10 @@ public class CartItemService {
     CartItemDAO cartItemDAO;
     public List<CartItemModel> findAll(){
         return cartItemDAO.findAll();
+    }
+
+    public List<CartItemModel> findByCartId(int cart_id){
+        return cartItemDAO.findByCartId(cart_id);
     }
 
     public int save(CartItemModel cartItemModel) {

@@ -29,6 +29,7 @@
             <div class="form-group">
                 <label for="username">User Name:</label>
                 <input required="true" type="text" class="form-control" id="username">
+                <label>${err}</label>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -90,9 +91,9 @@
                 console.log("Success");
                 window.location.href = "${url}?action=dangnhap";
             },
-            errMode: function (error){
+            error: function (error){
                 console.log("Error");
-
+                window.location.href = "${url}?action=register";
             }
 
         })

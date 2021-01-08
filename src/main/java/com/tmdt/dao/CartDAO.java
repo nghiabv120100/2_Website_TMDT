@@ -13,6 +13,11 @@ public class CartDAO extends GenericDAO<CartModel> {
         List<CartModel> carts = query(sql,new CartMapper(),id);
         return carts.isEmpty() ? null : carts.get(0);
     }
+    public List<CartModel> findByUserId(int user_id){
+        String sql="Select * from Cart where user_id =?";
+        List<CartModel> carts = query(sql,new CartMapper(),user_id);
+        return carts.isEmpty() ? null : carts;
+    }
     public List<CartModel> findAll(){
         String sql="Select * from Cart";
         List<CartModel> carts = query(sql,new CartMapper());

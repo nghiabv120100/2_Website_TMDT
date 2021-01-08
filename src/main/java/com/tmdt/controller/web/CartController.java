@@ -38,6 +38,7 @@ public class CartController  extends HttpServlet {
             for(CartItemModel item: cartItemModelList) {
                 totalPrice += item.getUnitPrice() * item.getQuantity();
             }
+            cartModel.setTotalPrice(totalPrice);
         }
         req.setAttribute("totalPrice",totalPrice);
 

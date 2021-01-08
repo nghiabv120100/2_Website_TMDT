@@ -67,55 +67,68 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td class="cart_product">
-						<a href="">123456</a>
-					</td>
-					<td class="cart_description">
-						<h4><a href="">Đã giao</a></h4>
-					</td>
-					<td class="cart_description">
-						<h4>28/12/2020</h4>
+				<c:forEach var="cart" items="${carts}">
+					<tr>
+						<td class="cart_product">
+							<h4>#${cart.id}</h4>
+						</td>
+						<td class="cart_description">
+							<h4>Đã giao</h4>
+						</td>
+						<td class="cart_description">
+							<h4>${cart.buyDate}</h4>
+						</td><td class="cart_description">
+						<h4>${cart.totalPrice} VNĐ</h4>
 					</td><td class="cart_description">
-					<h4>27.999.000đ</h4>
-				</td><td class="cart_description">
-					<a href="">Xem chi tiết</a>
-				</td>
-				</tr>
-
-				<tr>
-					<td class="cart_product">
-						<a href="">123456</a>
+						<a class="center" data-toggle="modal"   data-target="#oderlist${cart.id}">Xem chi tiết</a>
 					</td>
-					<td class="cart_description">
-						<h4><a href="">Đã giao</a></h4>
-					</td>
-					<td class="cart_description">
-						<h4>28/12/2020</h4>
-					</td><td class="cart_description">
-					<h4>27.999.000đ</h4>
-				</td><td class="cart_description">
-					<a href="">Xem chi tiết</a>
-				</td>
-				</tr>
-				<tr>
-					<td class="cart_product">
-						<a href="">123456</a>
-					</td>
-					<td class="cart_description">
-						<h4><a href="">Đã giao</a></h4>
-					</td>
-					<td class="cart_description">
-						<h4>28/12/2020</h4>
-					</td><td class="cart_description">
-					<h4>27.999.000đ</h4>
-				</td><td class="cart_description">
-					<a href="">Xem chi tiết</a>
-				</td>
-				</tr>
+					</tr>
+				</c:forEach>
 				</tbody>
 			</table>
 		</div>
+		<c:forEach items="${carts}" var="cart">
+			<div class="modal fade" id="oderlist${cart.id}">
+				<div class="modal-dialog modal-dialog-centered modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Chi  tiết đơn hàng</h4>
+						</div>
+						<div class="modal-body">
+							<table class="table table-condensed">
+								<thead>
+
+								<tr class="cart_menu">
+									<td class="image">Ảnh</td>
+									<td class="description">Tên Sản Phẩm</td>
+									<td class="price">Giá</td>
+									<td class="quantity">Số Lượng</td>
+									<td class="total">Tổng Tiền</td>
+								</tr>
+								</thead>
+								<tbody>
+								<c:forEach items="${cart.getItemModelList()}" var="item">
+									<tr>
+										<td class="cart_product">
+											<img src="" alt="#">
+										</td>
+										<td class="description">${item.getProduct().getProductName()}</td>
+										<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>
+										<td class="quantity">${item.getQuantity()}</td>
+										<td class="total">${item.getUnitPrice()*item.getQuantity()}<span>VNĐ</span></td>
+									</tr>
+								</c:forEach>
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-success">OK</button>
+						</div>
+					</div>
+				</div>
+			</div> <!-- end modal -->
+		</c:forEach>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 </section> <!--/#cart_items-->
