@@ -25,9 +25,15 @@ public class AccountAPI extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
+        String err="";
         AccountModel accountModel = HttpUtil.of(req.getReader()).toModel(AccountModel.class);
+
+
+
         if (accountModel.getUsername()=="" || accountModel.getPassword()=="" ||accountModel.getEmail()==""
                 ||accountModel.getPhonenumber()=="" || !accountModel.getConfirmation_pwd().equals(accountModel.getPassword())){
+            HttpSession session = req.getSession();
+            session.setAttribute("err","Loi roi");
             return;
         }
         accountModel= accountService.save(accountModel);
