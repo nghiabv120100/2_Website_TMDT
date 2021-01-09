@@ -28,14 +28,9 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="username">User Name:</label>
-<<<<<<< HEAD
                 <input required="true" type="text" class="form-control" id="username"
                        value="${accountRegister.username}" placeholder = "Nhập User" />
                 <label style="color: red">${errUserName}</label>
-=======
-                <input required="true" type="text" class="form-control" id="username">
-                <label>${err}</label>
->>>>>>> b6c57334828f85f9fd5b41f34c29d5380da5d711
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -108,12 +103,9 @@
             },
             error: function (error){
                 console.log("Error");
-<<<<<<< HEAD
-                window.location.href = "${url}?action=register"
 
-=======
                 window.location.href = "${url}?action=register";
->>>>>>> b6c57334828f85f9fd5b41f34c29d5380da5d711
+
             }
 
         })
