@@ -28,19 +28,28 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="username">User Name:</label>
-                <input required="true" type="text" class="form-control" id="username">
+                <input required="true" type="text" class="form-control" id="username"
+                       value="${accountRegister.username}" placeholder = "Nhập User" />
+                <label style="color: red">${errUserName}</label>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input required="true" type="email" class="form-control" id="email">
+                <input required="true" type="email" class="form-control" id="email"
+                value="${accountRegister.email}">
+                <label style="color: red">${errEmail}</label>
+                <label></label>
             </div>
             <div class="form-group">
                 <label for="phone">Phone number:</label>
-                <input required="true" type="phone" class="form-control" id="phone">
+                <input required="true" type="phone" class="form-control" id="phone"
+                       value="${accountRegister.phonenumber}">
+                <label style="color: red">${errPhone}</label>
             </div>
             <div class="form-group">
                 <label for="pwd">Password:</label>
-                <input required="true" type="password" class="form-control" id="pwd">
+                <input required="true" type="password" class="form-control" id="pwd"
+                       value="${accountRegister.password}">
+                <label style="color: red">${errPassword}</label>
             </div>
             <div class="form-group">
                 <label for="confirmation_pwd">Confirmation Password:</label>
@@ -48,7 +57,9 @@
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>
-                <input type="text" class="form-control" id="address">
+                <input type="text" class="form-control" id="address"
+                       value="${accountRegister.address}">
+                <label style="color: red">${errAddress}</label>
             </div>
             <button type="button" class="btn btn-success" id="btnRegister">Register</button>
             <button class="btn btn-success" onclick="document.location='${pageContext.request.contextPath}/trang-chu?action=home'">Cancel</button>
@@ -90,8 +101,9 @@
                 console.log("Success");
                 window.location.href = "${url}?action=dangnhap";
             },
-            errMode: function (error){
+            error: function (error){
                 console.log("Error");
+                window.location.href = "${url}?action=register"
 
             }
 

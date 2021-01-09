@@ -1,5 +1,7 @@
 package com.tmdt.controller.web;
 
+import com.tmdt.Cons.AccountRegister;
+import com.tmdt.Cons.Message;
 import com.tmdt.model.ProductModel;
 import com.tmdt.service.CategoryService;
 import com.tmdt.service.DetailCategoryService;
@@ -51,6 +53,18 @@ public class HomeController extends HttpServlet {
         rd.forward(req,resp);*/
         String type= req.getParameter("action");
         if (type.equals("register")) {
+
+            req.setAttribute("errUserName",Message.errUser);
+            req.setAttribute("errEmail",Message.errEmail);
+            req.setAttribute("errPhone",Message.errPhone);
+            req.setAttribute("errPassword",Message.errPassword);
+            req.setAttribute("errAddress",Message.errAddress);
+
+            req.setAttribute("accountRegister",AccountRegister.getAccountRegister());
+
+
+
+
             RequestDispatcher rd = req.getRequestDispatcher("views/web/register.jsp");
             rd.forward(req,resp);
         }
@@ -59,6 +73,8 @@ public class HomeController extends HttpServlet {
             rd.forward(req,resp);
         }
         else if (type.equals("home")) {
+            AccountRegister.reset();
+            Message.reset();
             RequestDispatcher rd = req.getRequestDispatcher("views/web/index.jsp");
             rd.forward(req,resp);
         }

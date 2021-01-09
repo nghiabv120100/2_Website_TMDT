@@ -42,7 +42,7 @@
 					<div class="shopper-info">
 						<p>Thay đổi mật khẩu</p>
 						<form>
-							<input id="oldPassword" type="password" placeholder="Mật khẩu ">
+							<input id="oldPassword" type="password" placeholder="Mật khẩu " value="">
 							<input id="newPassword" type="password" placeholder="Mật khẩu mới">
 							<input id="confirmPassword" type="password" placeholder="Xác nhận mật khẩu">
 						</form>

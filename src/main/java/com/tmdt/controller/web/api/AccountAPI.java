@@ -1,5 +1,8 @@
 package com.tmdt.controller.web.api;
 
+
+import com.tmdt.Cons.AccountRegister;
+import com.tmdt.Cons.Message;
 import com.tmdt.model.AccountModel;
 import com.tmdt.model.ProductModel;
 import com.tmdt.service.AccountService;
@@ -14,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.regex.Pattern;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tmdt.utils.JavaMailUtil;
 
@@ -21,13 +26,58 @@ import com.tmdt.utils.JavaMailUtil;
 public class AccountAPI extends HttpServlet {
     @Inject
     private AccountService accountService;
+
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
+
         AccountModel accountModel = HttpUtil.of(req.getReader()).toModel(AccountModel.class);
-        if (accountModel.getUsername()=="" || accountModel.getPassword()=="" ||accountModel.getEmail()==""
-                ||accountModel.getPhonenumber()=="" || !accountModel.getConfirmation_pwd().equals(accountModel.getPassword())){
+
+       Message.reset();
+
+
+        AccountRegister.setAccountRegister(accountModel);
+
+
+        boolean check = false;
+
+        if(accountModel.getUsername().equals(""))
+        {
+
+            Message.errUser="Vui long nhap UserName !";
+            check = true;
+        }
+        if(accountModel.getEmail().equals(""))
+        {
+            Message.errEmail = "Vui long nhap Email !";
+            check = true;
+        }
+        if(accountModel.getPhonenumber().equals(""))
+        {
+            Message.errPhone = "Vui long nhap SDT";
+            check = true;
+        }
+        if(accountModel.getPassword().equals(""))
+        {
+            Message.errPassword = "Vui long nhap password";
+            check = true;
+        }
+        else {
+            if(!accountModel.getPassword().equals(accountModel.getConfirmation_pwd()))
+            {
+                Message.errPassword = "Khong trung mat khau";
+                check = true;
+            }
+        }
+        if(accountModel.getAddress().equals(""))
+        {
+            Message.errAddress = "Vui long nhap dia chi!";
+            check = true;
+        }
+        if(check == true)
+        {
             return;
         }
         accountModel= accountService.save(accountModel);
@@ -38,7 +88,9 @@ public class AccountAPI extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            AccountRegister.reset();
             mapper.writeValue(resp.getOutputStream(),accountModel);
+
         }
     }
 
