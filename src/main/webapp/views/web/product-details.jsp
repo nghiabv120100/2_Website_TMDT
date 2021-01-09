@@ -28,7 +28,8 @@
 				<div class="product-details"><!--product-details-->
 					<div class="col-sm-5">
 						<div class="view-product">
-							<img src="${url}/images/nitro5.png" alt="" />
+							<c:url var="imgUrl" value="/image/${productModel.getImage()}"></c:url>
+							<img height="250" width="200" src="${imgUrl}" alt="" />
 						</div>
 						<div id="similar-product" class="carousel slide" data-ride="carousel">
 

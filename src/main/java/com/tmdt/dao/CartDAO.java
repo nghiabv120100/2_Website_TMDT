@@ -13,6 +13,11 @@ public class CartDAO extends GenericDAO<CartModel> {
         List<CartModel> carts = query(sql,new CartMapper(),id);
         return carts.isEmpty() ? null : carts.get(0);
     }
+    public List<CartModel> findByUserId(int user_id){
+        String sql="Select * from Cart where user_id =?";
+        List<CartModel> carts = query(sql,new CartMapper(),user_id);
+        return carts.isEmpty() ? null : carts;
+    }
     public List<CartModel> findAll(){
         String sql="Select * from Cart";
         List<CartModel> carts = query(sql,new CartMapper());
@@ -35,7 +40,9 @@ public class CartDAO extends GenericDAO<CartModel> {
                 ,cartModel.getDescribePro(),cartModel.getDetailCateId(),cartModel.getId());*/
     }
     public void delete(int id){
-        String sql="delete from Cart where id=?";
-        update(sql,id);
+        String sql1="delete from Cartitem where cart_id=?";
+        String sql2="delete from Cart where id=?";
+        update(sql1,id);
+        update(sql2,id);
     }
 }

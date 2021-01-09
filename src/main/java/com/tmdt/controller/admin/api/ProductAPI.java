@@ -60,7 +60,7 @@ public class ProductAPI extends HttpServlet {
         int id = Integer.parseInt(req.getReader().readLine());
         productService.delete(id);
         System.out.println("Done delete");
-        mapper.writeValue(resp.getOutputStream(),null);
+        mapper.writeValue(resp.getOutputStream(),"{}");
 
         // Convert from type json to Model
         //ProductModel productModel = HttpUtil.of(req.getReader()).toModel(ProductModel.class);

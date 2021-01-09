@@ -29,13 +29,13 @@
 						<div class="row">
 							<h1 style="background-color: #ea0202; color: white; padding-left: 20px" >Acer</h1>
 							<c:forEach var = "i" items="${proList}">
-								<c:url value="/image/6.jpg" var="imgUrl"></c:url>
+								<c:url value="/image/${i.getImage()}" var="imgUrl"></c:url>
 								<div class="col-sm-4">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
 												<a href="${pageContext.request.contextPath }/client-product-list?type=detail_product&id=${i.getId()}&quantity=1">
-													<img  class="hoverimg" src="${imgUrl}" alt="Fail" />
+													<img height="250" width="200" <%--class="hoverimg"--%> src="${imgUrl}" alt="Fail" />
 												</a>
 												<h2>${i.getPrice()} ₫</h2>
 												<p>${i.getProductName()}</p>

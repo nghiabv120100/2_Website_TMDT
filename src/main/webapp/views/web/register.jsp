@@ -103,8 +103,12 @@
             },
             error: function (error){
                 console.log("Error");
+<<<<<<< HEAD
                 window.location.href = "${url}?action=register"
 
+=======
+                window.location.href = "${url}?action=register";
+>>>>>>> b6c57334828f85f9fd5b41f34c29d5380da5d711
             }
 
         })
