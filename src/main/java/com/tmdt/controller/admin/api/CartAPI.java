@@ -2,6 +2,7 @@ package com.tmdt.controller.admin.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tmdt.model.ProductModel;
+import com.tmdt.service.CartService;
 import com.tmdt.service.ProductService;
 import com.tmdt.utils.HttpUtil;
 import org.apache.commons.fileupload.FileItem;
@@ -19,7 +20,8 @@ import java.io.IOException;
 public class CartAPI extends HttpServlet {
     @Inject
     private ProductService productService;
-
+    @Inject
+    private CartService cartService;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -53,13 +55,14 @@ public class CartAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json"); //
         int id = Integer.parseInt(req.getReader().readLine());
-        productService.delete(id);
+        cartService.delete(id);
         System.out.println("Done delete");
+        mapper.writeValue(resp.getOutputStream(),"{}");
         // Convert from type json to Model
         //ProductModel productModel = HttpUtil.of(req.getReader()).toModel(ProductModel.class);
 
         //productService.delete(productModel.getIds());
-        //mapper.writeValue(resp.getOutputStream(),"{}");
+
         //System.out.println(productModel);
     }
 }

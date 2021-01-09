@@ -38,20 +38,22 @@ public class AccountController extends HttpServlet {
             AccountModel accountModel= accountService.findByUsername(username);
             List<CartModel> carts = cartService.findByUserId(accountModel.getId());
             List<ProductModel> products = productService.findAll();
-            for(CartModel cart : carts) {
-                List<CartItemModel> cartItemModelList = cartItemService.findByCartId(cart.getId());
-                if (cartItemModelList !=null) {
-                    for(CartItemModel item: cartItemModelList) {
-                        for(ProductModel pro : products) {
-                            if ( item.getProductId()==pro.getId()) {
-                                item.setProduct(pro);
+            if (carts !=null) {
+                for(CartModel cart : carts) {
+                    List<CartItemModel> cartItemModelList = cartItemService.findByCartId(cart.getId());
+                    if (cartItemModelList !=null) {
+                        for(CartItemModel item: cartItemModelList) {
+                            for(ProductModel pro : products) {
+                                if ( item.getProductId()==pro.getId()) {
+                                    item.setProduct(pro);
+                                }
                             }
                         }
+                        cart.setItemModelList(cartItemModelList);
                     }
-                    cart.setItemModelList(cartItemModelList);
                 }
-
             }
+
             req.setAttribute("carts",carts);
             req.setAttribute("accountModel",accountModel);
             RequestDispatcher rd = req.getRequestDispatcher("/views/web/checkout.jsp");

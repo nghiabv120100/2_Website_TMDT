@@ -153,7 +153,7 @@
 					console.log("Success");
 					window.location.href = "${PCurl}?type=list&message=insert_success";
 				},
-				errMode: function (error){
+				error: function (error){
 					console.log("Error");
 				}
 			})

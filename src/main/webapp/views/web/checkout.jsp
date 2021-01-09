@@ -110,7 +110,8 @@
 								<c:forEach items="${cart.getItemModelList()}" var="item">
 									<tr>
 										<td class="cart_product">
-											<img src="" alt="#">
+											<c:url value="/image/${item.getProduct().getImage()}" var="imgUrl"></c:url>
+											<img width="100px" height="100px" src="${imgUrl}" alt="#">
 										</td>
 										<td class="description">${item.getProduct().getProductName()}</td>
 										<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>

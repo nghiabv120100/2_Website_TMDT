@@ -40,7 +40,9 @@ public class CartDAO extends GenericDAO<CartModel> {
                 ,cartModel.getDescribePro(),cartModel.getDetailCateId(),cartModel.getId());*/
     }
     public void delete(int id){
-        String sql="delete from Cart where id=?";
-        update(sql,id);
+        String sql1="delete from Cartitem where cart_id=?";
+        String sql2="delete from Cart where id=?";
+        update(sql1,id);
+        update(sql2,id);
     }
 }

@@ -39,9 +39,10 @@
 				</thead>
 				<tbody>
 				<c:forEach var="i" items="${cartItemModelList}">
+					<c:url value="/image/${i.getProduct().getImage()}" var="imgUrl"></c:url>
 					<tr>
 					<td class="cart_product">
-						<a href=""><img class="hoverimg" src="${url}/images/nitro52.png" alt=""></a>
+						<a href=""><img height="250" width="200" class="hoverimg" src="${imgUrl}" alt=""></a>
 					</td>
 					<td class="cart_description">
 						<h4><a href="">${i.getProduct().getProductName()}</a></h4>

@@ -22,4 +22,7 @@ public class CartService {
     public int save(CartModel cartModel){
         return cartDAO.save(cartModel);
     }
+    public void delete(int id) {
+        cartDAO.delete(id);
+    }
 }
