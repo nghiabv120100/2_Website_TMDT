@@ -35,7 +35,12 @@
 										<div class="single-products">
 											<div class="productinfo text-center">
 												<a href="${pageContext.request.contextPath }/client-product-list?type=detail_product&id=${i.getId()}&quantity=1">
-													<img height="250" width="200" <%--class="hoverimg"--%> src="${imgUrl}" alt="Fail" />
+													<div class="c1">
+														<img height="250" width="200" class="c2" src="${imgUrl}" alt="Fail" style="width: 300px;height: 200px;padding-left: 40px;"/>
+														<div class="c3">
+															<a href="./cart.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+														</div>
+													</div>
 												</a>
 												<h2>${i.getPrice()} ₫</h2>
 												<p>${i.getProductName()}</p>
