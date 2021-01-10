@@ -87,142 +87,22 @@
 													<td>${buyer.email }</td>
 													<td>${cart.buyDate }</td>
 													<td></td>
-													<td class="center">Chờ duyệt</td>
+													<td class="center">
+														<select class="form-control">
+															<option value="pendding">Đang giao</option>
+															<option value="success">Đã giao</option>
+															<option value="cancer">Đã hủy</option>
+														</select>
+													</td>
 													<td><a
 															href="<c:url value='/admin/order/edit?id=${list.id }'/>"
 															class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Chi tiết</a> |
 														<a id="btnDelete" onclick="deleteCart(${cart.id })" class="center">Xóa</a> |
-														<a id="btnDelete" onclick="deleteCart(${cart.id })" class="center">Chờ giao</a>
+														<a class="center">Cập nhật</a>
 													</td>
 												</tr>
 
 											</c:forEach>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-						<!--End Advanced Tables -->
-					</div>
-				</div>
-				<hr />
-				<div class="row">
-					<div class="col-md-12">
-						<!-- Advanced Tables -->
-						<div class="panel panel-default">
-							<div class="panel-heading">Đơn hàng đang giao</div>
-							<div class="panel-body">
-								<div class="table-responsive">
-									<table class="table table-striped table-bordered table-hover"
-										   >
-										<thead>
-										<tr>
-											<th>index</th>
-											<th>ID</th>
-											<th>Người mua</th>
-											<th>Email</th>
-											<th>Ngày mua</th>
-											<th>Tổng thanh toán</th>
-											<th>Tình trạng</th>
-											<th>Action</th>
-										</tr>
-										</thead>
-										<tbody>
-										</a>
-										<%--xác ??nh gi? hàng --%>
-										<c:forEach items="${cartList}" var="cart">
-											<c:set var="index" value="${0}" />
-
-											<c:forEach items="${userList}" var="user">
-												<c:if test="${cart.userID==user.id}">
-													<c:set var="buyer" value="${user}" />
-												</c:if>
-											</c:forEach>
-
-											<c:forEach items="${customerList}" var="customer">
-												<c:if test="${cart.customerID==customer.id}">
-													<c:set var="buyer" value="${customer}" />
-												</c:if>
-											</c:forEach>
-											<tr>
-												<td>${index }</td>
-												<td>${cart.id }</td>
-												<td>${buyer.username }</td>
-												<td>${buyer.email }</td>
-												<td>${cart.buyDate }</td>
-												<td></td>
-												<td class="center">Đang giao</td>
-												<td><a
-														href="<c:url value='/admin/order/edit?id=${list.id }'/>"
-														class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Thành công</a> |
-													<a id="" onclick="deleteCart(${cart.id })" class="center">Hủy đơn</a>
-
-												</td>
-											</tr>
-
-										</c:forEach>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-						<!--End Advanced Tables -->
-					</div>
-				</div>
-
-				<hr />
-				<div class="row">
-					<div class="col-md-12">
-						<!-- Advanced Tables -->
-						<div class="panel panel-default">
-							<div class="panel-heading">Đơn hàng đã giao</div>
-							<div class="panel-body">
-								<div class="table-responsive">
-									<table class="table table-striped table-bordered table-hover"
-										   >
-										<thead>
-										<tr>
-											<th>index</th>
-											<th>ID</th>
-											<th>Người mua</th>
-											<th>Email</th>
-											<th>Ngày mua</th>
-											<th>Tổng thanh toán</th>
-											<th>Tình trạng</th>
-											<th>Action</th>
-										</tr>
-										</thead>
-										<tbody>
-										</a>
-										<%--xác ??nh gi? hàng --%>
-										<c:forEach items="${cartList}" var="cart">
-											<c:set var="index" value="${0}" />
-
-											<c:forEach items="${userList}" var="user">
-												<c:if test="${cart.userID==user.id}">
-													<c:set var="buyer" value="${user}" />
-												</c:if>
-											</c:forEach>
-
-											<c:forEach items="${customerList}" var="customer">
-												<c:if test="${cart.customerID==customer.id}">
-													<c:set var="buyer" value="${customer}" />
-												</c:if>
-											</c:forEach>
-											<tr>
-												<td>${index }</td>
-												<td>${cart.id }</td>
-												<td>${buyer.username }</td>
-												<td>${buyer.email }</td>
-												<td>${cart.buyDate }</td>
-												<td></td>
-												<td class="center">Giao thành công</td>
-												<td>
-													<a onclick="deleteCart(${cart.id })" class="center">Xóa</a>
-												</td>
-											</tr>
-
-										</c:forEach>
 										</tbody>
 									</table>
 								</div>
