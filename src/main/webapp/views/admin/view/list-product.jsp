@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <c:url var="APIurl" value="/api-admin-product"/>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <c:url value="/views/admin/static" var="url"></c:url>
 <c:url value="/admin-product-list" var="PCurl"></c:url>
 <!DOCTYPE html>
@@ -27,9 +27,7 @@
 </head>
 <body>
 	<div id="wrapper">
-
 		<jsp:include page="/views/admin/view/nav-bar.jsp"></jsp:include>
-
 		<!-- /. NAV TOP  -->
 		<jsp:include page="/views/admin/view/slide-bar.jsp"></jsp:include>
 		<!-- /. NAV SIDE  -->
@@ -37,23 +35,20 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>All Product</h2>
-						<h5>You can management product in here</h5>
-
+						<h2>Danh sách sản phẩm</h2>
 					</div>
 				</div>
 				<!-- /. ROW  -->
 				<hr />
-
 				<div class="row">
 					<div class="col-md-12">
 						<div>
-							<a href='<c:url value="/admin-product-list?type=add"/>'>Add</a>
+							<button class="btn btn-danger square-btn-adjust" style="margin-bottom: 5px"><a href='<c:url value="/admin-product-list?type=add"/>' style="color: white">Thêm sản phẩm</a></button>
 						</div>
 
 						<!-- Advanced Tables -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Advanced Tables</div>
+							<div class="panel-heading"></div>
 							<div class="panel-body">
 								<div class="table-responsive">
 									<table class="table table-striped table-bordered table-hover"
@@ -61,12 +56,12 @@
 										<thead>
 											<tr>
 												<th>ID </th>
-												<th>Image</th>
-												<th>Name</th>
-												<th>Price($)</th>
-												<th>Detail Category</th>
-												<th>Description</th>
-												<th>Action </th>
+												<th>Ảnh sản phẩm</th>
+												<th>Tên sản phẩm</th>
+												<th>Giá(vnđ)</th>
+												<th>Chi tiết loại sản phẩm</th>
+												<th>Mô tả sản phẩm</th>
+												<th></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -74,7 +69,7 @@
 											<tr class="odd gradeX">
 												<td>${pro.id }</td>
 												<c:url value="/image/${pro.getImage()}" var="imgUrl"></c:url>
-												<td><img height="150" width="200" src="${imgUrl}" /></td>
+												<td><img style="width: 50px;height: 50px;object-fit: cover" src="${imgUrl}" /></td>
 
 												<td>${pro.productName }</td>
 												<td>${pro.price }</td>
@@ -91,11 +86,11 @@
 												<td>
 													<button style="width: 70px;">
 														<a href="<c:url value="/admin-product-list?type=edit&id=${pro.id }"/>"
-														   class="center">Edit</a>
+														   class="center">Xem/Sửa</a>
 													</button>
 														|
 													<button id="btnDelete" type ="button" onclick = "deleteProduct(${pro.id})"
-															class="center">Delete
+															class="center">Xóa
 													</button>
 												</td>
 											</tr>

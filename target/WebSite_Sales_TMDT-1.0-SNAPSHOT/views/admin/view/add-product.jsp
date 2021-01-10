@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <c:url value="/api-admin-product" var="APIurl"></c:url>
 <c:url value="/views/admin/static" var="url"></c:url>
 <c:url value="/admin-product-list" var="PCurl"></c:url>
@@ -31,8 +31,7 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Add Product</h2>
-						<h5>Add product you can sell</h5>
+						<h2>Thêm sản phẩm</h2>
 					</div>
 				</div>
 				<!-- /. ROW  -->
@@ -41,30 +40,30 @@
 					<div class="col-md-12">
 						<!-- Form Elements -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Add Product</div>
+							<div class="panel-heading"></div>
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-6">
-										<h3>Info Product:</h3>
+										<h3>Nhập thông tin sản phẩm</h3>
 
 										<form role="form" action="api-admin-product" method="post" enctype="multipart/form-data">
 											<div class="form-group">
-												<label>Name:</label> <input class="form-control"
-													placeholder="please enter Product Name" name="productName" id="productName" />
+												<label>Tên sản phẩm</label> <input class="form-control"
+													placeholder="Nhập tên sản phẩm" name="productName" id="productName" />
 											</div>
 											<div class="form-group">
-												<label>Price ($)</label> <input class="form-control"
-													placeholder="please enter Price" type="number" name="price" id="price" />
+												<label>Giá (VNĐ)</label> <input class="form-control"
+													placeholder="Nhập giá sản phẩm" type="number" name="price" id="price" />
 											</div>
 											<div class="form-group">
-												<label>Description </label>
+												<label>Mô tả sản phảm </label>
 												<br>
 												<textarea rows="4" cols="50" name="editer" id="editer" ></textarea>
 
 											</div>
 
 											<div class="form-group">
-												<label>Detail Category</label>
+												<label>Chi tiết loại sản phẩm</label>
 												<div class="checkbox">
 													<select name="detailCateId" id="detailCateId">
 														<c:forEach items="${detailCategories}" var="c">
@@ -75,9 +74,9 @@
 
 											</div>
 											<div class="form-group">
-												<label>image</label> <input type="file" name="image" id="image"/>
+												<label>Ảnh sản phẩm</label> <input type="file" name="image" id="image"/>
 											</div>
-											<button type="button" id="btnAdd" class="btn btn-default">Add</button>
+											<button type="button" id="btnAdd" class="btn btn-default">Thêm</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
 
@@ -89,11 +88,6 @@
 						<!-- End Form Elements -->
 					</div>
 				</div>
-				<!-- /. ROW  -->
-				<div class="row">
-					<div class="col-md-12"></div>
-				</div>
-				<!-- /. ROW  -->
 			</div>
 			<!-- /. PAGE INNER  -->
 		</div>

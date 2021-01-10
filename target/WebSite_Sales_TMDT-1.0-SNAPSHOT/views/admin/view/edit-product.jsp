@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <c:url value="/api-admin-product" var="APIurl"></c:url>
 <c:url value="/views/admin/static" var="url"></c:url>
 <c:url value="/admin-product-list" var="PCurl"></c:url>
@@ -31,8 +31,7 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Add Product</h2>
-						<h5>Add product you can sell</h5>
+						<h2>Thông tin sản phẩm</h2>
 					</div>
 				</div>
 				<!-- /. ROW  -->
@@ -41,30 +40,30 @@
 					<div class="col-md-12">
 						<!-- Form Elements -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Add Product</div>
+							<div class="panel-heading"></div>
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-6">
-										<h3>User:</h3>
+										<h3>Thông tin chi tiết</h3>
 										<%--<c:url value="/admin/product/edit" var="edit"></c:url>--%>
 										<form role="form" <%--action="${edit }" method="post"--%>
 											enctype="multipart/form-data">
 											<input id="id" name="id" value="${product.id }" hidden="">
 											<div class="form-group">
-												<label>Name:</label> <input id="productName" class="form-control"
+												<label>Tên sản phẩm</label> <input id="productName" class="form-control"
 													value="${product.productName}" name="productName" />
 											</div>
 											<div class="form-group">
-												<label>Price ($)</label> <input id="price" class="form-control"
+												<label>Giá(VNĐ)</label> <input id="price" class="form-control"
 													value="${product.price }" type="number" name="price" />
 											</div>
 											<div class="form-group">
-												<label>Description </label> <br>
+												<label>Mô tả </label> <br>
 												<textarea rows="4" cols="50" name="editer" id="editer" >${product.describePro}</textarea>
 											</div>
 
 											<div class="form-group">
-												<label>Detail Category</label>
+												<label>Chi tiết loại sản phẩm</label>
 												<div class="checkbox">
 													<select id="detailCateId" name="detailCateId">
 
@@ -82,13 +81,11 @@
 
 											</div>
 											<div class="form-group">
-												<label>image</label> <input type="file" name="image" value="${product.image }" />
+												<label>Ảnh sản phẩm</label> <input type="file" name="image" value="${product.image }" />
 											</div>
-											<button id="btnEdit"  class="btn btn-default">Edit</button>
+											<button id="btnEdit"  class="btn btn-default">Cập nhật</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
-
-
 									</div>
 								</div>
 							</div>
@@ -96,11 +93,6 @@
 						<!-- End Form Elements -->
 					</div>
 				</div>
-				<!-- /. ROW  -->
-				<div class="row">
-					<div class="col-md-12"></div>
-				</div>
-				<!-- /. ROW  -->
 			</div>
 			<!-- /. PAGE INNER  -->
 		</div>

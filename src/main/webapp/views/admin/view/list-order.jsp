@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <c:url value="/views/admin/static" var="url"></c:url>
@@ -38,7 +37,7 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Order Management</h2>
+						<h2>Quản lí đơn hàng</h2>
 					</div>
 				</div>
 				<!-- /. ROW  -->
@@ -47,7 +46,7 @@
 					<div class="col-md-12">
 						<!-- Advanced Tables -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Advanced Tables</div>
+							<div class="panel-heading">Đơn hàng mới</div>
 							<div class="panel-body">
 								<div class="table-responsive">
 									<table class="table table-striped table-bordered table-hover"
@@ -56,11 +55,11 @@
 											<tr>
 												<th>index</th>
 												<th>ID</th>
-												<th>Buyer</th>
+												<th>Người mua</th>
 												<th>Email</th>
-												<th>Date</th>
-												<th>Sum</th>
-												<th>Status</th>
+												<th>Ngày mua</th>
+												<th>Tổng thanh toán</th>
+												<th>Tình trạng</th>
 												<th>Action</th>
 											</tr>
 										</thead>
@@ -88,16 +87,142 @@
 													<td>${buyer.email }</td>
 													<td>${cart.buyDate }</td>
 													<td></td>
-													<td class="center">Pending</td>
+													<td class="center">Chờ duyệt</td>
 													<td><a
 															href="<c:url value='/admin/order/edit?id=${list.id }'/>"
-															class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Edit</a> |
-														<a id="btnDelete" onclick="deleteCart(${cart.id })" class="center">Delete</a>
-
+															class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Chi tiết</a> |
+														<a id="btnDelete" onclick="deleteCart(${cart.id })" class="center">Xóa</a> |
+														<a id="btnDelete" onclick="deleteCart(${cart.id })" class="center">Chờ giao</a>
 													</td>
 												</tr>
 
 											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<!--End Advanced Tables -->
+					</div>
+				</div>
+				<hr />
+				<div class="row">
+					<div class="col-md-12">
+						<!-- Advanced Tables -->
+						<div class="panel panel-default">
+							<div class="panel-heading">Đơn hàng đang giao</div>
+							<div class="panel-body">
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered table-hover"
+										   >
+										<thead>
+										<tr>
+											<th>index</th>
+											<th>ID</th>
+											<th>Người mua</th>
+											<th>Email</th>
+											<th>Ngày mua</th>
+											<th>Tổng thanh toán</th>
+											<th>Tình trạng</th>
+											<th>Action</th>
+										</tr>
+										</thead>
+										<tbody>
+										</a>
+										<%--xác ??nh gi? hàng --%>
+										<c:forEach items="${cartList}" var="cart">
+											<c:set var="index" value="${0}" />
+
+											<c:forEach items="${userList}" var="user">
+												<c:if test="${cart.userID==user.id}">
+													<c:set var="buyer" value="${user}" />
+												</c:if>
+											</c:forEach>
+
+											<c:forEach items="${customerList}" var="customer">
+												<c:if test="${cart.customerID==customer.id}">
+													<c:set var="buyer" value="${customer}" />
+												</c:if>
+											</c:forEach>
+											<tr>
+												<td>${index }</td>
+												<td>${cart.id }</td>
+												<td>${buyer.username }</td>
+												<td>${buyer.email }</td>
+												<td>${cart.buyDate }</td>
+												<td></td>
+												<td class="center">Đang giao</td>
+												<td><a
+														href="<c:url value='/admin/order/edit?id=${list.id }'/>"
+														class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Thành công</a> |
+													<a id="" onclick="deleteCart(${cart.id })" class="center">Hủy đơn</a>
+
+												</td>
+											</tr>
+
+										</c:forEach>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<!--End Advanced Tables -->
+					</div>
+				</div>
+
+				<hr />
+				<div class="row">
+					<div class="col-md-12">
+						<!-- Advanced Tables -->
+						<div class="panel panel-default">
+							<div class="panel-heading">Đơn hàng đã giao</div>
+							<div class="panel-body">
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered table-hover"
+										   >
+										<thead>
+										<tr>
+											<th>index</th>
+											<th>ID</th>
+											<th>Người mua</th>
+											<th>Email</th>
+											<th>Ngày mua</th>
+											<th>Tổng thanh toán</th>
+											<th>Tình trạng</th>
+											<th>Action</th>
+										</tr>
+										</thead>
+										<tbody>
+										</a>
+										<%--xác ??nh gi? hàng --%>
+										<c:forEach items="${cartList}" var="cart">
+											<c:set var="index" value="${0}" />
+
+											<c:forEach items="${userList}" var="user">
+												<c:if test="${cart.userID==user.id}">
+													<c:set var="buyer" value="${user}" />
+												</c:if>
+											</c:forEach>
+
+											<c:forEach items="${customerList}" var="customer">
+												<c:if test="${cart.customerID==customer.id}">
+													<c:set var="buyer" value="${customer}" />
+												</c:if>
+											</c:forEach>
+											<tr>
+												<td>${index }</td>
+												<td>${cart.id }</td>
+												<td>${buyer.username }</td>
+												<td>${buyer.email }</td>
+												<td>${cart.buyDate }</td>
+												<td></td>
+												<td class="center">Giao thành công</td>
+												<td>
+													<a onclick="deleteCart(${cart.id })" class="center">Xóa</a>
+												</td>
+											</tr>
+
+										</c:forEach>
 										</tbody>
 									</table>
 								</div>
@@ -141,22 +266,16 @@
 									</table>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-									<button type="button" class="btn btn-success">OK</button>
+									<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
 								</div>
 							</div>
 						</div>
 					</div> <!-- end modal -->
 				</c:forEach>
 				</div>
-
 		</div>
 		<!-- /. PAGE INNER  -->
 	</div>
-
-	<!-- /. PAGE WRAPPER  -->
-	<!-- /. WRAPPER  -->
-	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script src="${url}/js/jquery-1.10.2.js"></script>
 	<script src="${url}/js/jquery-3.3.1.min.js"></script>

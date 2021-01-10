@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <c:url value="/views/admin/static" var="url"></c:url>
 <c:url value="/api-admin-user" var="APIurl"></c:url>
 <c:url value="/admin-user-list" var="ACurl"></c:url>
@@ -30,8 +30,7 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Edit User</h2>
-						<h5>You can edit info user in here</h5>
+						<h2>Chỉnh sửa người dùng</h2>
 					</div>
 				</div>
 				<!-- /. ROW  -->
@@ -40,37 +39,37 @@
 					<div class="col-md-12">
 						<!-- Form Elements -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Info you can change</div>
+							<div class="panel-heading"></div>
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-6">
-										<h3>User:</h3>
+										<h3>Thông tin người dùng</h3>
 										<%--<c:url value="/admin/user/edit" var="edit"></c:url>--%>
 										<form role="form" <%--action="${edit }"--%>
 											enctype="multipart/form-data">
 											<input name="id" value="${user.id }" id="id" type="text" hidden="">
 											<div class="form-group">
-												<label>User Name:</label> <input class="form-control"
+												<label>Tên người dùng</label> <input class="form-control"
 													value="${user.username }" name="username" id="username"/>
 											</div>
 											<div class="form-group">
-												<label>Password</label> <input class="form-control"
+												<label>Mật khẩu</label> <input class="form-control"
 													value="${user.password }" type="password" name="password" id="password"/>
 											</div>
 											<div class="form-group">
-												<label>Email:</label> <input class="form-control"
+												<label>Email</label> <input class="form-control"
 													value="${user.email }" name="email" id="email"/>
 											</div>
 											<div class="form-group">
-												<label>Phone number:</label> <input class="form-control" value="${user.phonenumber}"
+												<label>Số điện thoại</label> <input class="form-control" value="${user.phonenumber}"
 																					placeholder="Please enter phone number" name="phonenumber" id="phonenumber" />
 											</div>
 											<div class="form-group">
-												<label>Address</label> <input class="form-control" value="${user.address}"
+												<label>Địa chỉ</label> <input class="form-control" value="${user.address}"
 																			  placeholder="Please enter address" name="address" id="address" />
 											</div>
 											<div class="form-group">
-												<label>Role</label>
+												<label>Chức vụ</label>
 												<div class="checkbox">
 													<label> <input type="radio" value="1" name="role" class="roleid"/>Admin
 													</label> <br> <label> <input type="radio" value="2"
@@ -81,15 +80,12 @@
 											</div>
 
 											<div class="form-group">
-												<label>Choose Avatar</label> <input type="file"
+												<label>Chọn Avatar</label> <input type="file"
 													name="avatar" />
 											</div>
-											<button type="button" class="btn btn-default" id="btnEdit">Edit</button>
+											<button type="button" class="btn btn-default" id="btnEdit">Cập nhật</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
-
-
-
 									</div>
 								</div>
 							</div>
