@@ -123,14 +123,14 @@
 							</table>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-							<button type="button" class="btn btn-success">OK</button>
+							<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
 						</div>
 					</div>
 				</div>
 			</div> <!-- end modal -->
 		</c:forEach>
 	</div>
+	
 	<jsp:include page="footer.jsp"></jsp:include>
 </section> <!--/#cart_items-->
 <script src="${url}/js/jquery.js"></script>
