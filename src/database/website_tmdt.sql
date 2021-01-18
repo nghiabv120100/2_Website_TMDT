@@ -77,5 +77,7 @@ create table customer
     phonenumber char(15),
     address nvarchar(255),
     Primary	Key(id)
-)
+);
 
+alter table cart
+add foreign key (customer_id) references Customer(id)
