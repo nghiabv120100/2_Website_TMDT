@@ -36,7 +36,7 @@
 								<div class="brands_slider_container">
 									<div class="owl-carousel owl-theme brands_slider">
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><a<img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_1.jpg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"> <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_1.jpg" alt=""></a></div>
 										</div>
 										<div class="owl-item">
 											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_2.jpg" alt=""></a></div>
