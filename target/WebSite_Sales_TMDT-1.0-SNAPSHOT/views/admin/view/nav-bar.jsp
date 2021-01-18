@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <nav class="navbar navbar-default navbar-cls-top " role="navigation"
 	style="margin-bottom: 0">
 	<div class="navbar-header">
@@ -11,7 +12,7 @@
 	</div>
 	<div
 		style="color: #ffffff; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
-		Welcome ${loginName} &nbsp; <a href="${pageContext.request.contextPath }/dang-nhap?action=logout"
-			class="btn btn-danger square-btn-adjust">Logout</a>
+		Chào ${loginName} &nbsp; <a href="${pageContext.request.contextPath }/dang-nhap?action=logout"
+			class="btn btn-danger square-btn-adjust">Đăng xuất</a>
 	</div>
 </nav>

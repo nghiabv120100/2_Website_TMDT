@@ -1,18 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: nghia
-  Date: 11/28/2020
-  Time: 8:44 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/views/web" var="login"></c:url>
+<c:url value="/trang-chu" var="HomeUrl"> </c:url>
 <html>
 <head>
     <title>Title</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
     <!------ Include the above in your HEAD tag ---------->
     <style>
 
@@ -65,6 +61,8 @@
         z-index: 1;
         top: 0;
         left: 0;
+            background: url("https://wallpaperaccess.com/full/1892752.jpg");
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
         }
 
         .login-form{
@@ -94,32 +92,37 @@
     </style>
 </head>
 <body>
-<div class="sidenav">
-    <div class="login-main-text">
-        <h2>Application<br> Login Page</h2>
-        <p>Login or register from here to access.</p>
+
+    <div class="sidenav text-center align-middle" >
+        <div class="login-main-text">
+            <h1>Đăng nhập<br><br><br><br><br><br>
+                <a href="${HomeUrl}?action=home"><i style="color: white" class="fas fa-home fa-2x"></i></a></h1>
+        </div>
     </div>
-</div>
+
 <div class="main">
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
             <form action="${pageContext.request.contextPath }/dang-nhap" method="post">
                 <div class="form-group">
-                    <label>User Name</label>
-                    <input name="username" type="text" class="form-control" placeholder="User Name">
+                    <h3>Tên đăng nhập</h3>
+                    <input name="username" type="text" class="form-control" placeholder="Tên đăng nhập">
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input name="password" type="password" class="form-control" placeholder="Password">
+                    <h3>Mật khẩu</h3>
+                    <input name="password" type="password" class="form-control" placeholder="Mật khẩu">
                 </div>
-                <button type="submit" class="btn btn-black" >Login</button>
+                <button type="submit" class="btn btn-success btn-primary" >Đăng nhập</button>
 
                 <input type="hidden" name="action" value="login">
+
             </form>
             <form action="${pageContext.request.contextPath }/dang-ky?type=register" method="get ">
-                <button type="submit" class="btn btn-secondary">Register</button>
+                <button type="submit" class="btn btn-link">Đăng kí</button>
                 <input type="hidden" name="action" value="register">
+                <button type="button" class="btn btn-link" style="padding-left: 180px">Quên mật khẩu?</button>
             </form>
+
         </div>
     </div>
 </div>

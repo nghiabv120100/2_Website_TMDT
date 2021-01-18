@@ -12,10 +12,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Sản phẩm</title>
-    <link href="${url}css/bootstrap.min.css" rel="stylesheet">
-    <link href="${url}css/font-awesome.min.css" rel="stylesheet">
+
 	<link href="${url}css/main.css" rel="stylesheet">
 	<link href="${url}css/responsive.css" rel="stylesheet">
+	<link href="${url}css/brand.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+	<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>
+	<link href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </head>
 
 <body>
@@ -23,11 +28,61 @@
 	<section>
 		<div class="container">
 			<div class="row">
+				<div class="brands-area">
+					<div class="zigzag-bottom"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col" style="padding: 10px 0px;">
+								<div class="brands_slider_container">
+									<div class="owl-carousel owl-theme brands_slider">
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><a<img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_1.jpg" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_2.jpg" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_4.jpg" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_5.jpg" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_3.jpg" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_6.jpg" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_7.jpg" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_8.jpg" alt=""></a></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<ul>
+					<li style="display: inline; padding: 0px 15px; color: black; font-size: 19px;"> Chọn giá sản phẩm:</li>
+					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;"> Dưới 10 triệu</li>
+					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;">10-15 triệu</li>
+					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;">10-15 triệu</li>
+					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;">10-15 triệu</li>
+					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;">10-15 triệu</li>
+					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;">10-15 triệu</li>
+				</ul>
+			</div>
+			<div class="row">
 				<div class="col-sm-12 padding-right">
 					<div class="features_items" style="min-height: 300px"><!--features_items-->
-						<h2 class="title text-center">Shop</h2>
 						<div class="row">
-							<h1 style="background-color: #ea0202; color: white; padding-left: 20px" >Acer</h1>
+							<hr>
 							<c:forEach var = "i" items="${proList}">
 								<c:url value="/image/${i.getImage()}" var="imgUrl"></c:url>
 								<div class="col-sm-4">
@@ -35,7 +90,12 @@
 										<div class="single-products">
 											<div class="productinfo text-center">
 												<a href="${pageContext.request.contextPath }/client-product-list?type=detail_product&id=${i.getId()}&quantity=1">
-													<img height="250" width="200" <%--class="hoverimg"--%> src="${imgUrl}" alt="Fail" />
+													<div class="c1">
+														<img height="250" width="200" class="c2" src="${imgUrl}" alt="Fail" style="width: 300px;height: 200px;padding-left: 40px;"/>
+														<div class="c3">
+															<a  <%--href="${APIurl}?id=${i.getId()}"--%> onclick="addToCart(${i.getId()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+														</div>
+													</div>
 												</a>
 												<h2>${i.getPrice()} ₫</h2>
 												<p>${i.getProductName()}</p>
@@ -62,12 +122,9 @@
 			</div>
 		</div>
 	</section>
-	<script src="${url}/js/jquery.js"></script>
-	<script src="${url}/js/price-range.js"></script>
-    <script src="${url}/js/jquery.scrollUp.min.js"></script>
-	<script src="${url}/js/bootstrap.min.js"></script>
-    <script src="${url}/js/jquery.prettyPhoto.js"></script>
-    <script src="${url}/js/main.js"></script>
+	<script src="${url}/js/brand.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
+	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
 	<script>
 		function addToCart(data){
 			$.ajax({

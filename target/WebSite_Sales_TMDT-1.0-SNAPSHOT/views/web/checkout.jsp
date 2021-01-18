@@ -89,15 +89,14 @@
 		</div>
 		<c:forEach items="${carts}" var="cart">
 			<div class="modal fade" id="oderlist${cart.id}">
-				<div class="modal-dialog modal-dialog-centered modal-lg">
-					<div class="modal-content">
+				<div class="modal-dialog modal-dialog-centered modal-lg" style="width: 50%;">
+					<div class="modal-content" >
 						<div class="modal-header">
 							<h4 class="modal-title">Chi  tiết đơn hàng</h4>
 						</div>
 						<div class="modal-body">
 							<table class="table table-condensed">
 								<thead>
-
 								<tr class="cart_menu">
 									<td class="image">Ảnh</td>
 									<td class="description">Tên Sản Phẩm</td>
@@ -109,9 +108,9 @@
 								<tbody>
 								<c:forEach items="${cart.getItemModelList()}" var="item">
 									<tr>
-										<td class="cart_product">
+										<td class="cart_product" style="margin: 0px;	">
 											<c:url value="/image/${item.getProduct().getImage()}" var="imgUrl"></c:url>
-											<img width="100px" height="100px" src="${imgUrl}" alt="#">
+											<img width="50px" height="50px" src="${imgUrl}" alt="#">
 										</td>
 										<td class="description">${item.getProduct().getProductName()}</td>
 										<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>
@@ -123,14 +122,14 @@
 							</table>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-							<button type="button" class="btn btn-success">OK</button>
+							<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
 						</div>
 					</div>
 				</div>
 			</div> <!-- end modal -->
 		</c:forEach>
 	</div>
+
 	<jsp:include page="footer.jsp"></jsp:include>
 </section> <!--/#cart_items-->
 <script src="${url}/js/jquery.js"></script>
