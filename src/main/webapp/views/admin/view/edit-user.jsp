@@ -73,7 +73,7 @@
 												<label>Role</label>
 												<div class="checkbox">
 													<label> <input type="radio" value="1" name="role" class="roleid"/>Admin
-													</label> <br> <label> <input type="radio" value="2"
+													</label> <br> <label> <input type="radio" value="0"
 														name="role" class="roleid" checked="checked"/>Client
 													</label>
 												</div>
