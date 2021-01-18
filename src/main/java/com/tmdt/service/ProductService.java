@@ -52,4 +52,7 @@ public class ProductService {
     public List<ProductModel> searchByKeyword(String keyword) {
         return productDAO.searchByKeyword(keyword);
     }
+    public Object[] searchByProperties(List<Object> map, int offset, int limit){
+        return productDAO.searchByProperties(map,offset,limit);
+    }
 }

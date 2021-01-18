@@ -42,7 +42,7 @@
 											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_2.jpg" alt=""></a></div>
 										</div>
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_4.jpg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="${pageContext.request.contextPath}/client-searchByProperties?brand_id=7"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_4.jpg" alt=""></a></div>
 										</div>
 										<div class="owl-item">
 											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_5.jpg" alt=""></a></div>
@@ -70,12 +70,13 @@
 			<div class="row">
 				<ul>
 					<li style="display: inline; padding: 0px 15px; color: black; font-size: 19px;"> Chọn giá sản phẩm:</li>
-					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;"> Dưới 10 triệu</li>
-					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;">10-15 triệu</li>
-					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;">10-15 triệu</li>
-					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;">10-15 triệu</li>
-					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;">10-15 triệu</li>
-					<li style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;">10-15 triệu</li>
+					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=0&endPrice=500000"> Dưới 500.000</a></li>
+					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=500000&endPrice=1000000"> 500.000-1.000.000</a></li>
+					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=1000000&endPrice=5000000"> 1.000.0000-5.000.000</a></li>
+					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=5000000&endPrice=10000000"> 5.000.0000-10.000.000</a></li>
+					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=10000000&endPrice=15000000"> 10.000.0000-15.000.000</a></li>
+					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=15000000&endPrice=20000000"> 15.000.0000-20.000.000</a></li>
+
 				</ul>
 			</div>
 			<div class="row">
@@ -112,7 +113,9 @@
 
 									<li class="page-item"><a class="page-link" href="#">Trước</a></li>
 									<c:forEach var="i" begin="1" end="${numOfPages}">
-									<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/client-product-list?type=${type}&cate_id=${cate_id}&detail_cate_id=${detail_cate_id}&keyword=${keyword}&page=${i}">${i}</a></li>
+<%--									<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/client-product-list?type=${type}&cate_id=${cate_id}&detail_cate_id=${detail_cate_id}&keyword=${keyword}&page=${i}">${i}</a></li>--%>
+										<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/client-searchByProperties?&page=${i}">${i}</a></li>
+
 									</c:forEach>
 									<li class="page-item"><a class="page-link" href="#">Sau</a></li>
 								</ul>

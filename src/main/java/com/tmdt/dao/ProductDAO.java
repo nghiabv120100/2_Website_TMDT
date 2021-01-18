@@ -5,6 +5,7 @@ import com.tmdt.model.ProductModel;
 import com.tmdt.service.ProductService;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO extends GenericDAO<ProductModel>{
@@ -80,6 +81,39 @@ public class ProductDAO extends GenericDAO<ProductModel>{
                 "where product_name like '%"+keyword+"%' ";
         List<ProductModel> products = query(sql,new ProductMapper());
         return products.isEmpty() ? null : products;
+    }
+
+    public Object[] searchByProperties(List<Object> value, int offset, int limit)
+    {
+
+        String qString = "select Product.* from Product,DetailCategory,Category,Brand " +
+                "where 1=1 and Product.detail_cate_id=DetailCategory.id " +
+                "and DetailCategory.cate_id=Category.id and Brand.id = Product.brand_id";
+        if (value.get(0) !=null) {
+            qString+=" and brand_id = "+value.get(0);
+        }
+        if (value.get(1) !=null) {
+            qString += " and Category.id = "+value.get(1);
+        }
+        if(value.get(2)!=null) {
+            qString+= " and DetailCategory.id =  "+value.get(2);
+        }
+        qString += " and Product.price >= ? and Product.price <= ? ";
+        if (value.get(5) != null) {
+            qString += " and product_name like '%"+value.get(5)+"%' " ;
+        }
+
+        List<ProductModel> products = query(qString,new ProductMapper(),value.get(3),value.get(4));
+
+        int totalProduct = products.size();
+
+        qString += "limit "+offset+","+limit ;;
+
+        List<ProductModel> productList = query(qString,new ProductMapper(),value.get(3),value.get(4));
+
+        Object[] result ={productList,totalProduct};
+
+        return result ;
     }
 
 

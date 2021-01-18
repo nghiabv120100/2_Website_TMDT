@@ -80,4 +80,15 @@ create table customer
 );
 
 alter table cart
-add foreign key (customer_id) references Customer(id)
+add foreign key (customer_id) references Customer(id);
+
+create table brand
+(
+	id int primary key auto_increment,
+    brand_name nvarchar(255)
+);
+
+
+alter table product
+add column brand_id int references brand(id);
+
