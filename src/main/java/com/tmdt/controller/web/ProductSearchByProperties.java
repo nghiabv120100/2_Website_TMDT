@@ -26,13 +26,13 @@ public class ProductSearchByProperties extends HttpServlet {
         Integer startprice =(req.getParameter("startPrice")==null ?null:Integer.parseInt(req.getParameter("startPrice")) );
         Integer endprice =(req.getParameter("endPrice")==null?null:Integer.parseInt(req.getParameter("endPrice")));
         HttpSession sessProperty = req.getSession();
-
-        sessProperty.setAttribute("brand_id",brandid);
+        if (brandid != null)
+            sessProperty.setAttribute("brand_id",brandid);
         if (startprice !=null && endprice !=null) {
             sessProperty.setAttribute("start_price",startprice);
             sessProperty.setAttribute("end_price",endprice);
         }
-
+        Integer brand_id =(sessProperty.getAttribute("brand_id")==null ? null : (int)sessProperty.getAttribute("brand_id"));
         Integer cate_id = (sessProperty.getAttribute("cate_id")==null ? null :(int)sessProperty.getAttribute("cate_id")) ;
         Integer detail_cate_id = (sessProperty.getAttribute("detail_cate_id")==null ? null: (int)sessProperty.getAttribute("detail_cate_id")) ;
         Integer start_price = (sessProperty.getAttribute("start_price")==null?0:(int)sessProperty.getAttribute("start_price"));
@@ -42,7 +42,7 @@ public class ProductSearchByProperties extends HttpServlet {
         Integer page = (req.getParameter("page")==null?1:Integer.parseInt(req.getParameter("page"))) ; //tmp
 
         List<Object> values = new ArrayList<>();
-        values.add(0,brandid);
+        values.add(0,brand_id);
         values.add(1,cate_id);
         values.add(2,detail_cate_id);
         values.add(3,start_price);
