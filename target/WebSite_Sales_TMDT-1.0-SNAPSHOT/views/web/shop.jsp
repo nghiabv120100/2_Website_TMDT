@@ -21,6 +21,7 @@
 	<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>
 	<link href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </head>
 
 <body>
@@ -36,28 +37,49 @@
 								<div class="brands_slider_container">
 									<div class="owl-carousel owl-theme brands_slider">
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"> <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_1.jpg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"> <img style="height: 40px; width: auto;" src="${url}/images/lg1.png" alt=""></a></div>
 										</div>
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_2.jpg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo2.png" alt=""></a></div>
 										</div>
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="${pageContext.request.contextPath}/client-searchByProperties?brand_id=7"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_4.jpg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo3.jpg" alt=""></a></div>
 										</div>
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_5.jpg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo4.png" alt=""></a></div>
 										</div>
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_3.jpg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo5.jpg" alt=""></a></div>
 										</div>
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_6.jpg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo6.png" alt=""></a></div>
 										</div>
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_7.jpg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo7.jpeg" alt=""></a></div>
 										</div>
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561819026/brands_8.jpg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo8.png" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"> <img style="height: 40px; width: auto;" src="${url}/images/logo9.png" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo10.png" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo11.png" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo12.png" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo13.png" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo14.png" alt=""></a></div>
+										</div>
+										<div class="owl-item">
+											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo15.PNG" alt=""></a></div>
 										</div>
 									</div>
 								</div>
@@ -68,15 +90,14 @@
 			</div>
 			<hr>
 			<div class="row">
-				<ul>
-					<li style="display: inline; padding: 0px 15px; color: black; font-size: 19px;"> Chọn giá sản phẩm:</li>
-					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=0&endPrice=500000"> Dưới 500.000</a></li>
-					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=500000&endPrice=1000000"> 500.000-1.000.000</a></li>
-					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=1000000&endPrice=5000000"> 1.000.0000-5.000.000</a></li>
-					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=5000000&endPrice=10000000"> 5.000.0000-10.000.000</a></li>
-					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=10000000&endPrice=15000000"> 10.000.0000-15.000.000</a></li>
-					<li> <a style="display: inline; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=15000000&endPrice=20000000"> 15.000.0000-20.000.000</a></li>
-
+				<ul style="display: inline;">
+					<li style="flex:left; padding: 0px 15px; color: black; font-size: 19px;"> Chọn giá sản phẩm:</li>
+					<li> <a style="float:left; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=0&endPrice=500000"> Dưới 500.000</a></li>
+					<li> <a style="float:left; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=500000&endPrice=1000000"> 500.000-1.000.000</a></li>
+					<li> <a style="float:left; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=1000000&endPrice=5000000"> 1.000.0000-5.000.000</a></li>
+					<li> <a style="float:left; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=5000000&endPrice=10000000"> 5.000.0000-10.000.000</a></li>
+					<li> <a style="float:left; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=10000000&endPrice=15000000"> 10.000.0000-15.000.000</a></li>
+					<li> <a style="float:left; padding: 0px 15px; color: blue; font-size: 17px;" href="${pageContext.request.contextPath}/client-searchByProperties?startPrice=15000000&endPrice=20000000"> 15.000.0000-20.000.000</a></li>
 				</ul>
 			</div>
 			<div class="row">
@@ -130,6 +151,7 @@
 	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
 	<script>
 		function addToCart(data){
+			JSalert();
 			$.ajax({
 				url: '${APIaurl}',
 				type: 'POST',
@@ -149,6 +171,12 @@
 				}
 			})
 		};
+	</script>
+
+	<script type="text/javascript">
+		function JSalert(){
+			Swal.fire('Thêm vào giỏ hàng thành công')
+		}
 	</script>
 
 	<jsp:include page="footer.jsp"></jsp:include>
