@@ -10,6 +10,7 @@ public class AccountModel {
     private String address;
     private String avatar;
     private String confirmation_pwd;
+    private int roleId;
 
     public String getOldPassword() {
         return oldPassword;
@@ -28,7 +29,6 @@ public class AccountModel {
     }
 
 
-    private int roleId;
 
     public int getId() {
         return id;

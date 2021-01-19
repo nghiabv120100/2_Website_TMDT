@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tmdt.utils.JavaMailUtil;
 
-@WebServlet(urlPatterns = {"/api-user-dangky","/api-user-change-password"})
+@WebServlet(urlPatterns = {"/api-user-dangky","/api-user-change-password","/api-user-change-Inf"})
 public class AccountAPI extends HttpServlet {
     @Inject
     private AccountService accountService;
@@ -116,5 +116,71 @@ public class AccountAPI extends HttpServlet {
             }
         }
 
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        ObjectMapper mapper = new ObjectMapper();
+        HttpSession session =req.getSession();
+        String username =(String) session.getAttribute("loginName");
+        AccountModel accountModel = accountService.findByUsername(username);//Cũ
+        AccountModel oldAccount = accountModel;
+
+        String userName = req.getParameter("userName");
+        String email =req.getParameter("email");
+        String address = req.getParameter("address");
+        String phonenumber = req.getParameter("phoneNumber");
+
+        oldAccount.setUsername(userName);
+        oldAccount.setEmail(email);
+        oldAccount.setAddress(address);
+        oldAccount.setPhonenumber(phonenumber);
+
+        boolean check = false;
+        Message.reset();
+
+        if(oldAccount.getUsername().equals(""))
+        {
+
+            Message.errUser="Vui long nhap UserName !";
+            check = true;
+        }
+        if(oldAccount.getEmail().equals(""))
+        {
+            Message.errEmail = "Vui long nhap Email !";
+            check = true;
+        }
+        if(oldAccount.getPhonenumber().equals(""))
+        {
+            Message.errPhone = "Vui long nhap SDT";
+            check = true;
+        }
+
+        if(accountModel.getAddress().equals(""))
+        {
+            Message.errAddress = "Vui long nhap dia chi!";
+            check = true;
+        }
+        if(check == true)
+        {
+            req.setAttribute("errUserName",Message.errUser);
+            req.setAttribute("errEmail",Message.errEmail);
+            req.setAttribute("errPhone",Message.errPhone);
+            req.setAttribute("errAddress",Message.errAddress);
+            req.setAttribute("accountModel",oldAccount);
+
+            RequestDispatcher rd = req.getRequestDispatcher("/views/web/checkout.jsp");
+            rd.forward(req,resp);
+        }
+        else
+        {
+            AccountModel newAccount= accountService.update(oldAccount);
+//            mapper.writeValue(resp.getOutputStream(),oldAccount);
+            req.setAttribute("accountModel",newAccount);
+            RequestDispatcher rd = req.getRequestDispatcher("/views/web/checkout.jsp");
+            rd.forward(req,resp);
+
+        }
     }
 }

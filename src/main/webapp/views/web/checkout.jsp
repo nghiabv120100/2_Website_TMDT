@@ -30,11 +30,20 @@
 				<div class="col-sm-6">
 					<div class="shopper-info">
 						<p>Thông tin tài khoản</p>
-						<form>
-							<input id="name" type="text" placeholder="Tên" value="${accountModel.getUsername()}">
-							<input id="email" type="text" placeholder="Email" value="${accountModel.getEmail()}">
-							<input id="address" type="text" placeholder="Địa chỉ" value="${accountModel.getAddress()}">
-							<input id="phonenumber" type="text" placeholder="Số điện thoại" value="${accountModel.getPhonenumber()}">
+						<form action="${pageContext.request.contextPath}/api-user-change-Inf" method="get">
+							<input readonly id="name" type="text" placeholder="Tên" name="userName"
+								   value="${accountModel.getUsername()}">
+							<label style="color: red">${errUserName}</label>
+							<input id="email" type="text" placeholder="Email" name="email"
+								   value="${accountModel.getEmail()}">
+							<label style="color: red">${errEmail}</label>
+							<input id="address" type="text" placeholder="Địa chỉ" name="address"
+								   value="${accountModel.getAddress()}">
+							<label style="color: red">${errAddress}</label>
+							<input id="phonenumber" type="text" placeholder="Số điện thoại" name="phoneNumber"
+								   value="${accountModel.getPhonenumber()}">
+							<label style="color: red">${errPhone}</label>
+							<button type="submit" class="btn btn-primary">Thay đổi thông tin</button>
 						</form>
 					</div>
 				</div>

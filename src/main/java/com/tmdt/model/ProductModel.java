@@ -7,9 +7,6 @@ public class ProductModel {
     private double price;
     private String describePro;
     private int detailCateId;
-
-
-
     private int ids[]; //Chứ danh sách id để xoá
 
     public int[] getIds() {

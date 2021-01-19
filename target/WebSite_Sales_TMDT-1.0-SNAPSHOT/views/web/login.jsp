@@ -113,7 +113,6 @@
                     <input name="password" type="password" class="form-control" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-black" >Login</button>
-
                 <input type="hidden" name="action" value="login">
             </form>
             <form action="${pageContext.request.contextPath }/dang-ky?type=register" method="get ">
