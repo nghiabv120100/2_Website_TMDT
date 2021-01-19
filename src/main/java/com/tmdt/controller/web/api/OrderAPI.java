@@ -30,15 +30,23 @@ public class OrderAPI extends HttpServlet {
     private CartItemService cartItemService;
     @Inject
     private CustomerService customerService;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req,resp);
+    }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         HttpSession session = req.getSession();
         CartModel cartModel=(CartModel) session.getAttribute("order");
+        String isOnline =(String) session.getAttribute("isOnline");
         String userName = (String) session.getAttribute("loginName");
         if (cartModel != null) {
             if (userName == null) {
                 CustomerModel customerModel = HttpUtil.of(req.getReader()).toModel(CustomerModel.class);
+                session.setAttribute("customer",customerModel);
+
                 int cus_id = customerService.save(customerModel);
                 cartModel.setCustomerID(cus_id);
                 int cart_id = cartService.save(cartModel);
@@ -52,19 +60,28 @@ public class OrderAPI extends HttpServlet {
             }
             else {
                 AccountModel accountModel = accountService.findByUsername(userName);
+                session.setAttribute("user",accountModel);
                 cartModel.setUserID(accountModel.getId());
                 int cart_id = cartService.save(cartModel);
                 for(CartItemModel item: cartModel.getItemModelList()) {
                     item.setCartId(cart_id);
                     cartItemService.save(item);
                 }
-                RequestDispatcher rd =req.getRequestDispatcher("/views/web/done-order.jsp");
-                rd.forward(req,resp);
-                mapper.writeValue(resp.getOutputStream(),accountModel);
+                /*RequestDispatcher rd =req.getRequestDispatcher("/views/web/done-order.jsp");
+                rd.forward(req,resp);*/
+                if (isOnline !=null) {
+                    resp.sendRedirect(req.getContextPath()+"/paySuccess");
+                } else {
+                    mapper.writeValue(resp.getOutputStream(),accountModel);
+                }
+
+
                 System.out.println("Mua hang thanh cong");
             }
 
         }
+/*        RequestDispatcher rd = req.getRequestDispatcher("views/web/continue-order.jsp");
+        rd.forward(req,resp);*/
 
     }
 }

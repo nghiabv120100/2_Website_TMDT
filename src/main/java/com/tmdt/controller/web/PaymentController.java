@@ -1,7 +1,14 @@
 package com.tmdt.controller.web;
 
+import com.tmdt.model.AccountModel;
 import com.tmdt.model.CartItemModel;
 import com.tmdt.model.CartModel;
+import com.tmdt.model.CustomerModel;
+import com.tmdt.service.AccountService;
+import com.tmdt.service.CustomerService;
+import com.tmdt.utils.HttpUtil;
+
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,18 +17,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 
 @WebServlet(urlPatterns= {"/payment"})
 public class PaymentController extends HttpServlet {
+    @Inject
+    CustomerService customerService;
+    @Inject
+    AccountService accountService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String fullname = req.getParameter("fullname");
-        String email = req.getParameter("c_email");
+        String email = req.getParameter("email");
         String phone = req.getParameter("phone");
         String address = req.getParameter("address");
-        String note = req.getParameter("note");
-        String optionPayment = req.getParameter("optionPayment");
 
         /*HttpSession httpSession = req.getSession();
         String u_email = (String) httpSession.getAttribute("email");
@@ -53,12 +63,30 @@ public class PaymentController extends HttpServlet {
         httpSession.setAttribute("cartEntity",cartEntity);*/
 
         HttpSession session = req.getSession();
+        session.setAttribute("isOnline","True");
         CartModel cartModel =  (CartModel) session.getAttribute("order");
 
-        if(optionPayment.equals("online")){
+        String userName = (String) session.getAttribute("loginName");
+        if (cartModel != null) {
+            if (userName == null) {
+                CustomerModel customerModel = new CustomerModel();
+                customerModel.setFullname(fullname);
+                customerModel.setEmail(email);
+                customerModel.setPhonenumber(phone);
+                customerModel.setAddress(address);
+                session.setAttribute("customer", customerModel);
+            }
+            else {
+                AccountModel accountModel = accountService.findByUsername(userName);
+                session.setAttribute("user",accountModel);
+            }
+        }
+
+
+        if(cartModel !=null){
             String chuoi="";
             chuoi+="upload=1";
-            chuoi+="&&return=http://localhost:8080/Project_WebSite_Ban_Quan_Ao_war_exploded/cartSuccess";
+            chuoi+="&&return=http://localhost:8080/WebSite_Sales_TMDT_war_exploded/api-user-order";
             chuoi+="&&cmd=_cart";
             chuoi+="&&business=chuShop@gmail.com";
 
@@ -75,9 +103,7 @@ public class PaymentController extends HttpServlet {
         }
         else
         {
-
-
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/cartSuccess");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/paySuccess");
             dispatcher.forward(req, resp);
         }
     }

@@ -31,17 +31,17 @@
                 </div>
                 <div class="col-6" style="padding-left: 50px;">
                     <h5 style="margin-bottom: 0px;">Đặt hàng thành công</h5>
-                    <p>Mã đơn hàng #33333333 <br>Cảm ơn bạn đã mua hàng</p>
+                    <p>Mã đơn hàng #${cart.id} <br>Cảm ơn bạn đã mua hàng</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-10" style="padding: 15px 0px 0px 20px; border: solid 0.5px rgba(0,0,0,0.3); border-radius: 10px;">
                     <h5 style="margin-bottom: 0px;">Thông tin đơn hàng</h5>
                     <p style="padding: 10px 0px; margin: 0px;">Thông tin giao hàng</p>
-                    dsvsvsdvsd
-                    <br>vsvsdvsvsvsv
-                    <br>Thành phố Bình Dương
-                    <br>123123123</p>
+                    ${user.getUsername()}
+                    <br>${user.getPhonenumber()}
+                    <br>${user.getEmail()}
+                    <br>${user.getAddress()}</p>
                     <h5 style="margin-bottom: 0px; padding: 0px 0px 10px 0px;">Phương thức thanh toán</h5>
                     <p>
                         Thanh toán khi giao hàng (COD)
@@ -50,24 +50,29 @@
             </div>
             <div class="row" style="padding: 10px 0px;">
                 <div class="col-10 d-grid gap-2 d-md-flex justify-content-md-end " style="padding: 10px 0px;">
-                    <button class="btn btn-primary">Tiếp tục mua hàng</button>
+                    <button class="btn btn-primary" onclick="window.location.href='${pageContext.request.contextPath}/client-product-list?type=list&page=1'" >Tiếp tục mua hàng</button>
                 </div>
             </div>
         </div>
         <div class="col-5" style="padding-left: 100px;">
             <div class="row">
                 <table class="table table-borderless">
+                    <thead>
+                    <th>Hình ảnh</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Thành Tiền</th>
+                    </thead>
                     <tbody>
-                    <tr>
-                        <td><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTZ-O4wenYo-wHVFW-Zyo4KPK5YSUpo-zelJcdpDcgbfUm4pGyZ2JsRRai55WQ6&usqp=CAc" alt="" style="height: 50px; width: auto;"></td>
-                        <td>Acer Nitro 5</td>
-                        <td>21,700,000</td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTZ-O4wenYo-wHVFW-Zyo4KPK5YSUpo-zelJcdpDcgbfUm4pGyZ2JsRRai55WQ6&usqp=CAc" alt="" style="height: 50px; width: auto;"></td>
-                        <td>Acer Nitro 5</td>
-                        <td>21,700,000</td>
-                    </tr>
+                    <c:forEach var="item" items="${cart.getItemModelList()}">
+                        <tr>
+                            <td><img src="/image/${item.getProduct().getImage()}" alt="" style="height: 50px; width: auto;"></td>
+                            <td>${item.getProduct().getProductName()}</td>
+                            <td>${item.getQuantity()}</td>
+                            <td>${item.getQuantity()*item.getUnitPrice()}</td>
+                        </tr>
+                    </c:forEach>
+
                     </tbody>
                 </table>
             </div>
