@@ -12,10 +12,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>index</title>
-    <link rel="stylesheet" href="${url}/css/menu.css">
     <link href="${url}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${url}/css/font-awesome.min.css" rel="stylesheet">
     <link href="${url}/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="${url}/css/menu.css">
 </head>
 <body>
 <header id="header"><!--header-->
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
-                        <ul class="nav navbar-nav">
+                        <ul class=" nav nav-pills nav-stacked ">
                             <li><a href="${pageContext.request.contextPath}/account-manager"><i class="fa fa-book" aria-hidden="true"></i>Tài khoản</a></li>
                             <li><a href="${pageContext.request.contextPath}/client-cart-list"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                             <c:if test="${not empty loginName}">

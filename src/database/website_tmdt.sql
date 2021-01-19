@@ -77,5 +77,21 @@ create table customer
     phonenumber char(15),
     address nvarchar(255),
     Primary	Key(id)
-)
+);
+
+alter table cart
+add foreign key (customer_id) references Customer(id);
+
+create table brand
+(
+	id int primary key auto_increment,
+    brand_name nvarchar(255)
+);
+
+
+alter table product
+add column brand_id int references brand(id);
+
+alter table product
+add  Foreign Key (brand_id)  references brand(id);
 

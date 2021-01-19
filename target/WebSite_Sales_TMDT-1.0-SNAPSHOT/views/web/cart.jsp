@@ -5,6 +5,7 @@
 <c:url value="/api-user-cart" var="APIurl"> </c:url>
 <c:url value="/api-user-order" var="APIOrderUrl"> </c:url>
 <c:url value="/client-order" var="APIOrderDoneUrl"></c:url>
+<c:url value="/paySuccess" var="PaySuccess"></c:url>
 
 
 <!DOCTYPE html>
@@ -111,7 +112,7 @@
 				</div>
 			</div>
 		</div>
-		<a class="btn btn-primary" onclick="addOrder()" href="">Đặt hàng</a>
+		<a class="btn btn-primary" onclick="payCart()" <%--href="${pageContext.request.contextPath}/payment?check=offline"--%> >Đặt hàng</a>
 	</div>
 	</div>
 </section>
@@ -180,12 +181,26 @@
 			dataType: 'json',
 			success: function (result){
 				console.log("Success");
-				<%--window.location.href = "${APIOrderDoneUrl}";--%>
+				window.location.href = "${PaySuccess}";
 			},
 			errMode: function (error){
 				console.log("Error");
 			}
 		})
+	}
+	function payCart(){
+		var isOnline = document.getElementById("online").checked;
+		if (isOnline) {
+			var fullname= $('#fullname').val();
+			var email= $('#email').val();
+			var phonenumber= $('#phonenumber').val();
+			var address= $('#address').val();
+
+			window.location.href="${pageContext.request.contextPath}/payment?fullname="+fullname+"&email="+email+"&phonenumber="+phonenumber+"&address="+address
+		}
+		else {
+			addOrder();
+		}
 	}
 </script>
 
