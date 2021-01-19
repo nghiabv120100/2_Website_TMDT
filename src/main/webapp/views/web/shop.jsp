@@ -55,7 +55,11 @@
 											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo6.png" alt=""></a></div>
 										</div>
 										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo7.jpeg" alt=""></a></div>
+											<div class="brands_item d-flex flex-column justify-content-center">
+												<a href="${pageContext.request.contextPath}/client-searchByProperties?brand_id=7">
+													<img style="height: 40px; width: auto;" src="${url}/images/logo7.jpeg" alt="">
+												</a>
+											</div>
 										</div>
 										<div class="owl-item">
 											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo8.png" alt=""></a></div>

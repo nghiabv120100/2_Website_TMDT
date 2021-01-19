@@ -92,3 +92,6 @@ create table brand
 alter table product
 add column brand_id int references brand(id);
 
+alter table product
+add  Foreign Key (brand_id)  references brand(id);
+
