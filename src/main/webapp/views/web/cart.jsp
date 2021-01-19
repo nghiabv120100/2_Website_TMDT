@@ -111,7 +111,7 @@
 				</div>
 			</div>
 		</div>
-		<a class="btn btn-primary" onclick="addOrder()" href="">Đặt hàng</a>
+		<a class="btn btn-primary" href="${pageContext.request.contextPath}/payment?optionPayment=online" >Đặt hàng</a>
 	</div>
 	</div>
 </section>
