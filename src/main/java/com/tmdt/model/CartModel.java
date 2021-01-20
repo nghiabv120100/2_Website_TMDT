@@ -8,6 +8,24 @@ public class CartModel {
     private int userID;
     private int customerID;
     private double totalPrice;
+    private int status;
+    private int optionPay;
+
+    public int getOptionPay() {
+        return optionPay;
+    }
+
+    public void setOptionPay(int optionPay) {
+        this.optionPay = optionPay;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     private Date buyDate;
     private List<CartItemModel> itemModelList;

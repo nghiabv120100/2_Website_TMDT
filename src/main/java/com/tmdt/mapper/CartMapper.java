@@ -15,6 +15,8 @@ public class CartMapper implements IRowMapper<CartModel> {
             cartModel.setUserID(resultSet.getInt("user_id"));
             cartModel.setTotalPrice(resultSet.getDouble("total_price"));
             cartModel.setBuyDate(resultSet.getDate("buydate"));
+            cartModel.setStatus(resultSet.getInt("status"));
+            cartModel.setOptionPay(resultSet.getInt("option_pay"));
         }
         catch (SQLException e){
             return null;

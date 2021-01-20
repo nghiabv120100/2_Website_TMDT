@@ -63,6 +63,7 @@
 					<td class="description">Tình trạng</td>
 					<td class="price">Ngày mua</td>
 					<td class="quantity">Tổng thanh toán</td>
+					<td class="option_pay">Hình thức thanh toán</td>
 					<td class="total">Action</td>
 				</tr>
 				</thead>
@@ -77,9 +78,15 @@
 						</td>
 						<td class="cart_description">
 							<h4>${cart.buyDate}</h4>
-						</td><td class="cart_description">
+						</td>
+						<td class="cart_d	escription">
 						<h4>${cart.totalPrice} VNĐ</h4>
-					</td><td class="cart_description">
+						</td>
+						<td>
+							<c:if test="${cart.getOptionPay()==0}">Trả tiền khi nhận hàng</c:if>
+							<c:if test="${cart.getOptionPay()==1}">Thanh toán online</c:if>
+						</td>
+						<td class="cart_description">
 						<a class="center" data-toggle="modal"   data-target="#oderlist${cart.id}">Xem chi tiết</a>
 					</td>
 					</tr>
