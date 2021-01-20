@@ -120,9 +120,9 @@
 														<img height="250" width="200" class="c2" src="${imgUrl}" alt="Fail" style="width: 300px;height: 200px;padding-left: 40px;"/>
 														<div class="c3">
 															<a  <%--href="${APIurl}?id=${i.getId()}"--%>
-																	onclick="addToCart(${i.getId()})"
+																	href="${pageContext.request.contextPath }/client-product-list?type=detail_product&id=${i.getId()}&quantity=1"
 																	class="btn btn-default add-to-cart"><i
-																	class="fa fa-shopping-cart"></i>Thêm vào f</a>
+																	class="fa fa-shopping-cart"></i>Chi tiết sản phẩm</a>
 														</div>
 													</div>
 												</a>
