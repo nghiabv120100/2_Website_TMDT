@@ -94,7 +94,7 @@
 
     <div class="sidenav text-center align-middle" >
         <div class="login-main-text">
-            <h1 style="color: white">Đăng nhập<br><br><br><br><br><br>
+            <h1 style="color: white">Đăng nhập<br><br>
                 <a href="${HomeUrl}?action=home"><i style="color: white" class="fas fa-home fa-2x"></i></a></h1>
         </div>
     </div>
