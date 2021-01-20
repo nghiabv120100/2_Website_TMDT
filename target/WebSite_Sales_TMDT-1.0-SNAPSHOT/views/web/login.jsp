@@ -61,8 +61,7 @@
         z-index: 1;
         top: 0;
         left: 0;
-            background: url("https://wallpaperaccess.com/full/1892752.jpg");
-            box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
+        background-color: #101F33;
         }
 
         .login-form{
@@ -95,7 +94,7 @@
 
     <div class="sidenav text-center align-middle" >
         <div class="login-main-text">
-            <h1>Đăng nhập<br><br><br><br><br><br>
+            <h1 style="color: white">Đăng nhập<br><br><br><br><br><br>
                 <a href="${HomeUrl}?action=home"><i style="color: white" class="fas fa-home fa-2x"></i></a></h1>
         </div>
     </div>
@@ -112,12 +111,8 @@
                     <h3>Mật khẩu</h3>
                     <input name="password" type="password" class="form-control" placeholder="Mật khẩu">
                 </div>
-<<<<<<< HEAD
-                <button type="submit" class="btn btn-black" >Login</button>
-=======
                 <button type="submit" class="btn btn-success btn-primary" >Đăng nhập</button>
 
->>>>>>> b791c91f4196ff6475ed1850eeda5aeb2fc075cf
                 <input type="hidden" name="action" value="login">
 
             </form>
