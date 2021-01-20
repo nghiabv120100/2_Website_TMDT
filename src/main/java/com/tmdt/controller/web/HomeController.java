@@ -59,12 +59,7 @@ public class HomeController extends HttpServlet {
             req.setAttribute("errPhone",Message.errPhone);
             req.setAttribute("errPassword",Message.errPassword);
             req.setAttribute("errAddress",Message.errAddress);
-
             req.setAttribute("accountRegister",AccountRegister.getAccountRegister());
-
-
-
-
             RequestDispatcher rd = req.getRequestDispatcher("views/web/register.jsp");
             rd.forward(req,resp);
         }

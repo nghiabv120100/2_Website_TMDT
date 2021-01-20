@@ -2,7 +2,6 @@ package com.tmdt.service;
 
 import com.tmdt.dao.AccountDAO;
 import com.tmdt.model.AccountModel;
-import com.tmdt.model.AccountModel;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -35,6 +34,5 @@ public class AccountService {
     public void delete(int id){
         accountDAO.delete(id);
     }
-
 
 }

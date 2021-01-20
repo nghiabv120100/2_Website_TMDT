@@ -10,7 +10,6 @@
     <title>Liên hệ</title>
     <link href="${url}/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="${url}/css/map.css">
-
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>

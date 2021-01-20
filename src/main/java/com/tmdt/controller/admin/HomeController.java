@@ -24,7 +24,6 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         HttpSession session = req.getSession();
-
         if (action!=null && action.equals("logout")){
             session.removeAttribute("loginName");
             session.removeAttribute("order");
@@ -77,7 +76,7 @@ public class HomeController extends HttpServlet {
 
         }
         else{
-            rd = req.getRequestDispatcher("views/web/login.jsp");
+            rd = req.getRequestDispatcher("views/web/index.jsp");
             rd.forward(req,resp);
         }
 
