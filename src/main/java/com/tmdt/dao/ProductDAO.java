@@ -107,7 +107,7 @@ public class ProductDAO extends GenericDAO<ProductModel>{
 
         int totalProduct = products.size();
 
-        qString += "limit "+offset+","+limit ;;
+        qString += "limit "+offset+","+limit ;
 
         List<ProductModel> productList = query(qString,new ProductMapper(),value.get(3),value.get(4));
 
