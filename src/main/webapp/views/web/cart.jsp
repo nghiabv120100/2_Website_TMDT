@@ -106,7 +106,7 @@
 							<label for="online" style="color: #696763">Trực tuyến</label>
 						</div>
 						<div>
-							<input type="radio" id="offline" name="check" value="offline">
+							<input type="radio" checked id="offline" name="check" value="offline">
 							<label for="offline" style="color: #696763">Trả khi nhận hàng</label>
 						</div>
 				</div>

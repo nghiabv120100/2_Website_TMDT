@@ -58,16 +58,7 @@
 
 									<span>${productModel.getPrice()} ₫</span>
 									<br>
-									<label>Quantity:</label>
-									<div class="cart_quantity_button">
-										<a class="cart_quantity_up" onclick="changeQuantity('add')"> + </a>
-										<input id="txtQuantity" class="cart_quantity_input" type="text" name="quantity" value="${quantity}" autocomplete="off" size="2">
-										<a class="cart_quantity_down" onclick="changeQuantity('sub')"> - </a>
-									</div>
-
-									<br>
-									<br>
-									<button type="button"  class="btn btn-fefault cart" onclick="addToCart(${productModel.getId()})"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>
+									<button style="margin: 0;" type="button"  class="btn btn-fefault cart" onclick="addToCart(${productModel.getId()})"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>
 								</span>
 							<p><b>Mô tả sản phẩm:</b></p>
 							<p>Ngày nay, khi người dùng lựa chọn cho mình một chiếc laptop để sử dụng luôn quan tâm đến nhu cầu sử dụng vừa để làm việc vừa để giải trí chơi game. Vì vậy lựa chọn cho mình một chiếc laptop gaming là một giải pháp phù hợp cho mọi nhu cầu sử dụng của bạn. Acer Nitro 5 là chiếc laptop đến từ thương hiệu Acer sẽ mang đến một cách nhìn hoàn toàn mới về các nhu cầu sử dụng trên dòng laptop gaming có thể mang lại cho người dùng.</p>

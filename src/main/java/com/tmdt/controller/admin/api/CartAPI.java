@@ -1,6 +1,7 @@
 package com.tmdt.controller.admin.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tmdt.model.CartModel;
 import com.tmdt.model.ProductModel;
 import com.tmdt.service.CartService;
 import com.tmdt.service.ProductService;
@@ -28,13 +29,17 @@ public class CartAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json"); //
 
-        // Convert from type json to Model
-        ProductModel productModel = HttpUtil.of(req.getReader()).toModel(ProductModel.class);
-        System.out.println(productModel.getPrice());
-        System.out.println(productModel.getId());
-        productModel = productService.save(productModel);
-        mapper.writeValue(resp.getOutputStream(),productModel);
-        System.out.println(productModel);
+        int id = Integer.parseInt(req.getReader().readLine());
+        CartModel cart = cartService.findByCartId(id);
+        int status = cart.getStatus();
+        status =status +1;
+        if (status > 2)
+            status=0;
+
+        cart.setStatus(status);
+        cartService.update(cart);
+
+        mapper.writeValue(resp.getOutputStream(),"{}");
     }
 
     @Override

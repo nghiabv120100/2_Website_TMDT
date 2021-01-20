@@ -35,10 +35,10 @@ public class CartDAO extends GenericDAO<CartModel> {
 
     }
     public void update(CartModel cartModel){
-        /*String sql="update Cart set product_name=?,image=?,price=?,describe_pro=?,detail_cate_id=? where id=?";
-        update(sql,cartModel.getCartName(),cartModel.getImage(),cartModel.getPrice()
-                ,cartModel.getDescribePro(),cartModel.getDetailCateId(),cartModel.getId());*/
+        String sql="update Cart set total_price=?, status=?, option_pay=? where id=?";
+        update(sql,cartModel.getTotalPrice() ,cartModel.getStatus(),cartModel.getOptionPay(),cartModel.getId());
     }
+
     public void delete(int id){
         String sql1="delete from Cartitem where cart_id=?";
         String sql2="delete from Cart where id=?";
