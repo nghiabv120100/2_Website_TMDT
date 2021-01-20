@@ -44,7 +44,7 @@
                     <br>${user.getAddress()}</p>
                     <h5 style="margin-bottom: 0px; padding: 0px 0px 10px 0px;">Phương thức thanh toán</h5>
                     <p>
-                        Thanh toán khi giao hàng (COD)
+                        ${payment}
                     </p>
                 </div>
             </div>
@@ -80,7 +80,7 @@
             <div class="row d-flex justify-content-between">
                 <div class="col-12 d-flex justify-content-between">
                     <p>Tạm tính</p>
-                    <p>1,000,000 <span>đ</span></p>
+                    <p>${totalPrice} <span>VNĐ</span></p>
                 </div>
 
             </div>
@@ -94,7 +94,7 @@
             <div class="row d-flex justify-content-between">
                 <div class="col-12 d-flex justify-content-between">
                     <h4>Tổng cộng</h4>
-                    <h4>5,555,555 <span>đ</span></h4>
+                    <h4>${totalPrice} <span>VNĐ</span></h4>
                 </div>
             </div>
         </div>
