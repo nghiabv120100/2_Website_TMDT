@@ -112,12 +112,8 @@
                     <h3>Mật khẩu</h3>
                     <input name="password" type="password" class="form-control" placeholder="Mật khẩu">
                 </div>
-<<<<<<< HEAD
-                <button type="submit" class="btn btn-black" >Login</button>
-=======
                 <button type="submit" class="btn btn-success btn-primary" >Đăng nhập</button>
 
->>>>>>> b791c91f4196ff6475ed1850eeda5aeb2fc075cf
                 <input type="hidden" name="action" value="login">
 
             </form>
