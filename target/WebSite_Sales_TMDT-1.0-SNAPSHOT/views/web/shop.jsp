@@ -136,9 +136,8 @@
 								</div>
 							</c:forEach>
 						</div>
-						<div class="row">
-								<ul class="pagination" style="margin-left: 68vh">
-
+						<div class="row text-center">
+								<ul class="pagination">
 									<li class="page-item"><a class="page-link" href="#">Trước</a></li>
 									<c:forEach var="i" begin="1" end="${numOfPages}">
 <%--									<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/client-product-list?type=${type}&cate_id=${cate_id}&detail_cate_id=${detail_cate_id}&keyword=${keyword}&page=${i}">${i}</a></li>--%>
