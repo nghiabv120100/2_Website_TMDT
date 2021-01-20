@@ -43,9 +43,9 @@
 					<c:url value="/image/${i.getProduct().getImage()}" var="imgUrl"></c:url>
 					<tr>
 					<td class="cart_product">
-						<a href=""><img height="250" width="200" class="hoverimg" src="${imgUrl}" alt=""></a>
+						<a href=""><img style="height: 100px;width: auto;" class="hoverimg" src="${imgUrl}" alt=""></a>
 					</td>
-					<td class="cart_description">
+					<td class="cart_description" style="padding-left: 50px;">
 						<h4><a href="">${i.getProduct().getProductName()}</a></h4>
 						<p>Web ID: 1089772</p>
 					</td>
