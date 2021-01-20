@@ -107,7 +107,7 @@
                     <h3>Nhập email</h3>
                     <input name="username" type="text" class="form-control" placeholder="Nhập email">
                 </div>
-                <button type="submit" class="btn btn-success btn-primary" >Gửi mã</button>
+                <button type="submit" class="btn btn-success btn-primary" >Gửi </button>
                 <input type="hidden" name="action" value="login">
             </form>
         </div>
