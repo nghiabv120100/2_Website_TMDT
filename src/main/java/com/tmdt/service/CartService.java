@@ -25,4 +25,10 @@ public class CartService {
     public void delete(int id) {
         cartDAO.delete(id);
     }
+    public CartModel findByCartId(int id) {
+        return cartDAO.findOne(id);
+    }
+    public void update(CartModel cart) {
+         cartDAO.update(cart);
+    }
 }
