@@ -2,15 +2,15 @@
 #Màn Hình Samsung
 insert into product(product_name,image,price,detail_cate_id,brand_id)
 values 
-("Màn hình LCD SAMSUNG LF27T350","SamsungLCDSAMSUNGLF27T350.jpg",200,6,7,3),
-("Màn Hình cong Samsung 48.9 LC49HG90DMEXXV","SamsungLC49HG90DMEXXV.jpg",200,6,7,3),
-("Màn hình LCD Samsung 24 LS24D332HSXXV","SamsungLS24D332HSXXV.jpg",200,6,7,3),
-("Màn hình Samsung 27 LC27R500FHEXXV","SamsungLC27R500FHEXXV.jpg",200,6,7,3),
-("Màn Hình Samsung 23.5 LS24F350FHEXXV","SamsungLS24F350FHEXXV.jpg",200,6,7,3),
-("Màn Hình Samsung 18.5 LS19F350HNEXXV","SamsungLS19F350HNEXXV.jpg",200,6,7,3),
-("Màn Hình cong Samsung 23.5 LC24F390FHEXXV","SamsungLC24F390FHEXXV.jpg",200,6,7,3),
-("Màn Hình Samsung 23.6 LS24E360HLXV"," Samsung23.6LS24E360HLXV.jpg",180,6,7,3),
-("Màn Hình cong Samsung 27 LC27F390FHEXXV"," Samsung27LC27F390FHEXXV.jpg",200,6,7,3);
+("Màn hình LCD SAMSUNG LF27T350","SamsungLCDSAMSUNGLF27T350.jpg",200,6,7),
+("Màn Hình cong Samsung 48.9 LC49HG90DMEXXV","SamsungLC49HG90DMEXXV.jpg",200,6,7),
+("Màn hình LCD Samsung 24 LS24D332HSXXV","SamsungLS24D332HSXXV.jpg",200,6,7),
+("Màn hình Samsung 27 LC27R500FHEXXV","SamsungLC27R500FHEXXV.jpg",200,6,7),
+("Màn Hình Samsung 23.5 LS24F350FHEXXV","SamsungLS24F350FHEXXV.jpg",200,6,7),
+("Màn Hình Samsung 18.5 LS19F350HNEXXV","SamsungLS19F350HNEXXV.jpg",200,6,7),
+("Màn Hình cong Samsung 23.5 LC24F390FHEXXV","SamsungLC24F390FHEXXV.jpg",200,6,7),
+("Màn Hình Samsung 23.6 LS24E360HLXV"," Samsung23.6LS24E360HLXV.jpg",180,6,7),
+("Màn Hình cong Samsung 27 LC27F390FHEXXV"," Samsung27LC27F390FHEXXV.jpg",200,6,7);
 #Màn Hình Asus
 insert into product(product_name,image,price,detail_cate_id,brand_id)
 values 

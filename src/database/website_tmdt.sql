@@ -95,3 +95,14 @@ add column brand_id int references brand(id);
 alter table product
 add  Foreign Key (brand_id)  references brand(id);
 
+
+alter table product
+add column quantity int default 0;
+
+
+alter table cart
+add column status int default 0;
+
+alter table cart
+add column option_pay int default 0;
+
