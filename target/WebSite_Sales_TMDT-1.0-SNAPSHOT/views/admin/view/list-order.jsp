@@ -59,6 +59,7 @@
 												<th>Email</th>
 												<th>Ngày mua</th>
 												<th>Tổng thanh toán</th>
+												<th>Hình thức thanh toán</th>
 												<th>Tình trạng</th>
 												<th>Action</th>
 											</tr>
@@ -67,6 +68,8 @@
 											</a>
 											<%--xác ??nh gi? hàng --%>
 											<c:forEach items="${cartList}" var="cart">
+												<c:url var="total_cart" value="${0}"></c:url>
+
 												<c:set var="index" value="${0}" />
 
 												<c:forEach items="${userList}" var="user">
@@ -80,25 +83,32 @@
 														<c:set var="buyer" value="${customer}" />
 													</c:if>
 												</c:forEach>
+
+<%--												Tính tổng tiền--%>
+												<c:forEach items="${cart.getItemModelList()}" var="item">
+													<c:set var = "total_cart" scope = "session"  value="${total_cart=total_cart+item.getUnitPrice()*item.getQuantity()}"></c:set>
+												</c:forEach>
+
 												<tr>
 													<td>${index }</td>
 													<td>${cart.id }</td>
 													<td>${buyer.username }</td>
 													<td>${buyer.email }</td>
 													<td>${cart.buyDate }</td>
-													<td></td>
-													<td class="center">
-														<select class="form-control">
-															<option value="pendding">Đang giao</option>
-															<option value="success">Đã giao</option>
-															<option value="cancer">Đã hủy</option>
-														</select>
+													<td>${total_cart}</td>
+													<td>
+														<c:if test="${cart.optionPay == 0}">Trả khi nhận hàng</c:if>
+														<c:if test="${cart.optionPay == 1}">Thanh toán online</c:if>
 													</td>
-													<td><a
-															href="<c:url value='/admin/order/edit?id=${list.id }'/>"
-															class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Chi tiết</a> |
+													<td class="center">
+														<c:if test="${cart.status == 0}">Chưa duyệt</c:if>
+														<c:if test="${cart.status == 1}">Đã duyệt</c:if>
+														<c:if test="${cart.status == 2}">Đã nhận</c:if>
+													</td>
+													<td>
+														<a class="center" data-toggle="modal"  data-target="#oderlist${cart.id}">Chi tiết</a> |
 														<a id="btnDelete" onclick="deleteCart(${cart.id })" class="center">Xóa</a> |
-														<a class="center">Cập nhật</a>
+														<a class="center" onclick="updateCart(${cart.id})" >Cập nhật</a>
 													</td>
 												</tr>
 
@@ -131,16 +141,19 @@
 										</tr>
 										</thead>
 										<tbody>
+
 										<c:forEach items="${cart.getItemModelList()}" var="item">
 											<tr>
+												<c:url value="/image/${item.getProduct().getImage()}" var="imgUrl"></c:url>
 												<td class="cart_product">
-													<img src="" alt="#">
+													<img style="width: 50px;height: 50px;object-fit: cover" src="${imgUrl}" alt="#">
 												</td>
 												<td class="description">${item.getProduct().getProductName()}</td>
 												<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>
 												<td class="quantity">${item.getQuantity()}</td>
 												<td class="total">${item.getUnitPrice()*item.getQuantity()}<span>VNĐ</span></td>
 											</tr>
+
 										</c:forEach>
 										</tbody>
 									</table>
@@ -179,6 +192,25 @@
 			$.ajax({
 				url: '${APIUrl}',
 				type: 'DELETE',
+				enctype: 'multipart/form-data',
+				processData:false,
+				contentType: 'application/json',
+				data:JSON.stringify(data),
+				dataType: 'json',
+				success: function (result){
+					console.log("Success");
+					window.location.href = "${CCUrl}?type=list";
+				},
+				error: function (error){
+					console.log("Error");
+				}
+			})
+		}
+
+		function updateCart(data){
+			$.ajax({
+				url: '${APIUrl}',
+				type: 'POST',
 				enctype: 'multipart/form-data',
 				processData:false,
 				contentType: 'application/json',
