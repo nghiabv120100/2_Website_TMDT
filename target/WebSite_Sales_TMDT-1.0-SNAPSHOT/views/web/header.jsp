@@ -51,6 +51,7 @@
 <nav>
     <ul>
         <li><a href="${HomeUrl}?action=home">Trang chủ</a></li>
+      <%--      <li><a href="${pageContext.request.contextPath }/client-product-list?type=list&page=1">Trang chủ</a>--%>
         <li><a href="${pageContext.request.contextPath }/client-product-list?type=list&page=1">Danh mục sản phẩm</a>
             <ul>
                 <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=1&page=1">Laptop</a>

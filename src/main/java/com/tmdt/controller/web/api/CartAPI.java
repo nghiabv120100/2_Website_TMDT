@@ -65,7 +65,6 @@ public class CartAPI extends HttpServlet {
                     cartItemModel.setProductId(id);
                     cartItemModel.setProduct(productModel);
                     cartItemModel.setUnitPrice(productModel.getPrice());
-
                     cartItemModelList.add(cartItemModel);
                 }
                 cartModel.setItemModelList(cartItemModelList);
