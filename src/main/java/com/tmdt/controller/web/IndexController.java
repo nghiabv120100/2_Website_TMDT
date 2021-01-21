@@ -49,21 +49,18 @@ public class IndexController extends HttpServlet {
                 int currentPage = Integer.parseInt(req.getParameter("page"));
                 offset = (currentPage - 1) * limit;
                 List<ProductModel> productModelList = productService.findAll();
-                List<ProductModel> products = productService.findAllByPage(offset, limit);
-                int numOfProducts = 0;
-                if (productModelList != null) {
-                    numOfProducts = productModelList.size();
-                }
-                int litmit = 9;
-                if (numOfProducts / litmit == (float) numOfProducts / litmit) {
-                    numOfPages = numOfProducts / litmit;
-                } else {
-                    numOfPages = numOfProducts / litmit + 1;
-                }
+                List<ProductModel> products = productService.findAllByPage(0, 6);
+                List<ProductModel> products1 = productService.findByDetailCategoryAndPage(1,0, 3);
+                List<ProductModel> products2 = productService.findByDetailCategoryAndPage(2,1, 3);
+                List<ProductModel> products3 = productService.findByDetailCategoryAndPage(3,0, 3);
+
                 req.setAttribute("type", type);
                 req.setAttribute("currentPage", currentPage);
                 req.setAttribute("numOfPages", numOfPages);
                 req.setAttribute("proList", products);
+                req.setAttribute("proList1", products1);
+                req.setAttribute("proList2", products2);
+                req.setAttribute("proList3", products3);
                 url = "views/web/index.jsp";
             } else if (type.equals("category")) {
 

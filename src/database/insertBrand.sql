@@ -3,7 +3,7 @@
 insert into brand (id,brand_name)
 values (1,'MSI');
 
-insert into brand (id,brand_name)
+insert into brand (id,brand_name,image)
 values (2,'Acer');
 insert into brand (id,brand_name)
 values (3,'Asus');
@@ -33,3 +33,5 @@ insert into brand (id,brand_name)
 values (14,'Corsier');
 insert into brand (id,brand_name)
 values (15,'Other');
+
+update brand set value

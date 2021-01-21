@@ -58,6 +58,7 @@
 												<th>ID </th>
 												<th>Ảnh sản phẩm</th>
 												<th>Tên sản phẩm</th>
+												<th>Số lượng</th>
 												<th>Giá(vnđ)</th>
 												<th>Chi tiết loại sản phẩm</th>
 												<th>Mô tả sản phẩm</th>
@@ -72,6 +73,7 @@
 												<td><img style="width: 50px;height: 50px;object-fit: cover" src="${imgUrl}" /></td>
 
 												<td>${pro.productName }</td>
+												<td>${pro.quantity}</td>
 												<td>${pro.price }</td>
 												<td>
 													<c:forEach items="${detailCateList}" var="detailCate">

@@ -21,14 +21,14 @@ public class ProductDAO extends GenericDAO<ProductModel>{
         return products.isEmpty() ? null : products;
     }
     public int save(ProductModel productModel){
-        String sql="insert into Product(product_name,image,price,describe_pro,detail_cate_id) values(?,?,?,?,?)";
+        String sql="insert into Product(product_name,image,price,quantity,describe_pro,detail_cate_id) values(?,?,?,?,?,?)";
         return insert(sql,productModel.getProductName(),productModel.getImage()
-                ,productModel.getPrice(),productModel.getDescribePro(),productModel.getDetailCateId());
+                ,productModel.getPrice(),productModel.getQuantity(), productModel.getDescribePro(),productModel.getDetailCateId());
     }
     public void update(ProductModel productModel){
-        String sql="update Product set product_name=?,image=?,price=?,describe_pro=?,detail_cate_id=? where id=?";
+        String sql="update Product set product_name=?,image=?,price=?,quantity=?,describe_pro=?,detail_cate_id=? where id=?";
         update(sql,productModel.getProductName(),productModel.getImage(),productModel.getPrice()
-                ,productModel.getDescribePro(),productModel.getDetailCateId(),productModel.getId());
+                ,productModel.getQuantity(),productModel.getDescribePro(),productModel.getDetailCateId(),productModel.getId());
     }
     public void delete(int id){
         String sql="delete from Product where id=?";
