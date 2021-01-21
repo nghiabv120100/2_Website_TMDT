@@ -61,7 +61,7 @@
                     <th>Hình ảnh</th>
                     <th>Tên Sản Phẩm</th>
                     <th>Số lượng</th>
-                    <th>Thành Tiền</th>
+                    <th style="width: 100px">Thành Tiền</th>
                     </thead>
                     <tbody>
                     <c:forEach var="item" items="${cart.getItemModelList()}">
