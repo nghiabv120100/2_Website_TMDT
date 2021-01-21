@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:url value="/views/web/static" var="url"> </c:url>
 <c:url value="/api-user-change-password" var="APIurl"> </c:url>
 
@@ -124,14 +125,16 @@
 								<tbody>
 								<c:forEach items="${cart.getItemModelList()}" var="item">
 									<tr>
+										<c:url value="/image/${item.getProduct().getImage()}" var="imgUrl"></c:url>
 										<td class="cart_product" style="margin: 0px;	">
-											<c:url value="/image/${item.getProduct().getImage()}" var="imgUrl"></c:url>
+
 											<img width="50px" height="50px" src="${imgUrl}" alt="#">
 										</td>
 										<td class="description">${item.getProduct().getProductName()}</td>
 										<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>
 										<td class="quantity">${item.getQuantity()}</td>
-										<td class="total">${item.getUnitPrice()*item.getQuantity()}<span>VNĐ</span></td>
+<%--										<td class="total">${item.getUnitPrice()*item.getQuantity()}<span>VNĐ</span></td>--%>
+										<td class="total"><fmt:formatNumber type="number" value="${item.getUnitPrice()*item.getQuantity()}" /> VNĐ</td>
 									</tr>
 								</c:forEach>
 								</tbody>

@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <c:url value="/views/web/static" var="url"> </c:url>
@@ -36,47 +38,6 @@
 							<div class="col" style="padding: 10px 0px;">
 								<div class="brands_slider_container">
 									<div class="owl-carousel owl-theme brands_slider">
-										<%--<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center">
-												<a href="#">
-													<img style="height: 40px; width: auto;" src="${url}/images/lg1.png" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center">
-												<a href="#">
-													<img style="height: 40px; width: auto;" src="${url}/images/logo2.png" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center">
-												<a href="#">
-													<img style="height: 40px; width: auto;" src="${url}/images/logo3.jpg" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center">
-												<a href="#">
-													<img style="height: 40px; width: auto;" src="${url}/images/logo4.png" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center">
-												<a href="#">
-													<img style="height: 40px; width: auto;" src="${url}/images/logo5.jpg" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center">
-												<a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo6.png" alt="">
-												</a>
-											</div>
-										</div>--%>
 										<c:forEach var="brand" items="${brands}">
 										<div class="owl-item">
 											<div class="brands_item d-flex flex-column justify-content-center">
@@ -86,30 +47,6 @@
 											</div>
 										</div>
 										</c:forEach>
-										<%--<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo8.png" alt=""></a></div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"> <img style="height: 40px; width: auto;" src="${url}/images/logo9.png" alt=""></a></div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo10.png" alt=""></a></div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo11.png" alt=""></a></div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo12.png" alt=""></a></div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo13.png" alt=""></a></div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo14.png" alt=""></a></div>
-										</div>
-										<div class="owl-item">
-											<div class="brands_item d-flex flex-column justify-content-center"><a href="#"><img style="height: 40px; width: auto;" src="${url}/images/logo15.PNG" alt=""></a></div>
-										</div>--%>
 									</div>
 								</div>
 							</div>
@@ -151,7 +88,9 @@
 														</div>
 													</div>
 												</a>
-												<h2>${i.getPrice()} ₫</h2>
+<%--												<h2><c:out value="${i.getPrice().toFixed(2)}"></c:out>  VNĐ</h2>--%>
+												<h2><fmt:formatNumber type="number" value="${i.getPrice()}" /> VNĐ</h2>
+
 												<p>${i.getProductName()}</p>
 												<a  <%--href="${APIurl}?id=${i.getId()}"--%> onclick="addToCart(${i.getId()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
 													<%--												<button onclick="addToCart(1)" class="btn btn-default add-to-cart"><i  class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>--%>

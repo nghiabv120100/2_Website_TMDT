@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:url value="/views/web/static" var="url"> </c:url>
 <c:url value="/api-user-cart" var="APIurl"> </c:url>
 <c:url value="/api-user-order" var="APIOrderUrl"> </c:url>
@@ -49,18 +50,21 @@
 						<h4><a href="">${i.getProduct().getProductName()}</a></h4>
 						<p>Web ID: 1089772</p>
 					</td>
-					<td class="cart_price">
-						<p>${i.getProduct().getPrice()}</p>
+					<td class="cart_price" >
+<%--						<p>${i.getProduct().getPrice()}</p>--%>
+						<h2><fmt:formatNumber type="number" value="${i.getProduct().getPrice()}" /> VNĐ</h2>
+
 					</td>
-					<td class="cart_quantity">
+					<td class="cart_quantity" style="width: 150px">
 						<div class="cart_quantity_button">
 							<a class="cart_quantity_up" onclick="updateCart(${i.getProduct().getId()},'add')"  href=""> + </a>
 							<input class="cart_quantity_input" ty	pe="text" name="quantity" value="${i.getQuantity()}" autocomplete="off" size="2">
 							<a class="cart_quantity_down" onclick="updateCart(${i.getProduct().getId()},'sub')" href=""> - </a>
 						</div>
 					</td>
-					<td class="cart_total">
-						<p class="cart_total_price">${i.getProduct().getPrice()*i.getQuantity()} ₫</p>
+					<td class="cart_total" >
+<%--						<p class="cart_total_price">${i.getProduct().getPrice()*i.getQuantity()} ₫</p>--%>
+						<h2><fmt:formatNumber type="number" value="${i.getProduct().getPrice()*i.getQuantity()}" /> VNĐ</h2>
 					</td>
 					<td class="cart_delete">
 						<a class="cart_quantity_delete" onclick="updateCart(${i.getProduct().getId()},'del')" href=""><i class="fa fa-times"></i></a>
@@ -97,8 +101,9 @@
 				<div class="col-sm-4">
 					<div class="shopper-info">
 						<h2 style="color: #696763">Tổng thanh toán</h2>
-						<label style="font-size: 19px; font-weight: 500; color: #696763">${totalPrice}</label>
-						<span style="font-size: 19px; color: #696763">VNĐ</span>
+<%--						<label style="font-size: 19px; font-weight: 500; color: #696763">${totalPrice}</label>--%>
+						<label  style="font-size: 19px; font-weight: 500; color: #696763"><fmt:formatNumber type="number" value="${totalPrice}" /> VNĐ</label>
+<%--						<span style="font-size: 19px; color: #696763">VNĐ</span>--%>
 						<hr>
 						<p>Hình thức thanh toán</p>
 						<div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:url value="/views/web/static" var="url"> </c:url>
 <c:url value="/api-user-cart" var="APIaurl"></c:url>
 <c:url value="/api-user-product" var="ProductUrl"></c:url>
@@ -17,6 +18,7 @@
 	<link href="${url}/css/font-awesome.min.css" rel="stylesheet">
 	<link href="${url}/css/main.css" rel="stylesheet">
 	<link href="${url}/css/responsive.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </head>
 
 <body>
@@ -56,7 +58,9 @@
 							<h2>${productModel.getProductName()}</h2>
 							<span>
 
-									<span>${productModel.getPrice()} ₫</span>
+<%--									<span>${productModel.getPrice()} ₫</span>--%>
+									<h2><fmt:formatNumber type="number" value="${productModel.getPrice()}" /> VNĐ</h2>
+
 									<br>
 									<button style="margin: 0;" type="button"  class="btn btn-fefault cart" onclick="addToCart(${productModel.getId()})"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>
 								</span>
@@ -72,6 +76,7 @@
 <jsp:include page="footer.jsp"></jsp:include>
 <script>
 	function addToCart(data){
+		JSalert();
 		$.ajax({
 			url: '${APIaurl}',
 			type: 'POST',
@@ -84,6 +89,7 @@
 			success: function (result){
 				console.log("Success");
 				console.log(data);
+
 				<%--window.location.href = "${PCurl}?type=list&message=insert_success";--%>
 			},
 			errMode: function (error){
@@ -129,5 +135,10 @@
 <script src="${url}/js/bootstrap.min.js"></script>
 <script src="${url}/js/jquery.prettyPhoto.js"></script>
 <script src="${url}/js/main.js"></script>
+<script type="text/javascript">
+	function JSalert(){
+		Swal.fire('Thêm vào giỏ hàng thành công')
+	}
+</script>
 </body>
 </html>
