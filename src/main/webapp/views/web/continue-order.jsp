@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:url value="/trang-chu" var="HomeUrl"> </c:url>
 <html>
 <head>
@@ -71,7 +72,7 @@
                             <td>${item.getProduct().getProductName()}</td>
                             <td>${item.getQuantity()}</td>
 <%--                            <td>${item.getQuantity()*item.getUnitPrice()}</td>--%>
-                            <td class="total"><fmt:formatNumber type="number" value="${item.getUnitPrice()*item.getQuantity()}" /> VNĐ</td>
+                            <td ><fmt:formatNumber type="number" value="${item.getUnitPrice()*item.getQuantity()}" /> VNĐ</td>
 
                         </tr>
                     </c:forEach>
@@ -83,8 +84,9 @@
             <div class="row d-flex justify-content-between">
                 <div class="col-12 d-flex justify-content-between">
                     <p>Tạm tính</p>
-                    <p>${totalPrice} <span>VNĐ</span></p>
-                    <p ><fmt:formatNumber type="number" value="${totalPrice}" /> VNĐ</p>
+
+                    <p ><fmt:formatNumber type="number" value="${totalPrice}" /></p>
+                    <p> VNĐ</p>
 
                 </div>
 
@@ -98,9 +100,10 @@
             <hr>
             <div class="row d-flex justify-content-between">
                 <div class="col-12 d-flex justify-content-between">
-                    <h4>Tổng cộng <fmt:formatNumber type="number" value="${totalPrice}" /> VNĐ</h4>
-<%--                    <h4>${totalPrice} <span>VNĐ</span></h4>--%>
-                    <h4></h4>
+                    <h4>Tổng cộng  </h4>
+<%--                    <h4>${totalPrice}</h4>--%>
+                    <h4 ><fmt:formatNumber type="number" value="${totalPrice}" /> </h4>
+                    <h4>VNĐ</h4>
                 </div>
             </div>
         </div>

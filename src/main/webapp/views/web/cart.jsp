@@ -58,7 +58,7 @@
 					<td class="cart_quantity" style="width: 150px">
 						<div class="cart_quantity_button">
 							<a class="cart_quantity_up" onclick="updateCart(${i.getProduct().getId()},'add')"  href=""> + </a>
-							<input class="cart_quantity_input" ty	pe="text" name="quantity" value="${i.getQuantity()}" autocomplete="off" size="2">
+							<input class="cart_quantity_input" type="text" name="quantity" value="${i.getQuantity()}" autocomplete="off" size="2">
 							<a class="cart_quantity_down" onclick="updateCart(${i.getProduct().getId()},'sub')" href=""> - </a>
 						</div>
 					</td>

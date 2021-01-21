@@ -38,9 +38,7 @@
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
 								<div class="item active">
-									<a href=""><img src="${url}/images/nitro52.png" alt=""></a>
-									<a href=""><img src="${url}/images/nitro52.png" alt=""></a>
-									<a href=""><img src="${url}/images/nitro52.png" alt=""></a>
+<%--									//sản phẩm liên quan--%>
 								</div>
 							</div>
 							<!-- Controls -->

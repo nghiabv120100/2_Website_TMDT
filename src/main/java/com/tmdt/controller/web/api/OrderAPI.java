@@ -51,6 +51,10 @@ public class OrderAPI extends HttpServlet {
                 int cus_id = customerService.save(customerModel);
                 cartModel.setCustomerID(cus_id);
                 int cart_id = cartService.save(cartModel);
+                // Set id for cart
+                cartModel.setId(cart_id);
+                session.setAttribute("order",cartModel);
+                // End set id
                 for(CartItemModel item: cartModel.getItemModelList()) {
                     item.setCartId(cart_id);
                     cartItemService.save(item);
@@ -64,6 +68,10 @@ public class OrderAPI extends HttpServlet {
                 session.setAttribute("user",accountModel);
                 cartModel.setUserID(accountModel.getId());
                 int cart_id = cartService.save(cartModel);
+                // Set id for cart
+                cartModel.setId(cart_id);
+                session.setAttribute("order",cartModel);
+                // End set id
                 for(CartItemModel item: cartModel.getItemModelList()) {
                     item.setCartId(cart_id);
                     cartItemService.save(item);

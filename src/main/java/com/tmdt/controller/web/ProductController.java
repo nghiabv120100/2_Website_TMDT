@@ -158,6 +158,7 @@ public class ProductController extends HttpServlet{
             ProductModel productModel = productService.findOne(id);
             req.setAttribute("quantity",quantity);
             req.setAttribute("productModel",productModel);
+
             url ="views/web/product-details.jsp";
         } else if (type.equals("add")) {
             int id=Integer.parseInt(req.getParameter("id"));

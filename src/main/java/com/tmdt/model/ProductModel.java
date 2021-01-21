@@ -8,7 +8,16 @@ public class ProductModel {
     private int quantity;
     private String describePro;
     private int detailCateId;
+    private int brandId;
     private int ids[]; //Chứ danh sách id để xoá
+
+    public int getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(int brandId) {
+        this.brandId = brandId;
+    }
 
     public int getQuantity() {
         return quantity;

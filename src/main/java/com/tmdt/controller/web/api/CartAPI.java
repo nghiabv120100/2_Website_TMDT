@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,10 +139,20 @@ public class CartAPI extends HttpServlet {
         CartModel cartModel =  (CartModel) session.getAttribute("order");
         List<CartItemModel> cartItemModelList = cartModel.getItemModelList();
 
+
+        PrintWriter out=resp.getWriter();
+        resp.setContentType("text/html");
+
         for(CartItemModel item : cartItemModelList) {
             if (item.getProductId()==productId){
                 if (type.equals("add")) {
-                    item.setQuantity(item.getQuantity() + 1);
+                    if (item.getQuantity() >= item.getProduct().getQuantity()){
+                        // Nếu trong kho hết hàng thi không cho thêm
+                    }
+                    else {
+                        item.setQuantity(item.getQuantity() + 1);
+                    }
+
                 } else if (type.equals("sub") && item.getQuantity() > 1){
                     item.setQuantity(item.getQuantity() - 1);
                 } else if (type.equals("del")){

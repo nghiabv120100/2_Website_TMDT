@@ -47,6 +47,7 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
+        String msg="";
         RequestDispatcher rd;
         if (action!=null && action.equals("login")){
             String username = req.getParameter("username");
@@ -70,6 +71,8 @@ public class HomeController extends HttpServlet {
                 }
             }
             else {
+                msg="Tên đăng nhập hoặc mật khẩu không chính xác.";
+                req.setAttribute("msg",msg);
                 rd = req.getRequestDispatcher("views/web/login.jsp");
                 rd.forward(req,resp);
             }

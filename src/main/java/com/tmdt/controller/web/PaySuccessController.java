@@ -4,8 +4,10 @@ import com.tmdt.model.AccountModel;
 import com.tmdt.model.CartItemModel;
 import com.tmdt.model.CartModel;
 import com.tmdt.model.CustomerModel;
+import com.tmdt.service.ProductService;
 import com.tmdt.utils.JavaMailUtil;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +20,9 @@ import java.io.PrintWriter;
 
 @WebServlet(urlPatterns= {"/paySuccess"})
 public class PaySuccessController extends HttpServlet {
+    @Inject
+    ProductService productService;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -50,8 +55,11 @@ public class PaySuccessController extends HttpServlet {
         content.append("<p>THÔNG TIN ĐƠN HÀNG - DÀNH CHO NGƯỜI MUA<p>");
         content.append("<table><tr><th>Tên Sản Phẩm       </th><th>Số lượng         </th><th>Đơn giá       </th></tr>");
         for(CartItemModel item : cartModel.getItemModelList()) {
-            content.append("<tr><td>"+item.getProduct().getProductName()+"</td><td>    "+item.getQuantity()+"</td><td>   "+item.getUnitPrice()+" VNĐ</td></tr>");
+            content.append("<tr><td>"+item.getProduct().getProductName()+"</td><td>    "+item.getQuantity()+"</td><td>   "+Math.round(item.getUnitPrice()) +" VNĐ</td></tr>");
             totalPrice += item.getQuantity()*item.getUnitPrice();
+            // trừ sản phẩm trong kho
+            item.getProduct().setQuantity(item.getProduct().getQuantity()-item.getQuantity());
+            productService.update(item.getProduct());
         }
         content.append("</table><br>");
         if (session.getAttribute("isOnline") != null) {
@@ -61,7 +69,7 @@ public class PaySuccessController extends HttpServlet {
                 content.append("<p>Hình thức thanh toán: Trả tiền khi nhận hàng</p><br>");
             req.setAttribute("payment","Trả tiền khi nhận hàng");
         }
-        content.append("<p>Tổng Tiền : "+totalPrice+" VNĐ</p>");
+        content.append("<p>Tổng Tiền : "+Math.round(totalPrice) +" VNĐ</p>");
         try {
             JavaMailUtil.sendMail(user_cus.getEmail(),"Đặt hàng thành công!",content.toString());
         } catch (Exception e) {
