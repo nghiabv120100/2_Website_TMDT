@@ -49,7 +49,7 @@ public class ProductDAO extends GenericDAO<ProductModel>{
     }
     public List<ProductModel> findAllByPage(int offset,int limit) {
         String sql = "Select * from Product "+
-                      "limit "+offset+","+limit ;
+                      "limit "+offset+","+limit;
         List<ProductModel> products = query(sql, new ProductMapper());
         return products.isEmpty() ? null : products;
     }
