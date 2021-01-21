@@ -11,6 +11,8 @@
 							class="fa fa-dashboard fa-3x"></i> Bảng điều khiển</a></li>
 					<li><a href='<c:url value="/admin-product-list?type=list"/>'><i class="fa fa-desktop fa-3x"></i>
 							Quản lí sản phẩm</a></li>
+					<li><a href='<c:url value="/admin-brand-list?type=list"/>'><i class="fa fa-desktop fa-3x"></i>
+						Quản lí thương hiệu</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin-user-list?type=list"><i class="fa fa-qrcode fa-3x"></i>
 							Quản lí người dùng</a></li>
 					<li><a href='<c:url value="/admin-order-list?type=list"/>'><i

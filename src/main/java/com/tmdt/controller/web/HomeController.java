@@ -2,10 +2,13 @@ package com.tmdt.controller.web;
 
 import com.tmdt.Cons.AccountRegister;
 import com.tmdt.Cons.Message;
+import com.tmdt.model.AccountModel;
 import com.tmdt.model.ProductModel;
+import com.tmdt.service.AccountService;
 import com.tmdt.service.CategoryService;
 import com.tmdt.service.DetailCategoryService;
 import com.tmdt.service.ProductService;
+import com.tmdt.utils.JavaMailUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -15,12 +18,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Random;
 
 @WebServlet(urlPatterns = {"/trang-chu","/dang-ky"})
 public class HomeController extends HttpServlet {
     @Inject
     private CategoryService categoryService;
 
+    @Inject
+    private AccountService accountService;
 
     @Inject
     private DetailCategoryService detailCategoryService;
@@ -30,27 +36,6 @@ public class HomeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //req.setAttribute("categories",categoryService.findAll());
-
-        //req.setAttribute("detaiCategoriesById",detailCategoryService.findByCategoryId(1));
-
-        /*String pro_name ="DellXPS 2020";
-        String image ="path";
-        double price =100;
-        String describe ="Nothing";
-        int cate_id =1;
-
-        ProductModel productModel = new ProductModel();
-        productModel.setProductName(pro_name);
-        productModel.setImage(image);
-        productModel.setPrice(price);
-        productModel.setDescribePro(describe);
-        productModel.setDetailCateId(cate_id);
-
-        //ProductModel model= productService.save(productModel);
-        System.out.println("Hello");
-        RequestDispatcher rd = req.getRequestDispatcher("views/web/index.jsp");
-        rd.forward(req,resp);*/
         String type= req.getParameter("action");
         if (type.equals("register")) {
 
@@ -76,8 +61,42 @@ public class HomeController extends HttpServlet {
 
     }
 
-    @Override
+//    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //super.doPost(req, resp);
+        String email =req.getParameter("emailReset");
+        String username= req.getParameter("userName");
+        String msg="";
+        AccountModel accountModel=null;
+        if (email == null)
+        {
+            msg="Vui lòng nhập email";
+        }
+        else {
+            accountModel = accountService.findByUsername(username);
+
+//            accountModel = accountService.getUser(email);
+            if (accountModel == null ) {
+                msg="Tài khoản không tồn tại";
+            } else if (!accountModel.getEmail().equals(email)) {
+                msg="Email không chính xác";
+            } else {
+                Random random = new Random();
+                Integer pass = random.nextInt(899999) + 100000;
+                accountModel.setPassword(pass.toString());
+                accountService.update(accountModel);
+                String content = "Mật khẩu mới của bạn là: " + accountModel.getPassword();
+                try {
+                    JavaMailUtil.sendMail(email, "Lấy lại mật khẩu", content);
+                    msg = "Mật khẩu mới đã được gửi vào gmail của bạn.";
+                } catch (Exception e) {
+                    msg = "Thao tác thất bại, vui lòng thử lại.";
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        req.setAttribute("msg",msg);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("views/web/login.jsp");
+        dispatcher.forward(req, resp);
     }
 }

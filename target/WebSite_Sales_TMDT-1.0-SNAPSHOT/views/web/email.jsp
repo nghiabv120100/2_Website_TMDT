@@ -102,10 +102,12 @@
 <div class="main">
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
-            <form action="${pageContext.request.contextPath }/dang-nhap" method="post">
+            <form action="${pageContext.request.contextPath }/trang-chu" method="post">
                 <div class="form-group">
+                    <h3>Tên tài khoản</h3>
+                    <input name="userName" type="text" class="form-control" placeholder="Nhập tên tài khoản">
                     <h3>Nhập email</h3>
-                    <input name="username" type="text" class="form-control" placeholder="Nhập email">
+                    <input name="emailReset" type="text" class="form-control" placeholder="Nhập email">
                 </div>
                 <button type="submit" class="btn btn-success btn-primary" >Gửi </button>
                 <input type="hidden" name="action" value="login">

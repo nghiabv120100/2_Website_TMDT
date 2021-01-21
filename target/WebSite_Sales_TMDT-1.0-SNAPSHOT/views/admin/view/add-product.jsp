@@ -56,6 +56,10 @@
 													placeholder="Nhập giá sản phẩm" type="number" name="price" id="price" />
 											</div>
 											<div class="form-group">
+												<label>Số lượng</label> <input class="form-control"
+																				placeholder="Nhập số lượng sản phẩm" type="number" name="quantity" id="quantity" />
+											</div>
+											<div class="form-group">
 												<label>Mô tả sản phảm </label>
 												<br>
 												<textarea rows="4" cols="50" name="editer" id="editer" ></textarea>
@@ -67,7 +71,18 @@
 												<div class="checkbox">
 													<select name="detailCateId" id="detailCateId">
 														<c:forEach items="${detailCategories}" var="c">
-															<option value='${c.getId()}'>${c.id}</option>
+															<option value='${c.getId()}'>${c.detailCateName}</option>
+														</c:forEach>
+													</select>
+												</div>
+
+											</div>
+											<div class="form-group">
+												<label>Thương hiệu sản phẩm</label>
+												<div class="checkbox">
+													<select name="brandId" id="brandId">
+														<c:forEach items="${brands}" var="c">
+															<option value='${c.id}'>${c.brandName}</option>
 														</c:forEach>
 													</select>
 												</div>
@@ -110,16 +125,19 @@
 			e.preventDefault();
 			var productName= $('#productName').val();
 			var price= parseFloat($('#price').val());
+			var quantity = parseInt($('#quantity').val());
 			var describePro= CKEDITOR.instances.editer.getData();
 			var detailCateId=parseInt($('#detailCateId').val());
-			//var image= $('#image').val();
 			var image = $('input[type=file]').val().split('\\').pop();
+			var brandId=parseInt($('#brandId').val())
 			var data={
 				"productName":productName,
 				"price":price,
+				"quantity":quantity,
 				"describePro":describePro,
 				"image":image,
-				"detailCateId":detailCateId
+				"detailCateId":detailCateId,
+				"brandId":brandId
 			}
 			console.log("Hello"+detailCateId);
 			updateProduct(data)

@@ -1,6 +1,8 @@
 package com.tmdt.controller.web;
 
+import com.tmdt.model.BrandModel;
 import com.tmdt.model.ProductModel;
+import com.tmdt.service.BrandService;
 import com.tmdt.service.ProductService;
 
 import javax.inject.Inject;
@@ -19,6 +21,8 @@ import java.util.List;
 public class ProductSearchByProperties extends HttpServlet {
     @Inject
     ProductService productService;
+    @Inject
+    BrandService brandService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -67,6 +71,8 @@ public class ProductSearchByProperties extends HttpServlet {
         List<ProductModel> products = (List<ProductModel>) obj[0];
         req.setAttribute("numOfPages",numOfPages);
         req.setAttribute("proList",products);
+        List<BrandModel> brands = brandService.findAll();
+        req.setAttribute("brands",brands);
 
         req.getRequestDispatcher("/views/web/shop.jsp").forward(req, resp);
 
