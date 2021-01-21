@@ -64,21 +64,21 @@
                 </li>
                 <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=2&page=1">Màn Hình</a>
                     <ul>
-                        <li><a href="#">Màn Hình Samsung </a></li>
-                        <li><a href="#">Màn Hình ASUS</a></li>
-                        <li><a href="#">Màn Hình Acer</a></li>
-                        <li><a href="#">Màn Hình Gigabyte</a></li>
-                        <li><a href="#">Màn Hình MSI</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=6&page=1">Màn Hình Samsung </a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=7&page=1">Màn Hình ASUS</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=8&page=1">Màn Hình Acer</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=9&page=1">Màn Hình Gigabyte</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=10&page=1">Màn Hình MSI</a></li>
                     </ul>
                 </li>
                 <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=3&page=1">Chuột chơi game</a>
                     <ul>
-                        <li><a href="#">Logitech</a></li>
-                        <li><a href="#">Kingston HyperX</a></li>
-                        <li><a href="#">Razer</a></li>
-                        <li><a href="#">Asus</a></li>
-                        <li><a href="#">MSI</a></li>
-                        <li><a href="#">Hãng Khác</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=11&page=1">Logitech</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=12&page=1">Kingston HyperX</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=13&page=1">Razer</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=14&page=1">Asus</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=15&page=1">MSI</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=16&page=1">Hãng Khác</a></li>
 
 
                     </ul>

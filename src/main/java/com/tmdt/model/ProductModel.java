@@ -5,9 +5,18 @@ public class ProductModel {
     private String productName;
     private String image;
     private double price;
+    private int quantity;
     private String describePro;
     private int detailCateId;
     private int ids[]; //Chứ danh sách id để xoá
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public int[] getIds() {
         return ids;

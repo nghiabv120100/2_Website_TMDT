@@ -122,6 +122,19 @@
                 <button type="button" class="btn btn-link" style="padding-left: 180px">Quên mật khẩu?</button>
             </form>
 
+            <form action="${pageContext.request.contextPath }/trang-chu" method="post">
+                <div class="form-group">
+                    <h3>Tên tài khoản</h3>
+                    <input name="userName" type="text" class="form-control" placeholder="Nhập tên tài khoản">
+                    <h3>Nhập email</h3>
+                    <input name="emailReset" type="text" class="form-control" placeholder="Nhập email">
+                </div>
+                <label>${msg}</label>
+                <button type="submit" class="btn btn-success btn-primary" >Gửi </button>
+                <input type="hidden" name="action" value="login">
+            </form>
+
+
         </div>
     </div>
 </div>
