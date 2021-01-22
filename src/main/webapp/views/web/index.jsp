@@ -31,20 +31,20 @@
 						<li data-target="#slider-carousel" data-slide-to="1"></li>
 						<li data-target="#slider-carousel" data-slide-to="2"></li>
 					</ol>
-					
-					<div class="carousel-inner">
+
+					<div class="carousel-inner text-center">
 						<div class="item active">
-							<img src="${url}/images/bn1.png" class="girl img-responsive" alt="" width="950px"/>
+							<img src="https://xgear.vn/wp-content/uploads/2020/12/freebuild-slider_compressed.jpg" class="girl img-responsive"  alt=""/>
 						</div>
 						<div class="item">
-							<img src="${url}/images/bn2.png" class="girl img-responsive" alt="" width="950px"/>
+							<img src="https://xgear.vn/wp-content/uploads/2021/01/T%E1%BA%BFt-gi%E1%BA%A3m-h%E1%BA%BFt-slider.jpg" class="girl img-responsive"   alt="" />
 						</div>
 						<div class="item">
-							<img src="${url}/images/bn3.png" class="girl img-responsive" alt="" width="950px"/>
+							<img src="https://xgear.vn/wp-content/uploads/2020/12/Concept-D-Slider.jpg" class="girl img-responsive"  alt=""/>
 						</div>
-					
+
 					</div>
-					
+
 					<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
 						<i class="fa fa-angle-left"></i>
 					</a>
