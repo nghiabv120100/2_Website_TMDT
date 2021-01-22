@@ -152,9 +152,13 @@
 													<img style="width: 50px;height: 50px;object-fit: cover" src="${imgUrl}" alt="#">
 												</td>
 												<td class="description">${item.getProduct().getProductName()}</td>
-												<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>
+<%--												<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>--%>
+												<td ><fmt:formatNumber type="number" value="${item.getUnitPrice()}" /> VNĐ</td>
+
 												<td class="quantity">${item.getQuantity()}</td>
-												<td class="total">${item.getUnitPrice()*item.getQuantity()}<span>VNĐ</span></td>
+<%--												<td class="total">${item.getUnitPrice()*item.getQuantity()}<span>VNĐ</span></td>--%>
+												<td ><fmt:formatNumber type="number" value="${item.getUnitPrice()*item.getQuantity()}" /> VNĐ</td>
+
 											</tr>
 
 										</c:forEach>

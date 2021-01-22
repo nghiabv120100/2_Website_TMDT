@@ -71,10 +71,10 @@
 											<div class="form-group">
 												<label>Chức vụ</label>
 												<div class="checkbox">
-													<label> <input type="radio" value="1" name="role" class="roleid"/>Admin
+													<label> <input type="radio" value="1" name="role" id="roleid"/>Admin
 													</label>
 													<br>
-													<label> <input type="radio" value="0" name="role" class="roleid" checked/>Client
+													<label> <input type="radio" value="0" name="role" id="roleid2" checked/>Client
 													</label>
 												</div>
 											</div>
@@ -116,9 +116,10 @@
 			var phonenumber=$('#phonenumber').val();
 			var address=$('#address').val();
 			var avatar= $('#avatar').val();
-			if ($('.roleid').is(":checked"))
+			var roleId=0;
+			if ($('#roleid').is(":checked"))
 			{
-				var roleId=parseInt($('.role').val());
+				roleId=1;
 			}
 
 

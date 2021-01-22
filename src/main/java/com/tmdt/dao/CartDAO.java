@@ -25,11 +25,11 @@ public class CartDAO extends GenericDAO<CartModel> {
     }
     public int save(CartModel cartModel){
         if (cartModel.getUserID() > 0) {
-            String sql="insert into Cart(user_id,total_price) values(?,?)";
-            return insert(sql,cartModel.getUserID(),cartModel.getTotalPrice());
+            String sql="insert into Cart(user_id,total_price,option_pay) values(?,?,?)";
+            return insert(sql,cartModel.getUserID(),cartModel.getTotalPrice(),cartModel.getOptionPay());
         } else if(cartModel.getCustomerID() > 0) {
-            String sql="insert into Cart(customer_id,total_price) values(?,?)";
-            return insert(sql,cartModel.getCustomerID(),cartModel.getTotalPrice());
+            String sql="insert into Cart(customer_id,total_price,option_pay) values(?,?,?)";
+            return insert(sql,cartModel.getCustomerID(),cartModel.getTotalPrice(),cartModel.getOptionPay());
         } else
             return -1;
 

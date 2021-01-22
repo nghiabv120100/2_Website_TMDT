@@ -90,7 +90,9 @@
 							<h4>${cart.buyDate}</h4>
 						</td>
 						<td class="cart_d	escription">
-						<h4>${cart.totalPrice} VNĐ</h4>
+<%--						<h4>${cart.totalPrice} VNĐ</h4>--%>
+						<h4><fmt:formatNumber type="number" value="${cart.totalPrice}" /> VNĐ</h4>
+
 						</td>
 						<td>
 							<c:if test="${cart.getOptionPay()==0}">Trả tiền khi nhận hàng</c:if>
@@ -131,7 +133,9 @@
 											<img width="50px" height="50px" src="${imgUrl}" alt="#">
 										</td>
 										<td class="description">${item.getProduct().getProductName()}</td>
-										<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>
+<%--										<td class="price">${item.getUnitPrice()}<span>VNĐ</span></td>--%>
+										<td class="price"><fmt:formatNumber type="number" value="${item.getUnitPrice()}" /> VNĐ</td>
+
 										<td class="quantity">${item.getQuantity()}</td>
 <%--										<td class="total">${item.getUnitPrice()*item.getQuantity()}<span>VNĐ</span></td>--%>
 										<td class="total"><fmt:formatNumber type="number" value="${item.getUnitPrice()*item.getQuantity()}" /> VNĐ</td>

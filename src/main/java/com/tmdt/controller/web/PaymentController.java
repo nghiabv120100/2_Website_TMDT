@@ -38,6 +38,7 @@ public class PaymentController extends HttpServlet {
         session.setAttribute("isOnline","True");
         CartModel cartModel =  (CartModel) session.getAttribute("order");
         String userName = (String) session.getAttribute("loginName");
+        cartModel.setOptionPay(1);
 
         if (cartModel != null ) {
             if (userName == null) {
@@ -48,14 +49,12 @@ public class PaymentController extends HttpServlet {
                 customerModel.setAddress(address);
                 session.setAttribute("customer", customerModel);
                 //Phúc
-                if (customerModel.getFullname().equals("")) {
+/*                if (customerModel.getFullname().equals("")) {
 
                     RequestDispatcher rd = req.getRequestDispatcher("/views/web/login.jsp");
                     rd.forward(req,resp);
 
-                }
-
-
+                }*/
                 //end
             }
             else {
