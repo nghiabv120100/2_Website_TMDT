@@ -5,139 +5,73 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
-    <!------ Include the above in your HEAD tag ---------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <style>
-
-        body {
-        font-family: "Lato", sans-serif;
-        }
-
-
-
-        .main-head{
-        height: 150px;
-        background: #FFF;
-
-        }
-
-        .sidenav {
-        height: 100%;
-        background-color: #000;
-        overflow-x: hidden;
-        padding-top: 20px;
-        }
-
-
-        .main {
-        padding: 0px 10px;
-        }
-
-        @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        }
-
-        @media screen and (max-width: 450px) {
-        .login-form{
-        margin-top: 10%;
-        }
-
-        .register-form{
-        margin-top: 10%;
-        }
-        }
-
-        @media screen and (min-width: 768px){
-        .main{
-        margin-left: 40%;
-        }
-
-        .sidenav{
-        width: 40%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #101F33;
-        }
-
-        .login-form{
-        margin-top: 80%;
-        }
-
-        .register-form{
-        margin-top: 20%;
-        }
-        }
-
-
-        .login-main-text{
-        margin-top: 20%;
-        padding: 60px;
-        color: #fff;
-        }
-
-        .login-main-text h2{
-        font-weight: 300;
-        }
-
-        .btn-black{
-        background-color: #000 !important;
-        color: #fff;
+        h5 {
+            padding: 10px 0px;
         }
     </style>
 </head>
-<body>
-
-    <div class="sidenav text-center align-middle" >
-        <div class="login-main-text">
-            <h1 style="color: white">Đăng nhập<br><br>
-                <a href="${HomeUrl}?action=home"><i style="color: white" class="fas fa-home fa-2x"></i></a></h1>
-        </div>
-    </div>
-
-<div class="main">
-    <div class="col-md-6 col-sm-12">
-        <div class="login-form">
-            <form action="${pageContext.request.contextPath }/dang-nhap" method="post">
-                <div class="form-group">
-                    <h3>Tên đăng nhập</h3>
-                    <input name="username" type="text" class="form-control" placeholder="Tên đăng nhập">
+<body style="background-color: rgba(0,0,0,0.003)">
+<div class="container" >
+    <div class="row" style=" min-height: 100vh;">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12 text-center" style="padding-top: 20px;">
+                    <a href="${HomeUrl}?action=home" class="mt2" style=" color:#696763;"><i class="fas fa-home fa-4x"></i></a>
                 </div>
-                <div class="form-group">
-                    <h3>Mật khẩu</h3>
-                    <input name="password" type="password" class="form-control" placeholder="Mật khẩu">
+            </div>
+            <div class="row" style="margin-top: 100px;">
+                <div class="col-1"></div>
+                <div class="col-4">
+                    <h4>Đăng nhập</h4>
+                    <div class="login-form">
+                        <form action="${pageContext.request.contextPath }/dang-nhap" method="post">
+                            <div class="form-group">
+                                <h5>Tên đăng nhập</h5>
+                                <input name="username" type="text" class="form-control" placeholder="Tên đăng nhập">
+                            </div>
+                            <div class="form-group">
+                                <h5>Mật khẩu</h5>
+                                <input name="password" type="password" class="form-control" placeholder="Mật khẩu">
+                            </div>
+                            <label>${msg}</label><br>
+                            <button type="submit" class="btn btn-success btn-primary" style="margin-top: 10px; color: white; background-color: #696763; border: none;">Đăng nhập</button>
+
+                            <input type="hidden" name="action" value="login">
+
+                        </form>
+                        <form action="${pageContext.request.contextPath }/dang-ky?type=register" method="get ">
+                            <button type="submit" class="btn btn-link">Đăng kí</button>
+                            <input type="hidden" name="action" value="register">
+                            <%--                <button type="button" class="btn btn-link" style="padding-left: 180px">Quên mật khẩu?</button>--%>
+                        </form>
+                    </div>
                 </div>
-                <label>${msg}</label><br>
-                <button type="submit" class="btn btn-success btn-primary" >Đăng nhập</button>
-
-                <input type="hidden" name="action" value="login">
-
-            </form>
-            <form action="${pageContext.request.contextPath }/dang-ky?type=register" method="get ">
-                <button type="submit" class="btn btn-link">Đăng kí</button>
-                <input type="hidden" name="action" value="register">
-<%--                <button type="button" class="btn btn-link" style="padding-left: 180px">Quên mật khẩu?</button>--%>
-            </form>
-            <h2 style="color: blue">Quên mật khẩu</h2>
-            <form action="${pageContext.request.contextPath }/trang-chu" method="post">
-                <div class="form-group">
-                    <h3>Tên tài khoản</h3>
-                    <input name="userName" type="text" class="form-control" placeholder="Nhập tên tài khoản">
-                    <h3>Nhập email</h3>
-                    <input name="emailReset" type="text" class="form-control" placeholder="Nhập email">
+                <div class="col-1" ></div>
+                <div class="col-1" style="border-left: solid 1px #333 "></div>
+                <div class="col-5" >
+                    <div class="col-8">
+                        <h4>Quên mật khẩu</h4>
+                        <form action="${pageContext.request.contextPath }/trang-chu" method="post">
+                            <div class="form-group">
+                                <h5>Tên tài khoản</h5>
+                                <input name="userName" type="text" class="form-control" placeholder="Nhập tên tài khoản">
+                                <h5>Nhập email</h5>
+                                <input name="emailReset" type="text" class="form-control" placeholder="Nhập email">
+                            </div>
+                            <label>${msg}</label><br>
+                            <button type="submit" class="btn btn-success btn-primary " style="margin-top: 10px; color: white; background-color: #696763; border: none;" >Gửi </button>
+                            <input type="hidden" name="action" value="login">
+                        </form>
+                    </div>
                 </div>
-                <label>${msg}</label><br>
-                <button type="submit" class="btn btn-success btn-primary" >Gửi </button>
-                <input type="hidden" name="action" value="login">
-            </form>
-
-
+            </div>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 </body>
 </html>
