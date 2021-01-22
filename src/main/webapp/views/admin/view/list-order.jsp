@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <c:url value="/views/admin/static" var="url"></c:url>
@@ -95,7 +96,9 @@
 													<td>${buyer.username }</td>
 													<td>${buyer.email }</td>
 													<td>${cart.buyDate }</td>
-													<td>${total_cart}</td>
+													<td ><fmt:formatNumber type="number" value="${total_cart}" /> VNĐ</td>
+
+<%--													<td>${total_cart}</td>--%>
 													<td>
 														<c:if test="${cart.optionPay == 0}">Trả khi nhận hàng</c:if>
 														<c:if test="${cart.optionPay == 1}">Thanh toán online</c:if>
