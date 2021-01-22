@@ -88,19 +88,28 @@
                     <ul>
                         <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=17&page=1">Logitech</a></li>
                         <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=18&page=1">Kingston HyperX</a></li>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=19&page=1">Dareu</a></li>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=20&page=1">Cooler Master</a></li>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=21&page=1">Corsier</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=19&page=1">Razer</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=20&page=1">Asus</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=21&page=1">MSI</a></li>
                         <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=22&page=1">Hãng Khác</a></li>
+
                     </ul>
                 </li>
                 <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=5&page=1">Tai nghe</a>
                     <ul>
+<<<<<<< HEAD
 <%--                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=23&page=1">Logitech</a></li>--%>
 <%--                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=24&page=1">Kingston HyperX</a></li>--%>
 <%--                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=25&page=1">Dareu</a></li>--%>
 <%--                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=26&page=1">Cooler Master</a></li>--%>
 <%--                        <li><a href="${pageContext.request.contextPath}/client-product-list?type=detail_category&detail_cate_id=27&page=1">Corsier</a></li>--%>
+=======
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=23&page=1">Logitech</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=24&page=1">Kingston HyperX</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=25&page=1">Razer</a></li>
+                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=26&page=1">Asus</a></li>
+<%--                        <li><a href="${pageContext.request.contextPath}/client-product-list?type=detail_category&detail_cate_id=27&page=1">Corsier</a></li>&ndash;%&gt;--%>
+>>>>>>> 8884d8020e658606e70195eba38142afbf13a31a
 <%--                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=28&page=1">Hãng Khác</a></li>--%>
                     </ul>
                 </li>
