@@ -90,9 +90,13 @@
 						<p>Thông tin cá nhân</p>
 						<form>
 							<input id="fullname" type="text" placeholder="Tên" value="${accountModel.getUsername()}">
-							<input id="email" type="text" placeholder="Emal" value="${accountModel.getEmail()}">
+							<label style="color: red">${errUserName}</label>
+							<input id="email" type="text" placeholder="Email" value="${accountModel.getEmail()}">
+							<label style="color: red">${errEmail}</label>
 							<input id="address" type="text" placeholder="Địa chỉ" value="${accountModel.getAddress()}">
+							<label style="color: red">${errAddress}</label>
 							<input id="phonenumber" type="text" placeholder="Số điện thoại" value="${accountModel.getPhonenumber()}">
+							<label style="color: red">${errPhone}</label>
 						</form>
 					</div>
 				</div>

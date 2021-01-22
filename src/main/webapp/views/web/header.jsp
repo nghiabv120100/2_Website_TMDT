@@ -96,10 +96,10 @@
                 </li>
                 <li><a href="${pageContext.request.contextPath }/client-product-list?type=category&cate_id=5&page=1">Tai nghe</a>
                     <ul>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=23&page=1">Logitech</a></li>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=24&page=1">Kingston HyperX</a></li>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=25&page=1">Dareu</a></li>
-                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=26&page=1">Cooler Master</a></li>
+<%--                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=23&page=1">Logitech</a></li>--%>
+<%--                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=24&page=1">Kingston HyperX</a></li>--%>
+<%--                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=25&page=1">Dareu</a></li>--%>
+<%--                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=26&page=1">Cooler Master</a></li>--%>
 <%--                        <li><a href="${pageContext.request.contextPath}/client-product-list?type=detail_category&detail_cate_id=27&page=1">Corsier</a></li>--%>
 <%--                        <li><a href="${pageContext.request.contextPath }/client-product-list?type=detail_category&detail_cate_id=28&page=1">Hãng Khác</a></li>--%>
                     </ul>

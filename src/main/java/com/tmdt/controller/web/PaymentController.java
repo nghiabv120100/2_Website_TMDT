@@ -33,41 +33,13 @@ public class PaymentController extends HttpServlet {
         String phone = req.getParameter("phone");
         String address = req.getParameter("address");
 
-        /*HttpSession httpSession = req.getSession();
-        String u_email = (String) httpSession.getAttribute("email");
-        CartEntity cartEntity = (CartEntity) httpSession.getAttribute("cartEntity");
-
-        UserEntity userEntity = new UserEntity();
-        userEntity = userService.getUser(u_email);
-        int c_id = customerService.getCustomerId(userEntity.getId());
-
-        CustomerEntity customerEntity = new CustomerEntity();
-        customerEntity.setFullname(fullname);
-        customerEntity.setEmail(email);
-        customerEntity.setPhone(phone);
-        customerEntity.setAddress(address);
-
-        if(c_id!=0) {
-            customerEntity.setId(c_id);
-            customerService.edit(customerEntity);
-        }
-        else {
-            customerService.insert(customerEntity);
-            int new_c_id = customerService.getNewIDCustomer();
-            customerEntity.setId(new_c_id);
-
-            cartService.UpdateCustomer(cartEntity.getId(),new_c_id);
-        }
-
-        cartEntity.setCustomerEntity(customerEntity);
-        httpSession.setAttribute("cartEntity",cartEntity);*/
 
         HttpSession session = req.getSession();
         session.setAttribute("isOnline","True");
         CartModel cartModel =  (CartModel) session.getAttribute("order");
-
         String userName = (String) session.getAttribute("loginName");
-        if (cartModel != null) {
+
+        if (cartModel != null ) {
             if (userName == null) {
                 CustomerModel customerModel = new CustomerModel();
                 customerModel.setFullname(fullname);
@@ -75,6 +47,16 @@ public class PaymentController extends HttpServlet {
                 customerModel.setPhonenumber(phone);
                 customerModel.setAddress(address);
                 session.setAttribute("customer", customerModel);
+                //Phúc
+                if (customerModel.getFullname().equals("")) {
+
+                    RequestDispatcher rd = req.getRequestDispatcher("/views/web/login.jsp");
+                    rd.forward(req,resp);
+
+                }
+
+
+                //end
             }
             else {
                 AccountModel accountModel = accountService.findByUsername(userName);
@@ -84,6 +66,7 @@ public class PaymentController extends HttpServlet {
 
 
         if(cartModel !=null){
+
             String chuoi="";
             chuoi+="upload=1";
             chuoi+="&&return=http://localhost:8080/WebSite_Sales_TMDT_war_exploded/api-user-order";
