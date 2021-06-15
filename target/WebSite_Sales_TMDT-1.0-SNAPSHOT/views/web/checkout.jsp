@@ -45,6 +45,7 @@
 								   value="${accountModel.getPhonenumber()}">
 							<label style="color: red">${errPhone}</label>
 							<button type="submit" class="btn btn-primary">Thay đổi thông tin</button>
+
 						</form>
 					</div>
 				</div>
@@ -56,6 +57,7 @@
 							<input id="newPassword" type="password" placeholder="Mật khẩu mới">
 							<input id="confirmPassword" type="password" placeholder="Xác nhận mật khẩu">
 						</form>
+						<div id="notify"></div>
 						<a class="btn btn-primary" onclick="changePassword()" href="">Cập nhật thông tin</a>
 					</div>
 				</div>

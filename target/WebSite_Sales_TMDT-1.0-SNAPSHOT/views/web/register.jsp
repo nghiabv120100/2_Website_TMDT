@@ -75,6 +75,7 @@
         var pwd= $('#pwd').val();
         var confirmation_pwd= $('#confirmation_pwd').val();
         var address= $('#address').val();
+        alert("hello");
         var data={
             "username":username,
             "email":email,

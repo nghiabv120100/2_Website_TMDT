@@ -75,6 +75,7 @@
         var pwd= $('#pwd').val();
         var confirmation_pwd= $('#confirmation_pwd').val();
         var address= $('#address').val();
+        alert("hello");
         var data={
             "username":username,
             "email":email,
@@ -87,6 +88,7 @@
         }
         registerAccount(data)
     });
+
     function registerAccount(data){
         $.ajax({
             url: '${APIurl}',
@@ -103,11 +105,8 @@
             },
             error: function (error){
                 console.log("Error");
-
                 window.location.href = "${url}?action=register";
-
             }
-
         })
     }
 </script>
