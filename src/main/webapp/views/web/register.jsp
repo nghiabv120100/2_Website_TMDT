@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
+
 <c:url value="/api-user-dangky" var ="APIurl"></c:url>
 <c:url value="/trang-chu" var="url"> </c:url>
 <!DOCTYPE html>
@@ -17,6 +18,8 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <%--hash password--%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script></head>
 </head>
 <body>
 <div class="container">
@@ -72,10 +75,11 @@
         var username= $('#username').val();
         var email= $('#email').val();
         var phone= $('#phone').val();
-        var pwd= $('#pwd').val();
+        var textPassword= $('#pwd').val();
+        var pwd = CryptoJS.MD5(textPassword).toString();
         var confirmation_pwd= $('#confirmation_pwd').val();
+        var confirmation_pwd=CryptoJS.MD5(confirmation_pwd).toString();
         var address= $('#address').val();
-        alert("hello");
         var data={
             "username":username,
             "email":email,

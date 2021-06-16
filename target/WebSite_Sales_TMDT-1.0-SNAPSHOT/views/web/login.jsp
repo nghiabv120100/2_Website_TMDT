@@ -2,9 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/views/web" var="login"></c:url>
 <c:url value="/trang-chu" var="HomeUrl"> </c:url>
+<c:url value="/dang-nhap" var="loginUrl"></c:url>
 <html>
 <head>
     <title>Title</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <style>
@@ -12,6 +14,8 @@
             padding: 10px 0px;
         }
     </style>
+    <%--hash password--%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
 </head>
 <body style="background-color: rgba(0,0,0,0.003)">
 <div class="container" >
@@ -71,6 +75,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    function passHash() {
+        var textPassword = $('password').val();
+        var pwd = CryptoJS.MD5(textPassword).toString();
+        document.getElementById('password').value = pwd;
+    }
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 </body>

@@ -1,5 +1,6 @@
 package com.tmdt.controller.web;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tmdt.Cons.AccountRegister;
 import com.tmdt.Cons.Message;
 import com.tmdt.model.AccountModel;
@@ -8,6 +9,7 @@ import com.tmdt.service.AccountService;
 import com.tmdt.service.CategoryService;
 import com.tmdt.service.DetailCategoryService;
 import com.tmdt.service.ProductService;
+import com.tmdt.utils.HttpUtil;
 import com.tmdt.utils.JavaMailUtil;
 
 import javax.inject.Inject;
@@ -74,7 +76,7 @@ public class HomeController extends HttpServlet {
         else {
             accountModel = accountService.findByUsername(username);
 
-//            accountModel = accountService.getUser(email);
+    //            accountModel = accountService.getUser(email);
             if (accountModel == null ) {
                 msg="Tài khoản không tồn tại";
             } else if (!accountModel.getEmail().equals(email)) {
