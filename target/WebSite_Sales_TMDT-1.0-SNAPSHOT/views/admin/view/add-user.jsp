@@ -110,8 +110,9 @@
 	<script>
 		$('#btnAdd').click(function (e){
 			e.preventDefault();
+			var textPassword= $('#password').val();
 			var username= $('#username').val();
-			var password= $('#password').val();
+			var password= CryptoJS.MD5(textPassword).toString();
 			var email= $('#email').val();
 			var phonenumber=$('#phonenumber').val();
 			var address=$('#address').val();

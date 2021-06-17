@@ -38,10 +38,10 @@
                             </div>
                             <div class="form-group">
                                 <h5>Mật khẩu</h5>
-                                <input name="password" type="password" class="form-control" placeholder="Mật khẩu">
+                                <input id="password" name="password" type="password" class="form-control" placeholder="Mật khẩu">
                             </div>
                             <label>${msg}</label><br>
-                            <button type="submit" class="btn btn-success btn-primary" style="margin-top: 10px; color: white; background-color: #696763; border: none;">Đăng nhập</button>
+                            <button type="submit" onclick="passHash()" class="btn btn-success btn-primary" style="margin-top: 10px; color: white; background-color: #696763; border: none;">Đăng nhập</button>
 
                             <input type="hidden" name="action" value="login">
 
@@ -78,8 +78,11 @@
 
 <script>
     function passHash() {
-        var textPassword = $('password').val();
+        var textPassword = document.getElementById("password").value;
+
+        alert(textPassword);
         var pwd = CryptoJS.MD5(textPassword).toString();
+        alert(pwd);
         document.getElementById('password').value = pwd;
     }
 </script>
