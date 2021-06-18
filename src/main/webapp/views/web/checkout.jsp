@@ -17,6 +17,8 @@
 	<link href="${url}/css/font-awesome.min.css" rel="stylesheet">
 	<link href="${url}/css/main.css" rel="stylesheet">
 	<link href="${url}/css/responsive.css" rel="stylesheet">
+	<%--hash password--%>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
 </head>
 
 <body>
@@ -164,9 +166,16 @@
 <script src="${url}/js/main.js"></script>
 <script>
 	function changePassword() {
-		var oldPassword =$('#oldPassword').val();
-		var newPassword =$('#newPassword').val();
-		var confirmPassword =$('#confirmPassword').val();
+		var txtOldPassword = $('#oldPassword').val();
+		var txtNewPassword = $('#newPassword').val();
+		var txtConfirmPassword =$('#confirmPassword').val();
+
+		//validate
+
+		var oldPassword =CryptoJS.MD5(txtOldPassword).toString();
+		var newPassword =CryptoJS.MD5(txtNewPassword).toString();
+		var confirmPassword =CryptoJS.MD5(txtConfirmPassword).toString();
+
 		var data ={
 			oldPassword:oldPassword,
 			password:newPassword,

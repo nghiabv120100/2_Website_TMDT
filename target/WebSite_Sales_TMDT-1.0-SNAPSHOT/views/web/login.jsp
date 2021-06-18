@@ -79,10 +79,7 @@
 <script>
     function passHash() {
         var textPassword = document.getElementById("password").value;
-
-        alert(textPassword);
         var pwd = CryptoJS.MD5(textPassword).toString();
-        alert(pwd);
         document.getElementById('password').value = pwd;
     }
 </script>

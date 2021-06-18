@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Edit User</title>
@@ -19,6 +20,7 @@
 <!-- GOOGLE FONTS-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -83,6 +85,7 @@
 												<label>Chọn Avatar</label> <input type="file"
 													name="avatar" />
 											</div>
+											<input type="hidden" value="${user.password}" id="oldPassword">
 											<button type="button" class="btn btn-default" id="btnEdit">Cập nhật</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
@@ -120,7 +123,8 @@
 			e.preventDefault();
 			var id =parseInt($('#id').val());
 			var username= $('#username').val();
-			var password= $('#password').val();
+			var oldPassword = $('#oldPassword').val();
+			var txtPassword= $('#password').val();
 			var email= $('#email').val();
 			var phonenumber=$('#phonenumber').val();
 			var address=$('#address').val();
@@ -129,7 +133,12 @@
 			{
 				var roleId=parseInt($('.roleid').val());
 			}
-
+			var password ='';
+			if (oldPassword == txtPassword) {
+				password = oldPassword;
+			} else {
+				password = CryptoJS.MD5(txtPassword).toString();
+			}
 
 			console.log(roleId);
 			console.log(username);
