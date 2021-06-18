@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label for="phone">Phone number:</label>
-                <input required="true" type="phone" class="form-control" id="phone"
+                <input required="true" class="form-control" id="phone" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" type="number"
                        value="${accountRegister.phonenumber}">
                 <label style="color: red">${errPhone}</label>
             </div>
@@ -72,14 +72,55 @@
 <script>
     $('#btnRegister').click(function (e){
         e.preventDefault();
+
+        //Kiểm tra username
         var username= $('#username').val();
+        if (username.trim().length == 0){
+            alert("Yêu cầu nhập username !");
+            return false;
+        }
+
+        ///Điều kiện ràng buộc email
+        var emailregex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         var email= $('#email').val();
+        if (! email.match(emailregex)){
+            alert("Yêu cầu nhập đúng định dạng email !");
+            return false;
+        }
+
+        ///Kiểm tra phone
         var phone= $('#phone').val();
+        if (phone.trim().length == 0){
+            alert("Yêu cầu nhập số điện thoại !");
+            return false;
+        }
+
+        ///Điều kiện ràng buộc mật khẩu
         var textPassword= $('#pwd').val();
-        var pwd = CryptoJS.MD5(textPassword).toString();
+        var passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (! textPassword.match(passregex)){
+            alert("Yêu cầu nhập mật khẩu tối thiểu tám ký tự, ít nhất một chữ cái viết hoa, một chữ cái viết thường, một số và một ký tự đặc biệt !");
+            return false;
+        }
+
+        ///Kiểm tra mật khẩu nhập lại
         var confirmation_pwd= $('#confirmation_pwd').val();
+        if(! (textPassword.toString().trim() === confirmation_pwd.toString().trim()) ){
+                alert("Mật khẩu nhập lại không khớp !");
+                return  false;
+        }
+
+        ///Mã hóa mật khẩu
+        var pwd = CryptoJS.MD5(textPassword).toString();
         var confirmation_pwd=CryptoJS.MD5(confirmation_pwd).toString();
+
+        ///Kiểm tra address
         var address= $('#address').val();
+        if (address.trim().length == 0){
+            alert("Yêu cầu nhập địa chỉ !");
+            return false;
+        }
+
         var data={
             "username":username,
             "email":email,
