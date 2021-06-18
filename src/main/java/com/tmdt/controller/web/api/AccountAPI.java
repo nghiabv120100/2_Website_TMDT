@@ -35,51 +35,13 @@ public class AccountAPI extends HttpServlet {
 
         AccountModel accountModel = HttpUtil.of(req.getReader()).toModel(AccountModel.class);
 
-       Message.reset();
+        ///Gán roleId = 0
+        accountModel.setRoleId(0);
 
+        Message.reset();
 
         AccountRegister.setAccountRegister(accountModel);
 
-
-        boolean check = false;
-
-        if(accountModel.getUsername().equals(""))
-        {
-
-            Message.errUser="Vui long nhap UserName !";
-            check = true;
-        }
-        if(accountModel.getEmail().equals(""))
-        {
-            Message.errEmail = "Vui long nhap Email !";
-            check = true;
-        }
-        if(accountModel.getPhonenumber().equals(""))
-        {
-            Message.errPhone = "Vui long nhap SDT";
-            check = true;
-        }
-        if(accountModel.getPassword().equals(""))
-        {
-            Message.errPassword = "Vui long nhap password";
-            check = true;
-        }
-        else {
-            if(!accountModel.getPassword().equals(accountModel.getConfirmation_pwd()))
-            {
-                Message.errPassword = "Khong trung mat khau";
-                check = true;
-            }
-        }
-        if(accountModel.getAddress().equals(""))
-        {
-            Message.errAddress = "Vui long nhap dia chi!";
-            check = true;
-        }
-        if(check == true)
-        {
-            return;
-        }
         accountModel= accountService.save(accountModel);
         if (accountModel!=null){
             String content="<h3>Đăng ký tài khoản thành công!</h3><br><p>Cảm ơn bạn đã sử dụng dịch vụ của shop</p>";
