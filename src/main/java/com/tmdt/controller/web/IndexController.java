@@ -44,9 +44,13 @@ public class IndexController extends HttpServlet {
                 sessProperty.setAttribute("end_price", 900000000);
                 sessProperty.setAttribute("key_word", null);
                 // End reset session
+                int currentPage =1;
+                try {
+                    currentPage = Integer.parseInt(req.getParameter("page"));
+                } catch (Exception e) {
+                    currentPage =1;
+                }
 
-
-                int currentPage = Integer.parseInt(req.getParameter("page"));
                 offset = (currentPage - 1) * limit;
                 List<ProductModel> productModelList = productService.findAll();
                 List<ProductModel> products = productService.findAllByPage(0, 6);
@@ -64,7 +68,12 @@ public class IndexController extends HttpServlet {
                 url = "views/web/index.jsp";
             } else if (type.equals("category")) {
 
-                int currentPage = Integer.parseInt(req.getParameter("page"));
+                int currentPage =1;
+                try {
+                    currentPage = Integer.parseInt(req.getParameter("page"));
+                } catch (Exception e) {
+                    currentPage =1;
+                }
                 offset = (currentPage - 1) * limit;
 
                 int cate_id = Integer.parseInt(req.getParameter("cate_id"));
@@ -103,7 +112,12 @@ public class IndexController extends HttpServlet {
 
 
             } else if (type.equals("detail_category")) {
-                int currentPage = Integer.parseInt(req.getParameter("page"));
+                int currentPage =1;
+                try {
+                    currentPage = Integer.parseInt(req.getParameter("page"));
+                } catch (Exception e) {
+                    currentPage =1;
+                }
                 offset = (currentPage - 1) * limit;
                 int detail_cate_id = Integer.parseInt(req.getParameter("detail_cate_id"));
                 List<ProductModel> productModelList = productService.findByDetailCategoryAndPage(detail_cate_id, offset, limit);
@@ -155,7 +169,13 @@ public class IndexController extends HttpServlet {
                     item.setQuantity(item.getQuantity() - 1);
                 }
             } else if (type.equals("searchByName")) {
-                int currentPage = Integer.parseInt(req.getParameter("page"));
+
+                int currentPage =1;
+                try {
+                    currentPage = Integer.parseInt(req.getParameter("page"));
+                } catch (Exception e) {
+                    currentPage =1;
+                }
                 offset = (currentPage - 1) * limit;
 
                 String keyword = req.getParameter("keyword");
