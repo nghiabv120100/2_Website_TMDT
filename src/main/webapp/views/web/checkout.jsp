@@ -60,7 +60,7 @@
 							<input id="confirmPassword" type="password" placeholder="Xác nhận mật khẩu">
 						</form>
 						<div id="notify"></div>
-						<a class="btn btn-primary" onclick="changePassword()" href="">Cập nhật thông tin</a>
+						<a class="btn btn-primary" id= "capnhatthongtin" href="">Cập nhật thông tin</a>
 					</div>
 				</div>
 			</div>
@@ -164,14 +164,29 @@
 <script src="${url}/js/jquery.scrollUp.min.js"></script>
 <script src="${url}/js/jquery.prettyPhoto.js"></script>
 <script src="${url}/js/main.js"></script>
+
 <script>
-	function changePassword() {
+	$('#capnhatthongtin').click(function (e){
+		e.preventDefault();
+
 		var txtOldPassword = $('#oldPassword').val();
 		var txtNewPassword = $('#newPassword').val();
 		var txtConfirmPassword =$('#confirmPassword').val();
 
-		//validate
+		///Điều kiện ràng buộc mật khẩu
+		var passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+		if (! txtNewPassword.match(passregex)){
+			alert("Yêu cầu nhập mật khẩu mới tối thiểu tám ký tự, ít nhất một chữ cái viết hoa, một chữ cái viết thường, một số và một ký tự đặc biệt !");
+			return false;
+		}
 
+		///Kiểm tra mật khẩu nhập lại
+		if(! (txtNewPassword.toString().trim() === txtConfirmPassword.toString().trim()) ){
+			alert("Mật khẩu nhập lại không khớp !");
+			return  false;
+		}
+
+		//mã hóa mật khẩu
 		var oldPassword =CryptoJS.MD5(txtOldPassword).toString();
 		var newPassword =CryptoJS.MD5(txtNewPassword).toString();
 		var confirmPassword =CryptoJS.MD5(txtConfirmPassword).toString();
@@ -181,7 +196,7 @@
 			password:newPassword,
 			confirmation_pwd:confirmPassword
 		}
-		console.log(data)
+
 		$.ajax({
 			url: '${APIurl}',
 			type: 'PUT',
@@ -191,15 +206,20 @@
 			data:JSON.stringify(data),
 			dataType: 'json',
 			success: function (result){
+				console.log(result);
+				if (result === 1){
+					alert("Cập nhật mật khẩu thành công");
+					location.reload();
+				} else {
+					alert("Yêu cầu nhập mật khẩu hiện tại hợp lệ !");
+				}
 				console.log("Success");
 			},
 			errMode: function (error){
 				console.log("Error");
 			}
-
 		})
-
-	}
+	});
 </script>
 
 </body>

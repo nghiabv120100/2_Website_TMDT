@@ -59,6 +59,7 @@ public class AccountAPI extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
+        req.setCharacterEncoding("UTF-8");
         HttpSession session =req.getSession();
         String username =(String) session.getAttribute("loginName");
         if (username == null) {
@@ -71,10 +72,10 @@ public class AccountAPI extends HttpServlet {
             if (accountModel.getPassword().equals(oldAccount.getOldPassword()) && oldAccount.getPassword().equals(oldAccount.getConfirmation_pwd())) {
                 accountModel.setPassword(oldAccount.getPassword());
                 AccountModel newAccount= accountService.update(accountModel);
-                mapper.writeValue(resp.getOutputStream(),accountModel);
+                mapper.writeValue(resp.getWriter(),1);
             }
             else {
-                return;
+                mapper.writeValue(resp.getWriter(),0);
             }
         }
 
