@@ -23,7 +23,7 @@ public class HeaderFilter implements Filter {
         res.setHeader("X-XSS-Protection","1; mode=block");
         res.setHeader("X-Content-Type-Options","nosniff");
         res.setHeader("X-Frame-Options","DENY");
-        res.setHeader("Content-Security-Policy", HeaderFilter.POLICY);
+//        res.setHeader("Content-Security-Policy", HeaderFilter.POLICY);
         filterChain.doFilter(servletRequest,servletResponse);
     }
 
