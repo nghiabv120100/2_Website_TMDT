@@ -128,8 +128,7 @@
             "password":pwd,
             "confirmation_pwd":confirmation_pwd,
             "avatar":'000.jpg',
-            "address":address,
-            "roleId": 0
+            "address":address
         }
         registerAccount(data)
     });

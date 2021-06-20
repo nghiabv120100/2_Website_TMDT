@@ -73,12 +73,26 @@ public class ProductController extends HttpServlet{
             req.setAttribute("proList",products);
             url="views/web/shop.jsp";
         }
-        else if(type.equals("category")){
+        else if(type.equals("category"))
+        {
+            int currentPage =1;
+            try {
+                currentPage = Integer.parseInt(req.getParameter("page"));
+            } catch (Exception e) {
+                resp.sendRedirect(req.getContextPath()+"/client-product-list?type=category&cate_id=1&page=1");
+                return;
+            }
 
-            int currentPage=Integer.parseInt(req.getParameter("page"));
             offset=(currentPage-1)*limit;
 
-            int cate_id =Integer.parseInt(req.getParameter("cate_id"));
+            int cate_id =1;
+            try {
+                cate_id = Integer.parseInt(req.getParameter("cate_id"));
+            } catch (Exception e)
+            {
+                resp.sendRedirect(req.getContextPath()+"/client-product-list?type=category&cate_id=1&page=1");
+                return;
+            }
             List<ProductModel> productModelList= productService.findByCategory(cate_id);
             List<DetailCategoryModel> detailCategoryModelList = detailCategoryService.findAll();
             List<ProductModel> products= productService.findByCategoryAndPage(cate_id,offset,limit);
@@ -115,10 +129,26 @@ public class ProductController extends HttpServlet{
 
 
         }
-        else if(type.equals("detail_category")) {
-            int currentPage=Integer.parseInt(req.getParameter("page"));
+        else if(type.equals("detail_category"))
+        {
+            int currentPage =1;
+            try {
+                currentPage = Integer.parseInt(req.getParameter("page"));
+            } catch (Exception e)
+            {
+                resp.sendRedirect(req.getContextPath()+"/client-product-list?type=detail_category&detail_cate_id=1&page=1");
+                return;
+            }
             offset=(currentPage-1)*limit;
-            int detail_cate_id =Integer.parseInt(req.getParameter("detail_cate_id"));
+
+            int detail_cate_id =1;
+            try {
+                detail_cate_id = Integer.parseInt(req.getParameter("detail_cate_id"));
+            } catch (Exception e) ///client-product-list?type=detail_category&detail_cate_id=1&page=1
+            {
+                resp.sendRedirect(req.getContextPath()+"/client-product-list?type=detail_category&detail_cate_id=1&page=1");
+                return;
+            }
             List<ProductModel> productModelList= productService.findByDetailCategoryAndPage(detail_cate_id,offset,limit);
 //            List<DetailCategoryModel> detailCategoryModelList = detailCategoryService.findAll();
             List<ProductModel> products= productService.findByDetailCategoryAndPage(detail_cate_id,offset,limit);
@@ -152,8 +182,15 @@ public class ProductController extends HttpServlet{
             req.setAttribute("detail_cate_id",detail_cate_id);
             url ="views/web/shop.jsp";
         }
-        else if (type.equals("detail_product")) {
-            int id=Integer.parseInt(req.getParameter("id"));
+        else if (type.equals("detail_product"))
+        {
+            int id =1;
+            try {
+                id = Integer.parseInt(req.getParameter("id"));
+            } catch (Exception e)
+            {
+                id =1;
+            }
             int quantity =Integer.parseInt(req.getParameter("quantity"));
             ProductModel productModel = productService.findOne(id);
             req.setAttribute("quantity",quantity);

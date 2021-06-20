@@ -47,8 +47,10 @@ public class IndexController extends HttpServlet {
                 int currentPage =1;
                 try {
                     currentPage = Integer.parseInt(req.getParameter("page"));
-                } catch (Exception e) {
-                    currentPage =1;
+                } catch (Exception e)
+                {
+                    resp.sendRedirect(req.getContextPath()+"/views/web/index.jsp");
+                    return;
                 }
 
                 offset = (currentPage - 1) * limit;

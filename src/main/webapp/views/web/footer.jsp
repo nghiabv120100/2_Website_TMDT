@@ -36,7 +36,7 @@
 						<ul class="nav nav-pills nav-stacked">
 							<li><a href="#">Bùi Văn Nghĩa</a></li>
 							<li><a href="#">Từ Hữu Hà Đức</a></li>
-							<li><a href="#">Ngô Xuân Thắng</a></li>
+							<li><a href="#">Hoàng Dương Hùng</a></li>
 							<li><a href="#">Huỳnh Ngọc Phúc</a></li>
 						</ul>
 					</div>
