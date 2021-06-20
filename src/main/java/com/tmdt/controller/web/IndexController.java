@@ -176,6 +176,7 @@ public class IndexController extends HttpServlet {
                 } catch (Exception e) {
                     currentPage =1;
                 }
+                
                 offset = (currentPage - 1) * limit;
 
                 String keyword = req.getParameter("keyword");
